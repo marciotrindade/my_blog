@@ -1,0 +1,17 @@
+.rvmrc
+.bundle
+.DS_Store
+.sass-cache/
+log/*
+tmp/*
+tmp/*
+db/*.sqlite3
+db/schema.rb
+config/config.yml
+config/database.yml
+public/index.html
+public/system/*
+public/assets/*
+public/cache/*
+coverage/
+rails_best_practices_output.html
