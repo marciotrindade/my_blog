@@ -1,0 +1,9 @@
+- content_for :navigation do
+	%li.first= link_to t("web-app-theme.list"), collection_path
+	%li= link_to t("web-app-theme.new"), new_resource_path
+
+= render 'show'
+
+%div.submit
+	= link_to t("web-app-theme.edit"), edit_resource_path, :class => "edit"
+	= link_to t("web-app-theme.delete"), resource_path, :method => "delete", :confirm => t("web-app-theme.confirm")

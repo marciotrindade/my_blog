@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   default_scope order(:name)
 
   def has_access_to?(role)
-    role_names = roles.map {|r| r.name.downcase }
+    role_names = roles.map { |r| r.name.downcase }
     role_names.include?(role.to_s.downcase)
   end
 

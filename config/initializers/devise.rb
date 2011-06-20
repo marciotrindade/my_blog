@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = "marciotrindade@gmail.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -22,7 +22,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [ :email ]
+  config.authentication_keys = [ :username ]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -54,7 +54,7 @@ Devise.setup do |config|
   config.stretches = 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "216952c2aee7d51ea18171adf7b71a5d58e8c15e06c5ea9fff9829b653b0b1184aa4307b58266572a71dea40c4a01eb494271afaa0360b462ac7353f54268ec8"
+  # config.pepper = "0403f1d3c08e1897cf0157097041a12b1e8c88c0fc870cf3b3b5424596a02a27dccfb653efeb5d5af4ccfa50b6fe894db6a4b5e85e8d70ec89942da69318c465"
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
@@ -70,7 +70,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
+  config.remember_for = 2.weeks
 
   # If true, a valid remember token can be re-used between multiple browsers.
   # config.remember_across_browsers = true
@@ -82,13 +82,9 @@ Devise.setup do |config|
   # to false if you are not using database authenticatable.
   config.use_salt_as_remember_token = true
 
-  # Options to be passed to the created cookie. For instance, you can set
-  # :secure => true in order to force SSL only cookies.
-  # config.cookie_options = {}
-
   # ==> Configuration for :validatable
-  # Range for password length. Default is 6..128.
-  # config.password_length = 6..128
+  # Range for password length. Default is 6..20.
+  # config.password_length = 6..20
 
   # Regex to use to validate the email address
   # config.email_regexp = /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
@@ -125,11 +121,6 @@ Devise.setup do |config|
   #
   # Defines which key will be used when recovering the password for an account
   # config.reset_password_keys = [ :email ]
-
-  # Time interval you can reset your password with a reset password key.
-  # Don't put a too small interval or your users won't have the time to
-  # change their passwords.
-  config.reset_password_within = 2.hours
 
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use

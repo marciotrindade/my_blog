@@ -7,7 +7,9 @@ Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
-  require 'remarkable/active_record'
+
+  require 'database_cleaner'
+  DatabaseCleaner.strategy = :truncation
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -16,8 +18,9 @@ Spork.prefork do
     config.include(ControllerMacros, :type => :controller)
     config.mock_with :mocha
     config.use_transactional_fixtures = true
-    # config.after(:all) do
-    # end
+    config.after(:all) do
+      DatabaseCleaner.clean
+    end
   end
 end
 

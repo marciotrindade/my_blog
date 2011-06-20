@@ -52,17 +52,7 @@ Factory.define :city do |f|
 end
 
 Factory.define :contact do |f|
-  f.name  "My Name is"
-  f.email "myemail@test.com"
-  f.phone "(11) 6610-0055"
-  f.body  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-end
-
-Factory.define :advertise do |f|
-  f.name  "My Name is"
-  f.email "myemail@test.com"
-  f.phone "(11) 6610-0055"
-  f.city  "Sao paulo"
-  f.state "SP"
+  f.name  "My name"
+  f.email "test@test.com"
   f.body  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 end
