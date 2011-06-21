@@ -1,0 +1,22 @@
+development: &defaults
+  site:
+    name: 'Name of my blog'
+    domain: 'mydomain.com'
+    url: "http://mydomain.com/"
+    email: "myemail@mydomain.com"
+  paginate:
+    per_page: 25
+  smtp_settings:
+    address: "smtp.gmail.com"
+    port: 587
+    domain: "gmail.com"
+    user_name: "my_user_of_gmail"
+    password: "my_pass_of_gmail"
+    authentication: "plain"
+    enable_starttls_auto: true
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
