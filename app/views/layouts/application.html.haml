@@ -23,12 +23,12 @@
 			#top_cufon
 				%h1#logo= link_to "Marcio Trindade", root_path, :name => "top", :title => "MarcioTrindade.com"
 			#header
-				/ = link_to "Subscribe via RSS", feed_url, :id => "rss-feed", :title => "Syndicate this site using RSS"
+				= link_to "Assine o RSS", "feed_url", :id => "rss-feed", :title => "Assine o RSS"
 				#top_bar
 					%ul#front_menu
 						%li= link_to_menu "Home", root_path
-						/ %li.page_item.page-item-2= link_to_menu "Sobre o autor", page_path("sobre-o-autor")
-						/ %li.page_item.page-item-46= link_to_menu "Contato", page_path("contato")
+						/ %li= link_to_menu "Sobre o autor", page_path("sobre-o-autor")
+						%li= link_to_menu "Contato", new_contact_path
 					%form#searchform{:action => "http://www.google.com.br/search", :method => "get"}
 						%input{:name => "as_sitesearch", :type => "hidden", :value => "marciotrindade.com"}/
 						%input{:name => "hl", :type => "hidden", :value => "pt-BR"}/
