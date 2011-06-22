@@ -10,6 +10,8 @@ gem 'dynamic_form'
 gem "settingslogic"
 gem "haml"
 gem 'decent_exposure'
+gem 'redcarpet'
+gem 'coderay'
 
 # Asset template engines
 gem 'sass-rails', "~> 3.1.0.rc"

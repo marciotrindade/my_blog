@@ -29,4 +29,17 @@ module ApplicationHelper
     "<dd>#{t(name, :scope => :attributes)}: <span>#{value} #{extra}</span></dd>".html_safe
   end
 
+  def textilize(text)
+    CodeFormatter.new(text).to_html.html_safe unless text.blank?
+  end
+
+  def link_to_menu(text, link)
+    link_to content_tag("span", text), link, :title => text
+  end
+
+  # def coderay(text)
+  #   text.gsub(/\<code( lang="(.+?)")?\>(.+?)\<\/code\>/m) do
+  #     content_tag("notextile", CodeRay.scan($3, $2).div(:css => :class).html_safe)
+  #   end
+  # end
 end

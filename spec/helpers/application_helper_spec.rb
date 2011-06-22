@@ -19,11 +19,7 @@ describe ApplicationHelper do
 
   it "page_title should respond with a title to page" do
     helper.stubs(:breadcrumbs).returns([["test", :root_path]])
-    helper.breadcrumb.should == "<a href=\"/\">Home</a> &gt; <a href=\"/\">test</a>"
-  end
-
-  it "show_attribute respond with espefic content" do
-    helper.show_attribute(:born, 18).should == "<dd>Idade: <span>18 </span></dd>".html_safe
+    helper.page_title.should == AppConfig.site.name
   end
 
 end

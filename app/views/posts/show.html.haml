@@ -1,0 +1,7 @@
+%h2= post.name
+.social
+	= link_to "Tweet", "http://twitter.com/share", "data-count" => "horizontal", "data-text" => post.name, "data-url" => post_url(post), "data-via" => "marciotrindade", :class => 'twitter-share-button'
+	= javascript_include_tag "http://platform.twitter.com/widgets.js"
+
+:preserve
+	#{textilize(post.body)}

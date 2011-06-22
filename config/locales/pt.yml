@@ -146,7 +146,7 @@ pt:
       default: "%d/%m/%Y - %Hh%M"
       date: "%d/%m/%Y"
       time: "%H:%M h"
-      short: "%d/%m/%Y - %H:%M h"
+      short: "%b/%y"
       long: "%A, %d de %B de %Y, %H:%M hs"
       only_second: "%S"
       datetime:

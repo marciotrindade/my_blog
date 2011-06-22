@@ -1,0 +1,17 @@
+.post
+	.comm_date
+		%span.data
+			%span.j= post.created_at.day
+			= l(post.created_at, :format => :short)
+		%span.nr_comm= link_to post.comments_count, "#comentarios", :class => "nr_comm_spot"
+	%h2= link_to post.name, post.path, :title => post.name, :rel => "bookmark"
+	:preserve
+		#{textilize(post.summary)}
+	%p= link_to "Continue lendo ...", post.path
+	%footer.cat_tags.clear
+		%span.category
+			/ = just_pluralize(post.categories.size, "Categoria", "Categorias")
+			/ \: #{link_categories(post.categories)}
+		/ %span.continue= link_to pluralize(post.comments.size, "Comentário", "Comentários"), "#{post_date_path(post)}#comentarios", :class => "nr_comm_spot"
+		.clear
+	.cat_tags_close

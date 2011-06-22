@@ -40,6 +40,7 @@
 						%h3.top Menu
 						%div.block
 							%ul.navigation
+								%li= link_to t(:post, :scope => :menu), admin_posts_path
 								%li= link_to t(:user, :scope => :menu), admin_users_path
 								%li= link_to t(:role, :scope => :menu), admin_roles_path
 								%li= link_to t(:contact, :scope => :menu), admin_contacts_path
