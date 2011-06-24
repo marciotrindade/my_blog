@@ -12,6 +12,7 @@ gem "haml"
 gem 'decent_exposure'
 gem 'redcarpet'
 gem 'coderay'
+gem 'gravtastic'
 
 # Asset template engines
 gem 'sass-rails', "~> 3.1.0.rc"

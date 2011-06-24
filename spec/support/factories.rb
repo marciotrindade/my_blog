@@ -39,3 +39,18 @@ Factory.define :post do |f|
   f.page_title { Factory.next(:name) }
   f.page_body "short description for this page"
 end
+
+Factory.define :category do |f|
+  f.name { Factory.next(:name) }
+  f.keywords "my, new, test"
+  f.page_title "my page title"
+  f.page_body "short description for this category"
+end
+
+Factory.define :comment do |f|
+  f.name  { Factory.next(:name) }
+  f.email { Factory.next(:email) }
+  f.post  { Factory(:post) }
+  f.url   "http://marciotrindade.com"
+  f.body  "My message is here."
+end
