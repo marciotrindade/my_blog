@@ -6,7 +6,7 @@ describe PagesController do
 
   describe "routes" do
     it "should respond to pages routes" do
-      { :get => pages_path("anything") }.should route_to(:controller => "pages", :action => "anything")
+      { :get => page_path("anything") }.should route_to(:controller => "pages", :action => "anything")
     end
   end
 
