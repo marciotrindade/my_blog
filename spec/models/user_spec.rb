@@ -11,8 +11,7 @@ describe User do
       user.should be_valid
     end
     it "should validate email format" do
-      user = Factory.build(:user)
-      user.email = "test"
+      user = Factory.build(:user, :email => "test")
       user.should_not be_valid
       user.email = "test@test.com"
       user.should be_valid
