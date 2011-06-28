@@ -5,6 +5,9 @@ Blog::Application.routes.draw do
     resources :roles, :except => [:show]
     resources :contacts, :except => [:show]
     resources :posts, :except => [:show]
+    resources :categories, :except => [:show]
+    resources :comments, :except => [:show]
+    resources :pending_comments, :except => [:show]
     resources :users, :except => [:show] do
       put :update_profile, :on => :member
       collection do
