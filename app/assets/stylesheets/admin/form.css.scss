@@ -2,6 +2,17 @@ form {
   .input{
     margin-bottom: 15px;
   }
+  .string {
+    input {
+      width: 90%;
+    }
+  }
+  .text {
+    textarea {
+      width: 90%;
+      height: 400px;
+    }
+  }
   .numeric input, .string input, .password input, .text textarea {
     border: 1px solid #2A0000;
     padding: 3px 2px;
@@ -73,3 +84,4 @@ form {
   padding-left: 10px;
   list-style-type: disc;
 }
+

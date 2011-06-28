@@ -40,11 +40,6 @@ module Blog
 
     config.time_zone = 'Brasilia'
 
-    config.to_prepare do
-      Devise::SessionsController.layout "admin"
-      Devise::PasswordsController.layout "admin"
-    end
-
     # Enable the asset pipeline
     config.assets.enabled = true
   end

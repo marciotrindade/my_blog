@@ -156,19 +156,22 @@ h1#logo{margin:14px 0 0 0; float:left;}
     .author   {font-size:13px;}
     .author a {color:black;}
   }
-
+}
+#content-body {
   // SEND A COMMENT
   form {
     margin:15px 0;
     .input {margin-bottom:10px;}
     label {font-weight:bold; display:block;}
+    .boolean label {font-weight:normal; display:inline;}
     .error {color:red; margin-left:10px;}
     .string input{padding:3px;border:1px solid #E5E2E0;margin-bottom:2px;}
     textarea{border:1px solid #E5E2E0;padding:5px;font: 12px Verdana; width:500px; height:200px;}
+    div.submit {margin-bottom: 10px;}
+    div.submit input,
     input.submit {width: 88px;height: 25px;border: 0px;background:#2C2C29 url('/assets/submit_btn.png') no-repeat;font: bold 12px Helvetica,Georgia,serif;color:#FFF;text-align:center;cursor:pointer;}
   }
 }
-
 
 /* PAGINATION */
 .nav_link{margin-top:15px;border-top:1px solid #DDD;background-color:#F5F5F5;padding:10px;}
