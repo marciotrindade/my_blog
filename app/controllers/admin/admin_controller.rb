@@ -8,8 +8,6 @@ class Admin::AdminController < InheritedResources::Base
 
   layout "admin"
 
-  add_breadcrumb :admin, "admin_root_path"
-
   def index
     index! do |format|
       format.html { render_or_default(:index) }

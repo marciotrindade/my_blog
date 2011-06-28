@@ -1,0 +1,26 @@
+- title t(:approved_comments)
+- if collection.present?
+	%table.table
+		%thead
+			%tr
+				%th.first ID
+				%th= resource_class.human_attribute_name(:name)
+				%th= resource_class.human_attribute_name(:email)
+				%th= resource_class.human_attribute_name(:post)
+				%th.last &nbsp;
+		%tbody
+			- collection.each do |comment|
+				%tr
+					%td= comment.id
+					%td= comment.name
+					%td= comment.email
+					%td= comment.post.name
+					%td.last
+						= link_to t("web-app-theme.edit"), edit_resource_path(comment)
+						|
+						= link_to t("web-app-theme.delete"), resource_path(comment), :method => :delete, :confirm => t("web-app-theme.confirm")
+
+- else
+	= render "defaults/no_results"
+
+- data_table

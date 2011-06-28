@@ -4,29 +4,28 @@ module ApplicationHelper
     content_for(:js) { javascript_include_tag(*files) }
   end
 
-  def title(title)
-    content_for(:title) { title.to_s }
-  end
-
-  def page_title
-    text = []
-    text << AppConfig.site.name
-    text.join(" - ")
-  end
-
   def breadcrumb
     html = link_to_unless_current "Home", root_path
-    breadcrumbs.each do |title, link|
+    items = breadcrumbs.insert(0, [:admin, "admin_root_path"])
+    items.each do |title, link|
       html << " > "
       html << link_to_unless_current(t(title, :scope => :breadcrumbs, :default => title.to_s), eval(link.to_s))
     end
     html.html_safe
   end
 
-  def show_attribute(name, value, extra='')
-    return "" if value.blank?
-    value = t("_#{value}") if value.is_a?(TrueClass) || value.is_a?(FalseClass)
-    "<dd>#{t(name, :scope => :attributes)}: <span>#{value} #{extra}</span></dd>".html_safe
+  def title(title)
+    @title = title.to_s
+  end
+
+  def print_title
+    @title
+  end
+
+  def page_title
+    text = []
+    text << AppConfig.site.name
+    text.join(" - ")
   end
 
   def textilize(text)
@@ -37,9 +36,15 @@ module ApplicationHelper
     link_to content_tag("span", text), link, :title => text
   end
 
-  # def coderay(text)
-  #   text.gsub(/\<code( lang="(.+?)")?\>(.+?)\<\/code\>/m) do
-  #     content_tag("notextile", CodeRay.scan($3, $2).div(:css => :class).html_safe)
-  #   end
-  # end
+  def link_categories(categories)
+    categories = categories.collect{ |category| link_to(category.name, category_path(category.permalink), :rel => "tag") }
+    categories.to_sentence.html_safe
+  end
+
+  def strip_markdown(text, size=400)
+    text = strip_tags(textilize(text))
+    text = text[0...text[0..(size-3)].rindex(' ')] + "..." if text.size > size
+    simple_format(text)
+  end
+
 end
