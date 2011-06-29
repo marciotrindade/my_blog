@@ -19,12 +19,32 @@ pt:
     all: 'Todos'
     reorder: 'Reordenar'
 
+  send_your_comment: "Deixe um comentário"
+  subscribe: "Assine o RSS"
+  read_more: "Continue lendo..."
+  send: "Enviar"
+  arquive: "Arquivos"
+
+  comments:
+    empty: "Nenhum comentário ainda."
+    one: "Comentário"
+    other: "Comentários"
+    success: "Seu comentário foi enviado para aprovação e logo estará disponível."
+    error: "Ocorreu um erro ao enviar seu comentário, por favor tente novamente."
+
+  categories:
+    one: "Categoria"
+    other: "Categorias"
+
   top_menu:
     profile: 'Perfil'
     logout: 'Sair'
     front: 'Página inicial'
 
   menu:
+    home: "Home"
+    about_me: "Sobre o autor"
+    contact: "Contato"
     user: 'Usuários'
     role: 'Grupos de acesso'
     contact: 'Contatos'
@@ -63,6 +83,7 @@ pt:
     page: 'Página'
     number: 'Número'
     url: 'Site'
+    remember_me: 'Continuar logado'
 
   activerecord:
     models:
@@ -78,6 +99,9 @@ pt:
       contact:
         one: 'O contato'
         other: 'Os contatos'
+      comment:
+        one: 'O comentário'
+        other: 'Os comentários'
 
     attributes:
       contact:
@@ -146,9 +170,12 @@ pt:
       default: "%d/%m/%Y - %Hh%M"
       date: "%d/%m/%Y"
       time: "%H:%M h"
+      archive: "%B %Y"
       short: "%b/%y"
       long: "%A, %d de %B de %Y, %H:%M hs"
       only_second: "%S"
+      comment: "%d/%m/%Y %H:%M"
+      w3c: "%Y-%m-%dT%H:%M:%S+00:00"
       datetime:
         formats:
           default: "%Y-%m-%dT%H:%M:%S%Z"
@@ -281,6 +308,8 @@ pt:
       unlock_instructions:
         subject: 'Instruções de desbloqueio'
         
+  signin: 'Login'
+  signup: 'Faça seu cadastro agora mesmo'
   forgot: 'Esqueceu sua senha?'
   change_my_password: 'Alterar minha senha'
   ############
@@ -309,10 +338,6 @@ pt:
   ###############
   # Mailer #
   ###############
-  advertise_mailer:
-    send_advertise:
-      subject: "[Travestisp] Advertise"
-      sucess: "Sua requisição foi enviada com sucesso!"
   contact_mailer:
     send_contact:
       subject: "[Travestisp] Contact"

@@ -1,0 +1,5 @@
+.comm_date
+	%span.data
+		%span.j= post.created_at.day
+		= l(post.created_at, :format => :short)
+	%span.nr_comm= link_to post.comments.size, "#{post.path}#comments", :class => "nr_comm_spot"

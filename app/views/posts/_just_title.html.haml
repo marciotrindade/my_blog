@@ -1,9 +1,7 @@
 .post
 	= render :partial => "posts/date", :locals=> { :post => post }
 	%h2= link_to post.name, post.path, :title => post.name, :rel => "bookmark"
-	:preserve
-		#{textilize(post.summary)}
-	%p= link_to t(:read_more), post.path
+	= strip_markdown(post.summary)
 	.cat_tags.clear
 		%span.category
 			= link_categories(post.categories)

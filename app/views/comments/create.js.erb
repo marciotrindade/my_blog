@@ -1,0 +1,6 @@
+<% if @saved == :success %>
+$("#new_comment").remove();
+$(".post .tabs:first").click();
+$('html, body').animate({scrollTop: $("#wrapper").height()}, 800);
+<% end -%>
+alert("<%= escape_javascript(t(@saved, :scope => :comments)) %>");

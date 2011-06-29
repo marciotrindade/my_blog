@@ -13,4 +13,9 @@ describe AdminHelper do
     helper.content_for(:js).should =~ /aaSorting/
   end
 
+  it "title should return the title" do
+    helper.title("test")
+    helper.show_title.should == "test"
+  end
+
 end

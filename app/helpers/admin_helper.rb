@@ -24,6 +24,14 @@ module AdminHelper
     text
   end
 
+  def title(title)
+    @title = title.to_s
+  end
+
+  def show_title
+    @title
+  end
+
   def render_or_default(name)
     render name
   rescue ActionView::MissingTemplate

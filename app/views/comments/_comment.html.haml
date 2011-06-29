@@ -1,0 +1,9 @@
+%li
+	= image_tag(comment.gravatar_url, :alt => comment.name, :class => "avatar", :size => "80x80")
+	.comments
+		%strong.author= link_to_unless(comment.url.blank?, comment.name, comment.url, :rel => "nofollow")
+		em
+		%time{ :datetime => l(comment.created_at.utc, :format => :w3c) }= l(comment.created_at, :format => :comment)
+		%hr/
+		= textilize(comment.body)
+	.clear

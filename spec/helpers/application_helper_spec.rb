@@ -8,11 +8,6 @@ describe ApplicationHelper do
     helper.content_for(:js).should == "<script src=\"/assets/default.js\" type=\"text/javascript\"></script>"
   end
 
-  it "title should add a string title to yield" do
-    helper.title("test")
-    helper.content_for(:title).should == "test"
-  end
-
   it "page_title should respond with a title to page" do
     helper.page_title.should == AppConfig.site.name
   end

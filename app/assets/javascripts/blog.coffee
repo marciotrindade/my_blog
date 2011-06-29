@@ -1,3 +1,7 @@
+jQuery.ajaxSetup(
+    'beforeSend': (xhr) ->
+      xhr.setRequestHeader("Accept", "text/javascript")
+)
 $(document).ready ->
   $(".clippy").live 
     clippycopy: (e, data) ->

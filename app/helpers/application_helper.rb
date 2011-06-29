@@ -14,14 +14,6 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def title(title)
-    @title = title.to_s
-  end
-
-  def print_title
-    @title
-  end
-
   def page_title
     text = []
     text << AppConfig.site.name

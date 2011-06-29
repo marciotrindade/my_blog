@@ -34,12 +34,12 @@
             var element = $(this);
             clientSideValidations.callbacks.element.fail(element, message, function() {
               addError(element, message);
-            }, eventData) })
+            }, eventData); })
           .live('element:validate:pass',   function(eventData) {
             var element = $(this);
             clientSideValidations.callbacks.element.pass(element, function() {
               removeError(element);
-            }, eventData) })
+            }, eventData); })
         // Checkboxes - Live events don't support filter
         .end().find('[data-validate]:checkbox')
           .live('click', function() { $(this).isValid(settings.validators); })
@@ -55,19 +55,19 @@
               })
               .live('keyup', function() {
                 element.data('changed', true).isValid(settings.validators);
-              })
+              });
           }
         });
 
       var addError = function(element, message) {
         clientSideValidations.formBuilders[settings.type].add(element, settings, message);
-      }
+      };
 
       var removeError = function(element) {
         clientSideValidations.formBuilders[settings.type].remove(element, settings);
-      }
+      };
     });
-  }
+  };
 
   $.fn.isValid = function(validators) {
     if ($(this[0]).is('form')) {
@@ -75,7 +75,7 @@
     } else {
       return validateElement($(this[0]), validators[this[0].name]);
     }
-  }
+  };
 
   var validateForm = function(form, validators) {
     var valid = true;
@@ -92,7 +92,7 @@
 
     form.trigger('form:validate:after');
     return valid;
-  }
+  };
 
   var validateElement = function(element, validators) {
     element.trigger('element:validate:before');
@@ -116,17 +116,17 @@
 
     element.trigger('element:validate:after');
     return element.data('valid') === false ? false : true;
-  }
+  };
 
   // Main hook
   // If new forms are dynamically introduced into the DOM the .validate() method
   // must be invoked on that form
-  $(function() { $('form[data-validate]').validate(); })
+  $(function() { $('form[data-validate]').validate(); });
 })(jQuery);
 
 var clientSideValidations = {
   validators: {
-    all: function() { return jQuery.extend({}, clientSideValidations.validators.local, clientSideValidations.validators.remote) },
+    all: function() { return jQuery.extend({}, clientSideValidations.validators.local, clientSideValidations.validators.remote); },
     local: {
       presence: function(element, options) {
         if (/^\s*$/.test(element.val() || "")) {
