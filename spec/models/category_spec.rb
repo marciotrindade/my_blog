@@ -20,4 +20,12 @@ describe Category do
     Category.last.should == category_one
   end
 
+  it "default scope order by name" do
+    category = Factory(:category)
+    Factory(:post, :categories => [category])
+    Factory(:post)
+
+    category.posts.size == 1
+  end
+
 end

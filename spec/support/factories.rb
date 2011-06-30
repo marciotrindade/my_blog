@@ -33,18 +33,19 @@ Factory.define :contact do |f|
 end
 
 Factory.define :post do |f|
-  f.name { Factory.next(:name) }
-  f.body "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-  f.keywords "my, new, test"
-  f.page_title { Factory.next(:name) }
-  f.page_body "short description for this page"
+  f.name        { Factory.next(:name) }
+  f.body        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  f.keywords    "my, new, test"
+  f.page_title  { Factory.next(:name) }
+  f.page_body   "short description for this page"
+  f.active      true
 end
 
 Factory.define :category do |f|
-  f.name { Factory.next(:name) }
-  f.keywords "my, new, test"
-  f.page_title "my page title"
-  f.page_body "short description for this category"
+  f.name        { Factory.next(:name) }
+  f.keywords    "my, new, test"
+  f.page_title  "my page title"
+  f.page_body   "short description for this category"
 end
 
 Factory.define :comment do |f|

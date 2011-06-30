@@ -27,6 +27,10 @@ describe Post do
   end
 
   context "self methods" do
+    it "should respond to active" do
+      Post.active.should == Post.where(:active => true)
+    end
+
     it "should respond to recent" do
       Post.recent.should == Post.limit(10)
     end
@@ -67,7 +71,7 @@ describe Post do
 
   context "with a instance" do
     before(:all) do
-      @post = Factory(:post, :summary => nil)
+      @post = Factory(:post, :summary => nil, :active => true)
     end
 
     it "should has year path" do
@@ -92,9 +96,11 @@ describe Post do
     
     it "should return total of posts in the same month" do
       @post.total_in_month.should == 1
-      Factory(:post)
+      Factory(:post, :active => true)
       @post.total_in_month.should == 2
-      Factory(:post, :created_at => Date.today - 1.month)
+      Factory(:post, :active => false)
+      @post.total_in_month.should == 2
+      Factory(:post, :created_at => Date.today - 1.month, :active => true)
       @post.total_in_month.should == 2
     end
   end

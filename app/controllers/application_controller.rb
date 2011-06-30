@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   expose(:categories) { Category.scoped }
-  expose(:dates) { Post.dates }
+  expose(:dates) { Post.active.dates }
 
   helper_method :breadcrumbs
 

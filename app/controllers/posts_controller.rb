@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
 
-  expose(:recent) { Post.recent }
-  expose(:post)   { Post.find_by_permalink(params[:id]) }
-  expose(:posts)  { Post.by_date(params[:year], params[:month], params[:day]) }
+  expose(:recent) { Post.active.recent }
+  expose(:post)   { Post.active.find_by_permalink(params[:id]) }
+  expose(:posts)  { Post.active.by_date(params[:year], params[:month], params[:day]) }
 
   def index
   end
