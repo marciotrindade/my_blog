@@ -38,11 +38,13 @@ form {
     font-weight: normal;
     padding-left: 5px;
   }
-  .check_boxes label {
-    font-weight: normal;
-  }
-  .check_boxes label:first-child {
-    font-weight: bold;
+  div.check_boxes {
+    display: table;
+    margin-bottom: 20px;
+    span {
+      display:block; float:left; width:200px; margin:5px;
+      label { font-weight:normal; display:inline; }
+    }
   }
   .submit {
     clear: both;
