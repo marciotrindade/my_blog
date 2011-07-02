@@ -48,6 +48,9 @@ pt:
     user: 'Usuários'
     role: 'Grupos de acesso'
     contact: 'Contatos'
+    category: 'Categorias'
+    page: 'Páginas'
+    comment: 'Comentários'
 
   admin:
     login: 'Login'
@@ -340,5 +343,5 @@ pt:
   ###############
   contact_mailer:
     send_contact:
-      subject: "[Travestisp] Contact"
+      subject: "[marciotrindade.com] Contato"
       sucess: "Sua mensagem foi enviada com sucesso!"

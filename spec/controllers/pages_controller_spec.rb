@@ -5,16 +5,17 @@ describe PagesController do
   render_views
 
   describe "routes" do
-    it "should respond to pages routes" do
-      { :get => page_path("anything") }.should route_to(:controller => "pages", :action => "anything")
+    it "should respond to resource routes" do
+      { :get  => "/pages/test"}.should  route_to(:controller => "pages", :action => "show", :id => "test")
     end
   end
 
-  describe "respond for any page" do
-    it "should render any template" do
-      get "about-us"
+  describe "visit a category" do
+    it "should respond to html" do
+      page = Factory(:page, :name => "my page")
+      get :show, :id => "my-page"
       response.should be_success
-      should render_template(:about_us)
+      response.should render_template(:show)
     end
   end
 

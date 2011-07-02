@@ -55,3 +55,11 @@ Factory.define :comment do |f|
   f.url   "http://marciotrindade.com"
   f.body  "My message is here."
 end
+
+Factory.define :page do |f|
+  f.name        { Factory.next(:name) }
+  f.body        "my page content"
+  f.keywords    "my, new, test"
+  f.page_title  { Factory.next(:name) }
+  f.page_body   "short description for this page"
+end

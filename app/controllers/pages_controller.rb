@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
 
-  def method_missing(symbol, &block)
-    render params[:action].underscore.downcase
+  expose(:page)   { Page.find_by_permalink(params[:id]) }
+
+  def show
   end
 
 end

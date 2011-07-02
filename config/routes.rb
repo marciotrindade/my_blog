@@ -1,4 +1,6 @@
 Blog::Application.routes.draw do
+  resources :pages
+
   namespace :admin do
     root :to => "pages#home"
     resources :pages, :except => [:show]
@@ -16,16 +18,16 @@ Blog::Application.routes.draw do
     end
   end
 
+  resources :pages, :only => :show
+  resources :categories, :only => :show
   resources :contacts, :only => [:new, :create]
-  resources :posts, :only => [:index, :show] do
+  resources :posts, :only => :show do
     resources :comments, :only => :create
   end
-  resources :categories, :only => :show
 
   match '/posts.atom', :controller => 'posts', :action => "index", :format => "atom", :as => :feed
   match ':year(/:month(/:day(.:format)))', :controller => "posts", :action => "by_date", :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
-  match ':year/:month/:day/:id(.:format)', :controller => "posts", :action => "show",         :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
-  match "pages/:action", :controller => :pages, :as => :page
+  match ':year/:month/:day/:id(.:format)', :controller => "posts", :action => "show", :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
 
   # login
   devise_for :users, :controllers => { :sessions => 'users' }
