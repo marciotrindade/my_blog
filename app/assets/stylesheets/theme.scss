@@ -20,7 +20,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 body{background-color:#2C2C29;font-family:Tahoma;font-size:12px;color:#2C2C29;}
 p{font-size:1.2em;padding:2px;margin:1px 0 15px;}
 a{color:#807D7A;}
-h2{background-color:#FFF;border-bottom:1px solid #DCDCDB;letter-spacing:-1px;font-size:24px;padding-bottom:3px;font-weight:400;margin:10px 0 3px 0;font-family:Helvetica, Georgia;}
+h2{background-color:#FFF;border-bottom:1px solid #DCDCDB;letter-spacing:-1px;font-size:24px;padding-bottom:3px;font-weight:700;margin:10px 0 3px 0;font-family:Helvetica, Georgia;color:#2C2C29;}
 h2 a{font-weight:700;border:0;text-decoration:none;color:#2C2C29;display:block;}
 h3{font-size:1.8em;}
 h4{font-size:1.5em;}
@@ -234,7 +234,7 @@ ul#front_menu{width:548px;}
 .cat_tags .continue{padding-right:10px;}
 
 /* SOCIAL */
-.social { float: right; margin: -31px -15px 0 0; }
+//.social { float: right; margin: -30px 0 0 0; text-align:right; }
 
 /* PERSONAL */
 .post img { max-width:100%; }

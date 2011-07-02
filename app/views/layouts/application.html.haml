@@ -19,10 +19,6 @@
 		= csrf_meta_tags
 	%body
 
-		%div.flash
-			- flash.each do |type, message|
-				%p.message{:class => type}= message
-
 		#wrapper
 			#top_cufon
 				%h1#logo= link_to AppConfig.site.name, root_path, :name => "top", :title => AppConfig.site.domain

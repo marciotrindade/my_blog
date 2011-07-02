@@ -8,7 +8,7 @@ describe ContactMailer do
     let(:mail) { ContactMailer.send_contact(@contact) }
 
     it "renders the headers" do
-      mail.subject.should == "[Travestisp] Contact"
+      mail.subject.should == "[marciotrindade.com] Contato"
       mail.to.should == ["marciotrindade@gmail.com"]
       mail.from.should == [@contact.email]
     end

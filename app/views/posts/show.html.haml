@@ -1,35 +1,33 @@
 .post
-	= render :partial => "posts/date", :locals=> { :post => post }
-	%h2
-		%a= post.name
-	.social
-		= link_to "Tweet", "http://twitter.com/share", "data-count" => "horizontal", "data-text" => post.name, "data-url" => post_url(post), "data-via" => "marciotrindade", :class => 'twitter-share-button'
-		= javascript_include_tag "http://platform.twitter.com/widgets.js"
-	:preserve
-		#{textilize(post.body)}
+  = render :partial => "posts/date", :locals=> { :post => post }
+  %h2= post.name
+  :preserve
+    #{textilize(post.body)}
 
-	#tabsContainer
-		%a.tabs.selected
-			%span= pluralize(post.comments.size, t(:one, :scope => :comments), t(:other, :scope => :comments))
-		%a.tabs
-			%span= t(:send_your_comment)
-		.clear_tab
+  = render :partial => "defaults/social"
 
-		.tab-content.selected
-			%a{:name => "comments"}
-			- if post.comments.present?
-				#comentario
-					%ol
-						= render(post.comments)
-			- else
-				%p.no #{t(:empty, :scope => :comments)}
-			%br/
+  #tabsContainer
+    %a.tabs.selected
+      %span= pluralize(post.comments.size, t(:one, :scope => :comments), t(:other, :scope => :comments))
+    %a.tabs
+      %span= t(:send_your_comment)
+    .clear_tab
 
-		.tab-content
-			= simple_form_for [post,  @comment], :validate => true, :remote => true do |f|
-				= f.error_messages
-				= f.input :name
-				= f.input :email
-				= f.input :url
-				= f.input :body
-				= f.submit t(:send), :class => "submit", :disable_with => "Enviando..."
+    .tab-content.selected
+      %a{:name => "comments"}
+      - if post.comments.present?
+        #comentario
+          %ol
+            = render(post.comments)
+      - else
+        %p.no #{t(:empty, :scope => :comments)}
+      %br/
+
+    .tab-content
+      = simple_form_for [post,  @comment], :validate => true, :remote => true do |f|
+        = f.error_messages
+        = f.input :name
+        = f.input :email
+        = f.input :url
+        = f.input :body
+        = f.submit t(:send), :class => "submit", :disable_with => "Enviando..."
