@@ -13,8 +13,8 @@ describe Category do
   end
 
   it "default scope order by name" do
-    category_one = Factory(:category, :name => "Zilda")
-    category_two = Factory(:category, :name => "Andre")
+    category_one = Factory(:category, name: "Zilda")
+    category_two = Factory(:category, name: "Andre")
 
     Category.first.should == category_two
     Category.last.should == category_one
@@ -22,7 +22,7 @@ describe Category do
 
   it "default scope order by name" do
     category = Factory(:category)
-    Factory(:post, :categories => [category])
+    Factory(:post, categories: [category])
     Factory(:post)
 
     category.posts.size == 1

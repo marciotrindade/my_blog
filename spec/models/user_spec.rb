@@ -11,7 +11,7 @@ describe User do
       user.should be_valid
     end
     it "should validate email format" do
-      user = Factory.build(:user, :email => "test")
+      user = Factory.build(:user, email: "test")
       user.should_not be_valid
       user.email = "test@test.com"
       user.should be_valid
@@ -25,7 +25,7 @@ describe User do
   describe "with permissions" do
     before(:all) do
       @user = Factory(:user)
-      @user.roles << Role.create(:name => "admin")
+      @user.roles << Role.create(name: "admin")
       @user = User.find(@user.id)
     end
 

@@ -9,6 +9,6 @@ describe Admin::PostsController do
     @object = Factory(:post)
   end
 
-  should_respond_to_resources :except => [ :show ]
+  should_respond_to_resources except: [ :show ]
 
 end

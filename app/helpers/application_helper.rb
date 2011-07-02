@@ -9,7 +9,7 @@ module ApplicationHelper
     items = breadcrumbs.insert(0, [:admin, "admin_root_path"])
     items.each do |title, link|
       html << " > "
-      html << link_to_unless_current(t(title, :scope => :breadcrumbs, :default => title.to_s), eval(link.to_s))
+      html << link_to_unless_current(t(title, scope: :breadcrumbs, default: title.to_s), eval(link.to_s))
     end
     html.html_safe
   end
@@ -25,11 +25,11 @@ module ApplicationHelper
   end
 
   def link_to_menu(text, link)
-    link_to content_tag("span", text), link, :title => text
+    link_to content_tag("span", text), link, title: text
   end
 
   def link_categories(categories)
-    categories = categories.collect{ |category| link_to(category.name, category_path(category.permalink), :rel => "tag") }
+    categories = categories.collect{ |category| link_to(category.name, category_path(category.permalink), rel: "tag") }
     categories.to_sentence.html_safe
   end
 

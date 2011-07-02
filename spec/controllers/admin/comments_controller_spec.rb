@@ -9,6 +9,6 @@ describe Admin::CommentsController do
     @object = Factory(:comment)
   end
 
-  should_respond_to_resources :except => [ :show ]
+  should_respond_to_resources except: [ :show ]
 
 end

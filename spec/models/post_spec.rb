@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Post do
 
   context "validations" do
-    subject { Factory(:post, :permalink => "test") }
+    subject { Factory(:post, permalink: "test") }
     it { should validate_uniqueness_of(:permalink) }
     it { should validate_uniqueness_of(:page_title) }
     it { should validate_presence_of(:name) }
@@ -19,8 +19,8 @@ describe Post do
   end
 
   it "default scope order by name" do
-    post_one = Factory(:post, :created_at => Date.today - 1.day)
-    post_two = Factory(:post, :created_at => Date.today)
+    post_one = Factory(:post, created_at: Date.today - 1.day)
+    post_two = Factory(:post, created_at: Date.today)
 
     Post.first.should == post_two
     Post.last.should == post_one
@@ -28,7 +28,7 @@ describe Post do
 
   context "self methods" do
     it "should respond to active" do
-      Post.active.should == Post.where(:active => true)
+      Post.active.should == Post.where(active: true)
     end
 
     it "should respond to recent" do
@@ -71,7 +71,7 @@ describe Post do
 
   context "with a instance" do
     before(:all) do
-      @post = Factory(:post, :summary => nil, :active => true)
+      @post = Factory(:post, summary: nil, active: true)
     end
 
     it "should has year path" do
@@ -96,11 +96,11 @@ describe Post do
     
     it "should return total of posts in the same month" do
       @post.total_in_month.should == 1
-      Factory(:post, :active => true)
+      Factory(:post, active: true)
       @post.total_in_month.should == 2
-      Factory(:post, :active => false)
+      Factory(:post, active: false)
       @post.total_in_month.should == 2
-      Factory(:post, :created_at => Date.today - 1.month, :active => true)
+      Factory(:post, created_at: Date.today - 1.month, active: true)
       @post.total_in_month.should == 2
     end
   end

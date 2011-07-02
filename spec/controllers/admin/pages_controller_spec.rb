@@ -9,6 +9,6 @@ describe Admin::PagesController do
     @object = Factory(:page)
   end
 
-  should_respond_to_resources :except => [ :show ]
+  should_respond_to_resources except: [ :show ]
 
 end

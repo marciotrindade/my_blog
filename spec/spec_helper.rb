@@ -15,7 +15,7 @@ Spork.prefork do
 
   RSpec.configure do |config|
     config.include(I18nMacros)
-    config.include(ControllerMacros, :type => :controller)
+    config.include(ControllerMacros, type: :controller)
     config.mock_with :mocha
     config.use_transactional_fixtures = true
     config.after(:all) do

@@ -9,6 +9,6 @@ describe Admin::RolesController do
     @object = Factory(:role)
   end
 
-  should_respond_to_resources :except => [ :show ]
+  should_respond_to_resources except: [ :show ]
 
 end

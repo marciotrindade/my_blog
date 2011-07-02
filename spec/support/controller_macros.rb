@@ -8,13 +8,13 @@ module ControllerMacros
 
     def actions_filtred (options={})
       default_actions = {
-        :index => [:html, :xml],
-        :show =>  [:html, :xml],
-        :new =>  [:html, :xml],
-        :create =>  [:success, :fail],
-        :edit =>  [:html, :xml],
-        :update =>  [:success, :fail],
-        :destroy =>  [:success, :fail]
+        index: [:html, :xml],
+        show:  [:html, :xml],
+        new:  [:html, :xml],
+        create:  [:success, :fail],
+        edit:  [:html, :xml],
+        update:  [:success, :fail],
+        destroy:  [:success, :fail]
       }
 
       [options[:except]].flatten.each do |action|
@@ -46,19 +46,19 @@ module ControllerMacros
 
     def should_respond_to_resources_routes(actions)
       it "should respond to resources routes" do
-        { :get    => "#{string_for_route}"}.should          route_to(hash_for_route.merge(:action => "index")) if should_show(actions, :index)
-        { :get    => "#{string_for_route}/new"}.should      route_to(hash_for_route.merge(:action => "new")) if should_show(actions, :new)
-        { :get    => "#{string_for_route}/1"}.should        route_to(hash_for_route.merge(:action => "show", :id => "1")) if should_show(actions, :show)
-        { :get    => "#{string_for_route}/1/edit"}.should   route_to(hash_for_route.merge(:action => "edit", :id => "1")) if should_show(actions, :edit)
-        { :post   => "#{string_for_route}"}.should          route_to(hash_for_route.merge(:action => "create")) if should_show(actions, :create)
-        { :put    => "#{string_for_route}/1"}.should        route_to(hash_for_route.merge(:action => "update", :id => "1")) if should_show(actions, :update)
-        { :delete => "#{string_for_route}/1"}.should        route_to(hash_for_route.merge(:action => "destroy", :id => "1")) if should_show(actions, :destroy)
+        { get:    "#{string_for_route}"}.should          route_to(hash_for_route.merge(action: "index")) if should_show(actions, :index)
+        { get:    "#{string_for_route}/new"}.should      route_to(hash_for_route.merge(action: "new")) if should_show(actions, :new)
+        { get:    "#{string_for_route}/1"}.should        route_to(hash_for_route.merge(action: "show", id: "1")) if should_show(actions, :show)
+        { get:    "#{string_for_route}/1/edit"}.should   route_to(hash_for_route.merge(action: "edit", id: "1")) if should_show(actions, :edit)
+        { post:   "#{string_for_route}"}.should          route_to(hash_for_route.merge(action: "create")) if should_show(actions, :create)
+        { put:    "#{string_for_route}/1"}.should        route_to(hash_for_route.merge(action: "update", id: "1")) if should_show(actions, :update)
+        { delete: "#{string_for_route}/1"}.should        route_to(hash_for_route.merge(action: "destroy", id: "1")) if should_show(actions, :destroy)
       end
     end
 
     def should_respond_to_index(format=nil)
       it "should respond to index with #{format} format" do
-        get :index, {:format => format}.merge(parent_params)
+        get :index, {format: format}.merge(parent_params)
 
         assigns[:collection].should_not nil
         response.should be_success
@@ -69,7 +69,7 @@ module ControllerMacros
 
     def should_respond_to_show(format=nil)
       it "should respond to show with #{format} format" do
-        get :show, {:id => @object, :format => format}.merge(parent_params)
+        get :show, {id: @object, format: format}.merge(parent_params)
 
         assigns(model.to_sym).should_not be_blank
         response.should be_success
@@ -80,7 +80,7 @@ module ControllerMacros
 
     def should_respond_to_new(format)
       it "should respond to new with #{format} format" do
-        get :new, {:format => format}.merge(parent_params)
+        get :new, {format: format}.merge(parent_params)
 
         assigns(model.to_sym).should_not be_blank
         response.should be_success
@@ -108,7 +108,7 @@ module ControllerMacros
 
     def should_respond_to_edit(format=nil)
       it "should respond to edit with #{format} format" do
-        get :edit, {:id => @object.id, :format => format}.merge(parent_params)
+        get :edit, {id: @object.id, format: format}.merge(parent_params)
 
         assigns(model.to_sym).should_not be_blank
         response.should be_success
@@ -123,7 +123,7 @@ module ControllerMacros
         model_class.any_instance.stubs(:update_attributes).returns(status)
         model_class.any_instance.stubs(:errors).returns(status ? "" : model_errors)
 
-        put :update, {:id => @object.id, model.to_sym => {}}.merge(parent_params)
+        put :update, {id: @object.id, model.to_sym => {}}.merge(parent_params)
 
         if status
           flash[:notice].should == I18n.t("flash.update.success")
@@ -140,7 +140,7 @@ module ControllerMacros
         model_class.any_instance.stubs(:destroy).returns(status)
         model_class.any_instance.stubs(:errors).returns(status ? "" : model_errors)
 
-        delete :destroy, {:id =>  @object.id}.merge(parent_params)
+        delete :destroy, {id:  @object.id}.merge(parent_params)
 
         flash[:notice].should == I18n.t("flash.destroy.success") if status
         flash[:alert].should == I18n.t("flash.destroy.alert") unless status
@@ -151,11 +151,11 @@ module ControllerMacros
   end
 
   def do_index(format)
-    get :index, {:format => format}.merge(parent_params)
+    get :index, {format: format}.merge(parent_params)
   end
 
   def do_show(format)
-    get :show, {:id => @object, :format => format}.merge(parent_params)
+    get :show, {id: @object, format: format}.merge(parent_params)
   end
 
   def clear(format)
@@ -194,9 +194,9 @@ module ControllerMacros
 
   def hash_for_route
     if parent_name.present?
-      {:controller => "#{route_prefix}/#{model.pluralize}", parent_key => "1"}
+      {controller: "#{route_prefix}/#{model.pluralize}", parent_key => "1"}
     else
-      {:controller => "#{route_prefix}/#{model.pluralize}"}
+      {controller: "#{route_prefix}/#{model.pluralize}"}
     end
   end
 

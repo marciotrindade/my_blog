@@ -9,6 +9,6 @@ describe Admin::CategoriesController do
     @object = Factory(:category)
   end
 
-  should_respond_to_resources :except => [ :show ]
+  should_respond_to_resources except: [ :show ]
 
 end

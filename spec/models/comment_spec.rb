@@ -8,7 +8,7 @@ describe Comment do
     it { should validate_presence_of(:post_id) }
     
     it "should validate email format" do
-      comment = Factory.build(:comment, :email => "test")
+      comment = Factory.build(:comment, email: "test")
       comment.should_not be_valid
       comment.email = "test@test.com"
       comment.should be_valid
@@ -20,8 +20,8 @@ describe Comment do
   end
 
   it "default scope order by created_at" do
-    comment_one = Factory(:comment, :created_at => Date.today)
-    comment_two = Factory(:comment, :created_at => Date.today - 1.day)
+    comment_one = Factory(:comment, created_at: Date.today)
+    comment_two = Factory(:comment, created_at: Date.today - 1.day)
 
     Comment.first.should == comment_two
     Comment.last.should == comment_one

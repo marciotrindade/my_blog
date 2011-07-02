@@ -19,7 +19,7 @@ module AdminHelper
     text << AppConfig.site.name
     breadcrumbs.each do |title, link|
       text << " - "
-      text << t(title, :scope => :breadcrumbs, :default => title.to_s)
+      text << t(title, scope: :breadcrumbs, default: title.to_s)
     end
     text
   end
@@ -35,7 +35,7 @@ module AdminHelper
   def render_or_default(name)
     render name
   rescue ActionView::MissingTemplate
-    render :partial => "admin/scaffolds/#{name}"
+    render partial: "admin/scaffolds/#{name}"
   end
 
 end

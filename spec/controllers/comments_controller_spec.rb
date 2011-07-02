@@ -6,7 +6,7 @@ describe CommentsController do
 
   describe "routes" do
     it "should respond to root routes" do
-      { :post => "posts/1/comments"}.should route_to(:controller => "comments", :action => "create", :post_id => "1")
+      { post: "posts/1/comments"}.should route_to(controller: "comments", action: "create", post_id: "1")
     end
   end
 
@@ -16,7 +16,7 @@ describe CommentsController do
     end
 
     it "should respond with success" do
-      post :create, { :post_id => @post.id, :comment => { :name => "my name", :email => "myemail@test.com", :body => "example" }, :format => "js" }
+      post :create, { post_id: @post.id, comment: { name: "my name", email: "myemail@test.com", body: "example" }, format: "js" }
 
       assigns[:saved].should == :success
       response.should be_success
@@ -27,7 +27,7 @@ describe CommentsController do
       Contact.any_instance.stubs(:save).returns(false)
       Contact.any_instance.stubs(:valid?).returns(true)
       Contact.any_instance.stubs(:errors).returns("")
-      post :create, { :post_id => @post.id, :comment => { :name => "" }, :format => "js" }
+      post :create, { post_id: @post.id, comment: { name: "" }, format: "js" }
 
       assigns[:saved].should == :error
       response.should be_success

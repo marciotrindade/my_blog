@@ -7,7 +7,7 @@ class CodeFormatter
     text = @text.clone
     codes = []
     text.gsub!(/^``` ?(.*?)\r?\n(.+?)\r?\n```\r?$/m) do |match|
-      code = { :id => "CODE#{codes.size}ENDCODE", :name => ($1.empty? ? nil : $1), :content => $2 }
+      code = { id: "CODE#{codes.size}ENDCODE", name: ($1.empty? ? nil : $1), content: $2 }
       codes << code
       "\n\n#{code[:id]}\n\n"
     end
@@ -20,7 +20,7 @@ class CodeFormatter
               #{CGI.escapeHTML(code[:name].to_s)}
               #{clippy(code[:content])}
             </div>
-            #{CodeRay.scan(code[:content], language(code[:name])).div(:css => :class)}
+            #{CodeRay.scan(code[:content], language(code[:name])).div(css: :class)}
           </div>
         EOS
       end

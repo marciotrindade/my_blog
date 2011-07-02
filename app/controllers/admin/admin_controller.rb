@@ -23,9 +23,9 @@ class Admin::AdminController < InheritedResources::Base
   def create
     create! do |success, failure|
       success.html do
-        redirect_to(collection_path, :notice => t("flash.create.success"))
+        redirect_to(collection_path, notice: t("flash.create.success"))
       end
-      success.xml { render :xml => resource }
+      success.xml { render xml: resource }
       failure.html do
         render_or_default(:new)
       end
@@ -41,7 +41,7 @@ class Admin::AdminController < InheritedResources::Base
   def update
     update! do |success, failure|
       success.html do
-        redirect_to(collection_path, :notice => t("flash.update.success"))
+        redirect_to(collection_path, notice: t("flash.update.success"))
       end
       failure.html do
         render_or_default(:edit)
@@ -52,10 +52,10 @@ class Admin::AdminController < InheritedResources::Base
   def destroy
     destroy! do |success, failure|
       success.html do
-        redirect_to(collection_path, :notice => t("flash.destroy.success"))
+        redirect_to(collection_path, notice: t("flash.destroy.success"))
       end
       failure.html do
-        redirect_to(collection_path, :alert => t("flash.destroy.alert"))
+        redirect_to(collection_path, alert: t("flash.destroy.alert"))
       end
     end
   end
@@ -65,7 +65,7 @@ class Admin::AdminController < InheritedResources::Base
   def render_or_default(name, args = {})
     render name, args
   rescue ActionView::MissingTemplate
-    render args.merge(:template => "../scaffolds/#{name}", :prefix => '')
+    render args.merge(template: "../scaffolds/#{name}", prefix: '')
   end
 
   def check_credentials
