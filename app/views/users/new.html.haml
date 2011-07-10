@@ -1,9 +1,2 @@
-%h2
-	%a= t(:login, :scope => :admin)
-= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :validate => true) do |f|
-	= f.input :username, :input_html => { :class => 'required' }
-	= f.input :password, :input_html => { :class => 'required' }
-	= f.input :remember_me, :as => :boolean
-	.submit
-		= f.submit 'Login'
-= render :partial => "devise/shared/links"
+%h2= t(:login, :scope => :admin)
+= render "users/form"

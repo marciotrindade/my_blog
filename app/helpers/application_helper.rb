@@ -14,10 +14,18 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def page_title
-    text = []
-    text << AppConfig.site.name
-    text.join(" - ")
+  def title(object)
+    content_for(:title) { content_tag(:h2, object.name) + "\n" }
+    content_for(:head) { content_tag(:title, page_title(object)) + "\n" }
+    content_for(:head) { tag(:meta, :name => 'keywords', :content => object.keywords) + "\n" } if object.keywords.present?
+    content_for(:head) { tag(:meta, :name => 'description', :content => object.page_body) + "\n" } if object.page_body.present?
+  end
+
+  def page_title(object)
+    title = []
+    title << object.page_title || object.name
+    title << AppConfig.site.name
+    title.join(" - ")
   end
 
   def textilize(text)
