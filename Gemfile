@@ -13,6 +13,7 @@ gem 'decent_exposure'
 gem 'redcarpet'
 gem 'coderay'
 gem 'gravtastic'
+gem 'newrelic_rpm'
 
 # Asset template engines
 gem 'sass-rails', "~> 3.1.0.rc"
