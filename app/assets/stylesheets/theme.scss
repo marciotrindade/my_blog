@@ -20,11 +20,11 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 body{background-color:#2C2C29;font-family:Tahoma;font-size:12px;color:#2C2C29;}
 p{font-size:1.2em;padding:2px;margin:1px 0 15px;}
 a{color:#807D7A;}
-h2{background-color:#FFF;border-bottom:1px solid #DCDCDB;letter-spacing:-1px;font-size:24px;padding-bottom:3px;font-weight:700;margin:10px 0 3px 0;font-family:Helvetica, Georgia;color:#2C2C29;}
+h2{background-color:#FFF;border-bottom:1px solid #DCDCDB;letter-spacing:-1px;font-size:24px;padding-bottom:3px;font-weight:700;margin:10px 0 15px 0;font-family:Helvetica, Georgia;color:#2C2C29;}
 h2 a{font-weight:700;border:0;text-decoration:none;color:#2C2C29;display:block;}
-h3{font-size:1.8em;}
-h4{font-size:1.5em;}
-h5{font-size:1.4em;}
+h3{font-size:1.8em; margin-bottom:15px;}
+h4{font-size:1.5em; margin-bottom:12px;}
+h5{font-size:1.4em; margin-bottom:10px;}
 h6{font-size:1.3em;}
 hr{color:#DCDCDB;background-color:#DCDCDB;height:1px;border:0px;}
 pre{width:703px;margin:1px 0 15px;}
@@ -77,9 +77,9 @@ img.wp-smiley{border:0px;vertical-align:middle;}
 .comm_date{background:transparent url('/assets/date_comm_box.png') no-repeat;height:100px;width:57px;position:absolute;text-align:center;margin:0 0 0 -72px;z-index:2;}
 .only_date{background:transparent url('/assets/data_box.png') no-repeat !important;height:67px !important;}
 * html .comm_date{margin-top:10px;} *+html .comm_date{margin-top:10px;}
-.comm_date .data{margin-left:-1px;padding-top:10px;display:block;font-weight:700;text-transform:uppercase;letter-spacing:-1px;}
+.comm_date .data{margin-left:-1px;padding-top:10px;display:block;font-weight:700;text-transform:uppercase;letter-spacing:-1px;font-size:11px;}
 .comm_date .nr_comm{padding-top:14px;color:#FFF;display:block;font-weight:700;}
-.comm_date .nr_comm_spot, .comm_date .dsq-comment-count{display:block;margin:0 9px 0 8px;padding:6px 0 5px 0;}
+.comm_date .nr_comm_spot, .comm_date .dsq-comment-count{display:block;margin:0 9px 0 8px;padding:5px 0 5px 0;}
 .comm_date .data .j{font-size:24px;display:block;}
 .nr_comm a{color:#FFF;text-decoration:none;}
 .cat_tags{margin-top:10px;padding:8px 0 5px 10px;}
