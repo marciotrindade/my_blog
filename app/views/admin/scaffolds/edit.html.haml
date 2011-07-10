@@ -2,7 +2,7 @@
 	%li.first= link_to t("web-app-theme.list"), collection_path
 	%li= link_to t("web-app-theme.new"), new_resource_path
 
-- title "#{t("web-app-theme.edit")} #{resource_class.model_name.human}"
+- admin_title "#{t("web-app-theme.edit")} #{resource_class.model_name.human}"
 
 = simple_form_for(resource, :url => resource_path, :validate => true, :html => { :method => :put }) do |f|
 	= f.error_messages

@@ -1,6 +1,6 @@
 %html
 	%head
-		%title= admin_title
+		%title= admin_page_title
 
 		%meta(http-equiv="content-type" content="text/html; charset=UTF-8")
 		%meta(http-equiv="content-language" content="en")
@@ -58,7 +58,7 @@
 
 						%div.block
 							%div.content
-								%h2.title= show_title
+								%h2.title= yield(:title)
 								= yield
 								%div.clear
 
