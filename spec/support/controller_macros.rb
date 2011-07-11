@@ -33,26 +33,11 @@ module ControllerMacros
     def should_respond_to_resources(options={})
       actions = actions_filtred(options)
 
-      # routes
-      should_respond_to_resources_routes(actions)
-
       # actions
       actions.each do |action, options|
         options.each do |option|
           send("should_respond_to_#{action}", option)
         end
-      end
-    end
-
-    def should_respond_to_resources_routes(actions)
-      it "should respond to resources routes" do
-        { get:    "#{string_for_route}"}.should          route_to(hash_for_route.merge(action: "index")) if should_show(actions, :index)
-        { get:    "#{string_for_route}/new"}.should      route_to(hash_for_route.merge(action: "new")) if should_show(actions, :new)
-        { get:    "#{string_for_route}/1"}.should        route_to(hash_for_route.merge(action: "show", id: "1")) if should_show(actions, :show)
-        { get:    "#{string_for_route}/1/edit"}.should   route_to(hash_for_route.merge(action: "edit", id: "1")) if should_show(actions, :edit)
-        { post:   "#{string_for_route}"}.should          route_to(hash_for_route.merge(action: "create")) if should_show(actions, :create)
-        { put:    "#{string_for_route}/1"}.should        route_to(hash_for_route.merge(action: "update", id: "1")) if should_show(actions, :update)
-        { delete: "#{string_for_route}/1"}.should        route_to(hash_for_route.merge(action: "destroy", id: "1")) if should_show(actions, :destroy)
       end
     end
 
@@ -182,22 +167,6 @@ module ControllerMacros
 
   def route_prefix
     @route_prefix ||= described_class.resources_configuration[:self][:route_prefix]
-  end
-
-  def string_for_route
-    if parent_name.present?
-      "/#{route_prefix}/#{parent_name.pluralize}/1/#{model.pluralize}"
-    else
-      "/#{route_prefix}/#{model.pluralize}"
-    end
-  end
-
-  def hash_for_route
-    if parent_name.present?
-      {controller: "#{route_prefix}/#{model.pluralize}", parent_key => "1"}
-    else
-      {controller: "#{route_prefix}/#{model.pluralize}"}
-    end
   end
 
   def parent_name

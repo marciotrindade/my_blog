@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'spork'
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' if ENV["COVERAGE"]
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
@@ -14,8 +14,9 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
-    config.include(I18nMacros)
-    config.include(ControllerMacros, type: :controller)
+    config.include I18nMacros
+    config.include ControllerMacros
+    config.include RoutesMacros
     config.mock_with :mocha
     config.use_transactional_fixtures = true
     config.after(:all) do
