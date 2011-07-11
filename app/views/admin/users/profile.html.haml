@@ -2,7 +2,7 @@
 	%li.first= link_to t("web-app-theme.list"), collection_path
 	%li= link_to t("web-app-theme.new"), new_resource_path
 
--title "#{t("web-app-theme.edit")} Perfil"
+- admin_title "#{t("web-app-theme.edit")} Perfil"
 
 = simple_form_for(@user, :url => update_profile_admin_user_path(@user), :html => { :method => :put, :class => "validate" }) do |f|
 	= f.input :name, :input_html => { :class => 'required' }

@@ -103,12 +103,14 @@ pt:
         one: 'O contato'
         other: 'Os contatos'
       comment:
-        one: 'O comentário'
-        other: 'Os comentários'
+        one: 'Comentário'
+        other: 'Comentários'
 
     attributes:
       contact:
         body: 'Mensagem'
+      comment:
+        body: 'Comentário'
 
     errors:
       template:

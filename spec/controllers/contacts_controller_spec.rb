@@ -12,6 +12,9 @@ describe ContactsController do
   end
 
   describe "visit index" do
+    before(:all) do
+      Factory(:page, :name=>"Contato")
+    end
     it "should respond to html" do
       get :new
       response.should be_success

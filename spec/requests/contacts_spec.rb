@@ -3,6 +3,9 @@ require 'spec_helper'
 describe "Contacts" do
 
   describe "POST /contact" do
+    before(:all) do
+      Factory(:page, :name=>"Contato")
+    end
 
     it "should show a error message of validation" do
       visit new_contact_path
