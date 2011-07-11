@@ -4,16 +4,6 @@ module ApplicationHelper
     content_for(:js) { javascript_include_tag(*files) }
   end
 
-  def breadcrumb
-    html = link_to_unless_current "Home", root_path
-    items = breadcrumbs.insert(0, [:admin, "admin_root_path"])
-    items.each do |title, link|
-      html << " > "
-      html << link_to_unless_current(t(title, scope: :breadcrumbs, default: title.to_s), eval(link.to_s))
-    end
-    html.html_safe
-  end
-
   def title(object)
     content_for(:title) { content_tag(:h2, object.name) + "\n" }
     content_for(:head) { content_tag(:title, page_title(object)) + "\n" }
