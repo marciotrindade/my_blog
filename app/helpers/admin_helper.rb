@@ -34,4 +34,14 @@ module AdminHelper
     render partial: "admin/scaffolds/#{name}"
   end
 
+  def breadcrumb
+    html = link_to_unless_current "Home", root_path
+    items = breadcrumbs.insert(0, [:admin, "admin_root_path"])
+    items.each do |title, link|
+      html << " > "
+      html << link_to_unless_current(t(title, scope: :breadcrumbs, default: title.to_s), eval(link.to_s))
+    end
+    html.html_safe
+  end
+
 end
