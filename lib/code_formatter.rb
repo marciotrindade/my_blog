@@ -11,7 +11,7 @@ class CodeFormatter
       codes << code
       "\n\n#{code[:id]}\n\n"
     end
-    html = Redcarpet.new(text, :filter_html, :hard_wrap, :autolink).to_html
+    html = Redcarpet.new(text, :hard_wrap, :autolink).to_html
     codes.each do |code|
       html.sub!("<p>#{code[:id]}</p>") do
         <<-EOS
@@ -36,6 +36,7 @@ class CodeFormatter
     when /\.erb$/, /\.html$/ then "rhtml"
     when /\.h$/, /\.m$/ then "c"
     when /\.rb$/, /\.rake$/, /\.gemspec/, /file$/, /console$/ then "ruby"
+    when /\.ctp$/, /\.php$/ then "php"
     when /\./ then path[/\.([^.]+?)$/, 1]
     else path
     end

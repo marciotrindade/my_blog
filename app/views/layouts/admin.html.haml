@@ -23,7 +23,7 @@
 			%div#nav
 				%ul
 					%li= link_to t(:front, :scope => :top_menu), root_path
-					%li= link_to t(:profile, :scope => :top_menu), profile_admin_users_path
+					%li= link_to t(:profile, :scope => :top_menu), edit_user_registration_path
 					%li= link_to t(:logout, :scope => :top_menu), destroy_user_session_path
 
 		%div.flash
