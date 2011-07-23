@@ -4,8 +4,8 @@ module ApplicationHelper
     content_for(:js) { javascript_include_tag(*files) }
   end
 
-  def title(object)
-    content_for(:title) { content_tag(:h2, object.name) + "\n" }
+  def title(object, show_title=true)
+    content_for(:title) { content_tag(:h2, object.name) + "\n" } if show_title
     content_for(:head) { content_tag(:title, page_title(object)) + "\n" }
     content_for(:head) { tag(:meta, :name => 'keywords', :content => object.keywords) + "\n" } if object.keywords.present?
     content_for(:head) { tag(:meta, :name => 'description', :content => object.page_body) + "\n" } if object.page_body.present?
