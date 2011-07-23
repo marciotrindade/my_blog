@@ -25,6 +25,14 @@ pt:
   send: "Enviar"
   arquive: "Arquivos"
 
+  registration:
+    create:
+      title: 'Criar meu usuário'
+      submit: 'Criar'
+    update:
+      title: 'Editar minha conta'
+      submit: 'Salvar'
+
   comments:
     empty: "Nenhum comentário ainda."
     one: "Comentário"
@@ -37,9 +45,8 @@ pt:
     other: "Categorias"
 
   top_menu:
-    profile: 'Perfil'
     logout: 'Sair'
-    front: 'Página inicial'
+    front: 'Home'
 
   menu:
     home: "Home"
@@ -92,6 +99,7 @@ pt:
     number: 'Número'
     url: 'Site'
     remember_me: 'Continuar logado'
+    current_password: 'Senha atual'
 
   activerecord:
     models:
