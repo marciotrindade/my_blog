@@ -4,13 +4,6 @@ describe ContactsController do
 
   render_views
 
-  describe "routes" do
-    it "should respond to root routes" do
-      { get:  "/contacts/new"}.should  route_to(controller: "contacts", action: "new")
-      { post: "/contacts"}.should      route_to(controller: "contacts", action: "create")
-    end
-  end
-
   describe "visit index" do
     before(:all) do
       Factory(:page, :name=>"Contato")

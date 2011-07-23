@@ -4,12 +4,6 @@ describe PagesController do
 
   render_views
 
-  describe "routes" do
-    it "should respond to resource routes" do
-      { get:  "/pages/test"}.should  route_to(controller: "pages", action: "show", id: "test")
-    end
-  end
-
   describe "visit a category" do
     it "should respond to html" do
       page = Factory(:page, name: "my page")

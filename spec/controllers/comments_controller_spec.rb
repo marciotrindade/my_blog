@@ -4,12 +4,6 @@ describe CommentsController do
 
   render_views
 
-  describe "routes" do
-    it "should respond to root routes" do
-      { post: "posts/1/comments"}.should route_to(controller: "comments", action: "create", post_id: "1")
-    end
-  end
-
   describe "create new" do
     before(:all) do
       @post = Factory(:post)

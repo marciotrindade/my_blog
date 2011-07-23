@@ -23,8 +23,10 @@ describe "routes" do
     respond_to_route({:get    => '/posts.atom'},                      {:controller=>"posts", :action=>"index", :format=>"atom"})
     respond_to_route({:get    => '/2011'},                            {:controller=>"posts", :action=>"by_date", :year=>"2011"})
     respond_to_route({:get    => '/2011/07'},                         {:controller=>"posts", :action=>"by_date", :year=>"2011", :month=>"07"})
-    respond_to_route({:get    => '/2011/07/07'},                      {:controller=>"posts", :action=>"by_date", :year=>"2011", :month=>"07", :day=>"07"})
     respond_to_route({:get    => '//2011/07/07/1'},                   {:controller=>"posts", :action=>"show", :year=>"2011", :month=>"07", :day=>"07", :id=>"1"})
+    it "should redirect to month" do
+      {:get => '/2011/07/07'}.should_not be_routable
+    end
     describe "comments" do
       respond_to_route({:post   => '/posts/1/comments'},                {:controller=>"comments", :action=>"create", :post_id=>"1"})
     end
