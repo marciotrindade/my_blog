@@ -66,6 +66,11 @@ pt:
     admin: 'Admin'
     user: 'Usuários'
     role: 'Grupos de acesso'
+    page: 'Paginas'
+    post: 'Artigos'
+    category: 'Categorias'
+    comment: 'Comentários'
+    contact: 'Contato'
 
   # will_paginate
   will_paginate:
@@ -100,8 +105,8 @@ pt:
         one: 'Usuário'
         other: 'Usuários'
       contact:
-        one: 'O contato'
-        other: 'Os contatos'
+        one: 'Contato'
+        other: 'Contatos'
       comment:
         one: 'Comentário'
         other: 'Comentários'
