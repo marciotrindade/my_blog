@@ -25,6 +25,10 @@ pt:
   send: "Enviar"
   arquive: "Arquivos"
 
+  posts_by_date:
+    page_title: 'Artigos publicados entre %{date}'
+    page_body: 'Lista de todos artigos que foram publicados entre %{date}'
+
   registration:
     create:
       title: 'Criar meu usuário'
