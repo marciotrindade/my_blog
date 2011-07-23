@@ -18,7 +18,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 *:focus{outline:none;}
 .clear{clear:both;}
 body{background-color:#2C2C29;font-family:Tahoma;font-size:12px;color:#2C2C29;}
-p{font-size:1.2em;padding:2px;margin:1px 0 15px;}
+p{padding:2px;margin:1px 0 15px;}
 a{color:#807D7A;}
 h2{background-color:#FFF;border-bottom:1px solid #DCDCDB;letter-spacing:-1px;font-size:24px;padding-bottom:3px;font-weight:700;margin:10px 0 15px 0;font-family:Helvetica, Georgia;color:#2C2C29;}
 h2 a{font-weight:700;border:0;text-decoration:none;color:#2C2C29;display:block;}
@@ -60,6 +60,7 @@ blockquote{margin:20px 10px 10px 5px;border-left:4px solid #DDD;padding:0 5px 0 
 .alignleft,img.alignleft{float:left;margin:5px 10px 5px 0;}
 .alignright,img.alignright{float:right;margin:5px 0 5px 10px;}
 .aligncenter,div.aligncenter,img.aligncenter{text-align:center;display:block;margin:10px auto;}
+#content-body {font-size:14px;}
 #content-body table { border-collapse:collapse; width:100%; border:0; }
 #content-body table { margin:0 0 1em 1px; }
 #content-body td, .post th { border:1px solid #DCDCDB; padding:10px; }
@@ -70,7 +71,7 @@ blockquote{margin:20px 10px 10px 5px;border-left:4px solid #DDD;padding:0 5px 0 
 img.wp-smiley{border:0px;vertical-align:middle;}
 
 /* CONTENT */
-#content-body ul,#content-body ol{margin:15px 30px;font-size:12px;}
+#content-body ul,#content-body ol{margin:15px 30px;}
 #content-body ul li{list-style:circle;margin-bottom:4px;}
 .hentry{min-height:150px;height:auto!important;margin-bottom:1em;}
 .sticky h2 a{color:red;}
