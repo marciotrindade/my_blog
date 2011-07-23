@@ -17,7 +17,7 @@ Blog::Application.routes.draw do
     resources :comments, :only => :create
   end
 
-  get '/posts.atom', :controller => 'posts', :action => "index", :format => "atom", :as => :feed
+  get '/posts.atom', :controller => 'posts', :action => "index", :format => "atom", :as => "feed"
   get ':year(/:month(/:day(.:format)))', :controller => "posts", :action => "by_date", :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
   get ':year/:month/:day/:id(.:format)', :controller => "posts", :action => "show", :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
 
