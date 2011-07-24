@@ -44,7 +44,7 @@ pt:
     empty: "Nenhum comentário ainda."
     one: "Comentário"
     other: "Comentários"
-    success: "Seu comentário foi enviado para aprovação e logo estará disponível."
+    success: "Seu comentário foi adicionado com sucesso."
     error: "Ocorreu um erro ao enviar seu comentário, por favor tente novamente."
 
   categories:
