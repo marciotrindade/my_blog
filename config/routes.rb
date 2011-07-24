@@ -18,6 +18,7 @@ Blog::Application.routes.draw do
   end
 
   get '/posts.atom', :controller => 'posts', :action => "index", :format => "atom", :as => "feed"
+  get '/comments.atom', :controller => 'comments', :action => "index", :format => "atom"
   get ':year(/:month(.:format))', :controller => "posts", :action => "by_date", :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
   get ':year/:month/:day/:id(.:format)', :controller => "posts", :action => "show", :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
   match ":year/:month/:day" => redirect("/%{year}/%{month}"), :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
