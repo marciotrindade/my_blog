@@ -22,8 +22,8 @@
 			%h1= link_to AppConfig.site.name, root_url
 			%div#nav
 				%ul
-					%li= link_to t(:front, :scope => :top_menu), root_path
-					%li= link_to t(:logout, :scope => :top_menu), destroy_user_session_path
+					%li= link_to t(:home), root_path
+					%li= link_to t(:logout), destroy_user_session_path
 
 		%div.flash
 			- flash.each do |type, message|

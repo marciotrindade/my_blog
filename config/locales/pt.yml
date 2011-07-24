@@ -36,6 +36,9 @@ pt:
     update:
       title: 'Editar minha conta'
       submit: 'Salvar'
+  password:
+    create:
+      submit: 'Enviar'
 
   comments:
     empty: "Nenhum comentário ainda."
@@ -48,9 +51,14 @@ pt:
     one: "Categoria"
     other: "Categorias"
 
-  top_menu:
-    logout: 'Sair'
-    front: 'Home'
+  home: 'Home'
+  my_account: 'Minha conta'
+  signin: 'Login'
+  register: 'Registrar'
+  signup: 'Faça seu cadastro agora mesmo'
+  logout: 'Sair'
+  forgot: 'Esqueceu sua senha?'
+  change_my_password: 'Alterar minha senha'
 
   menu:
     home: "Home"
@@ -62,9 +70,6 @@ pt:
     category: 'Categorias'
     page: 'Páginas'
     comment: 'Comentários'
-
-  admin:
-    login: 'Login'
 
   footer:
     about_us: 'Sobre nós'
@@ -292,6 +297,7 @@ pt:
   errors:
     messages:
       not_found: "não encontrado"
+      not_saved: "Por favor verifique os error abaixo:"
       already_confirmed: "já esta confirmado"
       not_locked: "não está bloqueado"
       
@@ -330,10 +336,6 @@ pt:
       unlock_instructions:
         subject: 'Instruções de desbloqueio'
         
-  signin: 'Login'
-  signup: 'Faça seu cadastro agora mesmo'
-  forgot: 'Esqueceu sua senha?'
-  change_my_password: 'Alterar minha senha'
   ############
   # show_for #
   ############

@@ -1,6 +1,10 @@
-%h2= t(:title, scope: [:registration, :craete])
+%h2= t(:title, scope: [:registration, :create])
+
+- flash.each do |type, message|
+  %p.message{:class => type}= message
 
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true) do |f|
+
   = devise_error_messages!
 
   = f.input :name

@@ -19,6 +19,14 @@
   %body
 
     #wrapper
+      #user_status
+        -if user_signed_in?
+          = link_to t(:my_account), edit_user_registration_path
+          = link_to t(:logout), destroy_user_session_path
+        - else
+          = link_to t(:signin), new_session_path(resource_name)
+          = link_to t(:register), new_registration_path(resource_name)
+
       #top_cufon
         %h1#logo= link_to AppConfig.site.name, root_path, :name => "top", :title => AppConfig.site.domain
       #header
