@@ -33,9 +33,9 @@ describe "routes" do
   end
 
   describe "for users" do
-    respond_to_route({:get    => '/users/sign_in'},                   {:controller=>"users", :action=>"new"})
-    respond_to_route({:post   => '/users/sign_in'},                   {:controller=>"users", :action=>"create"})
-    respond_to_route({:get    => '/users/sign_out'},                  {:controller=>"users", :action=>"destroy"})
+    respond_to_route({:get    => '/users/sign_in'},                   {:controller=>"devise/sessions", :action=>"new"})
+    respond_to_route({:post   => '/users/sign_in'},                   {:controller=>"devise/sessions", :action=>"create"})
+    respond_to_route({:get    => '/users/sign_out'},                  {:controller=>"devise/sessions", :action=>"destroy"})
   end
 
   describe "for passwords" do

@@ -4,6 +4,10 @@ describe ContactsController do
 
   render_views
 
+  before(:each) do
+    controller.stubs(:user_signed_in?).returns(false)
+  end
+
   describe "visit index" do
     before(:all) do
       Factory(:page, :name=>"Contato")

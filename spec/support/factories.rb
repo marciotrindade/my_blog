@@ -15,9 +15,9 @@ Factory.sequence :number do |n|
 end
 
 Factory.define :user do |f|
-  f.username  { Factory.next(:login) }
-  f.email     { Factory.next(:email) }
   f.name      { Factory.next(:name) }
+  f.email     { Factory.next(:email) }
+  f.url       'http://mysite.com'
   f.password  'secret'
   f.password_confirmation 'secret'
 end

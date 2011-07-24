@@ -1,6 +1,6 @@
 = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :validate => true) do |f|
-	= f.input :username, :input_html => { :class => 'required' }
-	= f.input :password, :input_html => { :class => 'required' }
+	= f.input :email
+	= f.input :password
 	= f.input :remember_me, :as => :boolean
 	.submit
 		= f.submit 'Login'

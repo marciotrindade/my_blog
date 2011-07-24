@@ -4,6 +4,10 @@ describe CommentsController do
 
   render_views
 
+  before(:each) do
+    controller.stubs(:user_signed_in?).returns(false)
+  end
+
   describe "create new" do
     before(:all) do
       @post = Factory(:post)

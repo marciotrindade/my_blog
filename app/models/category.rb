@@ -7,4 +7,10 @@ class Category < ActiveRecord::Base
 
   default_scope order: :name
 
+  before_save :set_permalink
+
+  def set_permalink
+    self.permalink = name.parameterize
+  end
+
 end

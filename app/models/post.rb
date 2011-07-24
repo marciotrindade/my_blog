@@ -6,12 +6,18 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_many :comments, order: 'created_at ASC', dependent: :destroy, conditions: ["approved=1"]
 
+  before_save :set_permalink
+
   default_scope order: 'created_at DESC'
 
   scope :active, where(active: true)
   scope :recent, limit(10)
   scope :dates, select("created_at").group("YEAR(created_at), MONTH(created_at)")
   scope :by_date, lambda { |year, month=nil, day=nil| where("created_at BETWEEN ? AND ?", *time_interval(year, month, day)) }
+
+  def set_permalink
+    self.permalink = name.parameterize
+  end
 
   def self.time_interval(year, month = nil, day = nil)
     from = Time.new(year, month || 1, day || 1)

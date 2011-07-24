@@ -51,6 +51,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.1)
+    daemons (1.1.4)
     database_cleaner (0.6.7)
     decent_exposure (1.0.1)
     devise (1.4.2)
@@ -174,6 +175,10 @@ GEM
       hike (~> 1.0)
       rack (~> 1.0)
       tilt (!= 1.3.0, ~> 1.1)
+    thin (1.2.11)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.14.6)
     tilt (1.3.2)
     treetop (1.4.9)
@@ -225,6 +230,7 @@ DEPENDENCIES
   simple_form
   simplecov (>= 0.4.0)
   spork (~> 0.9.0.rc7)
+  thin
   turn
   uglifier
   wirble

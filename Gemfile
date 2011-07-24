@@ -13,7 +13,6 @@ gem 'decent_exposure'
 gem 'redcarpet'
 gem 'coderay'
 gem 'gravtastic'
-gem 'newrelic_rpm'
 
 # Asset template engines
 gem 'sass-rails', "~> 3.1.0.rc"
@@ -22,6 +21,14 @@ gem 'uglifier'
 
 gem 'jquery-rails'
 gem 'client_side_validations'
+
+group :production do
+  gem 'newrelic_rpm'
+end
+
+group :development do
+  gem 'thin'
+end
 
 group :console do
   gem 'wirble'

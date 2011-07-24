@@ -4,6 +4,10 @@ describe PagesController do
 
   render_views
 
+  before(:each) do
+    controller.stubs(:user_signed_in?).returns(true)
+  end
+
   describe "visit a category" do
     it "should respond to html" do
       page = Factory(:page, name: "my page")

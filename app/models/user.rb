@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles
 
-  validates_presence_of :name, :email, :username
+  validates_presence_of :name, :email
   validates_presence_of :password, :password_confirmation, on: :create
   validates :email, email_format: true
 

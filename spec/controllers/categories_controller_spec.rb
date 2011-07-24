@@ -4,6 +4,10 @@ describe CategoriesController do
 
   render_views
 
+  before(:each) do
+    controller.stubs(:user_signed_in?).returns(false)
+  end
+
   describe "visit a category" do
     it "should respond to html" do
       category = Factory(:category, name: "my_category")
