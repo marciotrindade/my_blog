@@ -5,6 +5,11 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable, :lockable, :validatable and :timeoutable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :registerable
 
+  include Gravtastic
+  gravtastic default: "mm"
+
+  before_save :create_image_url
+
   has_and_belongs_to_many :roles
 
   validates_presence_of :name, :email
@@ -19,5 +24,9 @@ class User < ActiveRecord::Base
   end
 
   memoize :has_access_to?
+
+  def create_image_url
+    self.image_url = gravatar_url
+  end
 
 end

@@ -5,7 +5,8 @@ describe CommentsController do
   render_views
 
   before(:each) do
-    controller.stubs(:user_signed_in?).returns(false)
+    @user = Factory(:user)
+    controller.stubs(:current_user).returns(@user)
   end
 
   describe "create new" do
@@ -14,7 +15,7 @@ describe CommentsController do
     end
 
     it "should respond with success" do
-      post :create, { post_id: @post.id, comment: { name: "my name", email: "myemail@test.com", body: "example" }, format: "js" }
+      post :create, { post_id: @post.id, comment: { body: "example" }, format: "js" }
 
       assigns[:saved].should == :success
       response.should be_success

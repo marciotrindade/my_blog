@@ -302,6 +302,10 @@ pt:
       not_locked: "não está bloqueado"
       
   devise:
+    sessions:
+      user:
+        signed_in: 'Login feito com sucesso.'
+        signed_out: 'Deslogado com sucesso.'
     failure:
       unauthenticated: 'Voce precisa logar ou registrar pra continuar.'
       unconfirmed: 'Você precisa confirmar sua conta pra continuar.'
@@ -311,10 +315,6 @@ pt:
       timeout: 'Sua sessão inspirou, por favor faça login novamente.'
       inactive: 'Sua conta ainda não está ativada.'
       access_denied: Você não tem permissão
-    users:
-      user:
-        signed_in: 'Login feito com sucesso.'
-        signed_out: 'Deslogado com sucesso.'
     passwords:
       send_instructions: 'Você irá receber um email com instruções pra recuperar sua senha em instantes.'
       updated: 'Sua senha foi alterada com sucesso. Você já está logado.'

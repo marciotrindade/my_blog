@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   validates_uniqueness_of :permalink
 
   has_and_belongs_to_many :categories
-  has_many :comments, order: 'created_at ASC', dependent: :destroy, conditions: ["approved=1"]
+  has_many :comments, order: 'created_at ASC', dependent: :destroy
 
   before_save :set_permalink
 

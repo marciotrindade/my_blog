@@ -28,9 +28,6 @@
       - if user_signed_in?
         = simple_form_for [post,  @comment], :validate => true, :remote => true do |f|
           = f.error_messages
-          = f.input :name
-          = f.input :email
-          = f.input :url
           = f.input :body
           = f.submit t(:send), :class => "submit", :disable_with => "Enviando..."
       - else

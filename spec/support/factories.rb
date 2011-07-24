@@ -48,10 +48,8 @@ Factory.define :category do |f|
 end
 
 Factory.define :comment do |f|
-  f.name  { Factory.next(:name) }
-  f.email { Factory.next(:email) }
+  f.user  { Factory(:user) }
   f.post  { Factory(:post) }
-  f.url   "http://marciotrindade.com"
   f.body  "My message is here."
 end
 

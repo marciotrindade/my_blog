@@ -3,20 +3,14 @@ require 'spec_helper'
 describe Comment do
 
   context "validations" do
-    it { should validate_presence_of(:name) }
     it { should validate_presence_of(:body) }
     it { should validate_presence_of(:post_id) }
-    
-    it "should validate email format" do
-      comment = Factory.build(:comment, email: "test")
-      comment.should_not be_valid
-      comment.email = "test@test.com"
-      comment.should be_valid
-    end
+    it { should validate_presence_of(:user_id) }
   end
 
   context "assosiations" do
     it { should belong_to(:post) }
+    it { should belong_to(:user) }
   end
 
   it "default scope order by created_at" do

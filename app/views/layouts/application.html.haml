@@ -22,7 +22,7 @@
       #user_status
         -if user_signed_in?
           = link_to t(:my_account), edit_user_registration_path
-          = link_to t(:logout), destroy_user_session_path, :method => :delete
+          = link_to t(:logout), destroy_user_session_path
         - else
           = link_to t(:signin), new_user_session_path
           = link_to t(:register), new_user_registration_path
