@@ -8,3 +8,4 @@
 //= require jquery_ujs
 //= require blog
 //= require rails.validations
+//= analytics

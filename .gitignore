@@ -17,3 +17,4 @@ rails_best_practices_output.html
 lib/tasks/convert.rake
 config/newrelic.yml
 config/deploy.rb
+analytics.js
