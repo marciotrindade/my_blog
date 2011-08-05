@@ -170,7 +170,7 @@ var clientSideValidations = {
         }
 
         var CHECKS = { greater_than: '>', greater_than_or_equal_to: '>=',
-          equal_to: '==', less_than: '<', less_than_or_equal_to: '<=' }
+          equal_to: '==', less_than: '<', less_than_or_equal_to: '<=' };
 
         for (var check in CHECKS) {
           if (options[check] != undefined && !(new Function("return " + element.val() + CHECKS[check] + options[check])())) {
@@ -198,7 +198,7 @@ var clientSideValidations = {
         } else if (message) {
           return message;
         } else {
-          var CHECKS = { is: '==', minimum: '>=', maximum: '<=' }
+          var CHECKS = { is: '==', minimum: '>=', maximum: '<=' };
           var tokenizer = options.js_tokenizer || "split('')";
           var tokenized_length = new Function("element", "return (element.val()." + tokenizer + " || '').length;")(element);
 
@@ -270,7 +270,7 @@ var clientSideValidations = {
         }
 
         if (options.scope) {
-          data.scope = {}
+          data.scope = {};
           for (key in options.scope) {
             var scoped_element = jQuery('[name="' + element.attr('name').replace(/\[\w+]$/, '[' + key + ']' + '"]'));
             if (scoped_element[0] && scoped_element.val() != options.scope[key]) {
@@ -295,7 +295,7 @@ var clientSideValidations = {
 
         // Override the name if a nested module class is passed
         if (options['class']) {
-          name = options['class'] + '[' + name.split('[')[1]
+          name = options['class'] + '[' + name.split('[')[1];
         }
         data[name] = element.val();
 
@@ -317,7 +317,7 @@ var clientSideValidations = {
               labelErrorField = jQuery(settings.label_tag),
               label = jQuery('label[for="' + element.attr('id') + '"]:not(.message)');
 
-          if (element.attr('autofocus')) { element.attr('autofocus', false) };
+          if (element.attr('autofocus')) { element.attr('autofocus', false); };
           element.before(inputErrorField);
           inputErrorField.find('span#input_tag').replaceWith(element);
           inputErrorField.find('label.message').attr('for', element.attr('id'));
@@ -391,8 +391,8 @@ var clientSideValidations = {
     element: {
       after:  function(element, eventData)                    { },
       before: function(element, eventData)                    { },
-      fail:   function(element, message, addError, eventData) { addError() },
-      pass:   function(element, removeError, eventData)       { removeError() }
+      fail:   function(element, message, addError, eventData) { addError(); },
+      pass:   function(element, removeError, eventData)       { removeError(); }
     },
     form: {
       after:  function(form, eventData) { },
@@ -401,10 +401,12 @@ var clientSideValidations = {
       pass:   function(form, eventData) { }
     }
   }
-}
+};
 
 clientSideValidations.validators.local["email_format"] = function (element, options) {
-  if(element.val() && !/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i.test(element.val())) {
+  var re = new RegExp("^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$", "i");
+  if(!re.test(element.val())) {
     return options.message;
   }
-}
+};
+

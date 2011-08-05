@@ -74,7 +74,7 @@ $wine: #700000;
   -webkit-border-top-left-radius: $radius;
 }
 
-@import "reloaded.css.scss";
-@import "admin/theme.css.scss";
-@import "admin/form.css.scss";
-@import "admin/paginate.css.scss";
+@import "../reloaded.css.scss";
+@import "theme.css.scss";
+@import "form.css.scss";
+@import "paginate.css.scss";
