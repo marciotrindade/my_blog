@@ -5,13 +5,12 @@ describe ContactsController do
   render_views
 
   before(:each) do
-    controller.stubs(:user_signed_in?).returns(false)
+    controller.stub(:user_signed_in?).and_return(false)
+    @page = FactoryGirl.build(:page, :name=>"Contato")
+    Page.stub(:find_by_permalink).and_return(@page)
   end
 
   describe "visit index" do
-    before(:all) do
-      Factory(:page, :name=>"Contato")
-    end
     it "should respond to html" do
       get :new
       response.should be_success
@@ -21,8 +20,7 @@ describe ContactsController do
 
   describe "create new" do
     it "should respond with success" do
-      Contact.any_instance.stubs(:save).returns(true)
-      Contact.any_instance.stubs(:errors).returns("")
+      Contact.any_instance.stub(:save).and_return(true)
       post :create, { name: "advertise" }
 
       flash[:notice].should == t('contact_mailer.send_contact.sucess')

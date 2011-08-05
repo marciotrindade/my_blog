@@ -5,7 +5,7 @@ describe CategoriesController do
   render_views
 
   before(:each) do
-    controller.stubs(:user_signed_in?).returns(false)
+    controller.stub(:user_signed_in?).and_return(false)
   end
 
   describe "visit a category" do

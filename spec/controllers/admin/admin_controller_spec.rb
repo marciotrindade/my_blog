@@ -7,7 +7,7 @@ describe Admin::UsersController do
   render_views
 
   it "should permit to access the admin when have credentials" do
-    controller.stubs(:check_credentials).returns(true)
+    controller.stub(:check_credentials).and_return(true)
     get :index
 
     response.should be_success
@@ -23,8 +23,8 @@ describe Admin::UsersController do
 
   it "should not permit to access the admin when logged but don't have credentials" do
     @user = Factory(:user)
-    Admin::UsersController.any_instance.stubs(:current_user).returns(@user)
-    controller.stubs(:authenticate_user!).returns(true)
+    controller.stub(:current_user).and_return(@user)
+    controller.stub(:authenticate_user!).and_return(true)
 
     get :index
 

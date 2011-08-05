@@ -1,62 +1,55 @@
-Factory.sequence :name do |n|
-  "Name number #{n}"
-end
+FactoryGirl.define do
 
-Factory.sequence :login do |n|
-  "user#{n}"
-end
+  sequence(:name)   { |n| "Name #{n}"}
+  sequence(:login)  { |n| "login#{n}"}
+  sequence(:email)  { |n| "email#{n}@example.com"}
+  sequence(:number) { |n| n }
 
-Factory.sequence :email do |n|
-  "user#{n}@example.com"
-end
+  factory :user do
+    name
+    email
+    url       'http://mysite.com'
+    password  'secret'
+    password_confirmation 'secret'
+  end
 
-Factory.sequence :number do |n|
-  n
-end
+  factory :role do
+    name
+  end
 
-Factory.define :user do |f|
-  f.name      { Factory.next(:name) }
-  f.email     { Factory.next(:email) }
-  f.url       'http://mysite.com'
-  f.password  'secret'
-  f.password_confirmation 'secret'
-end
+  factory :contact do
+    name  "My name"
+    email "test@test.com"
+    body  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  end
 
-Factory.define :role do |f|
-  f.name { Factory.next(:name) }
-end
+  factory :post do
+    name
+    body        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    keywords    "my, new, test"
+    page_body   "short description for this page"
+    active      true
+  end
 
-Factory.define :contact do |f|
-  f.name  "My name"
-  f.email "test@test.com"
-  f.body  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-end
+  factory :category do
+    name
+    keywords    "my, new, test"
+    page_title  "my page title"
+    page_body   "short description for this category"
+  end
 
-Factory.define :post do |f|
-  f.name        { Factory.next(:name) }
-  f.body        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-  f.keywords    "my, new, test"
-  f.page_body   "short description for this page"
-  f.active      true
-end
+  factory :comment do
+    user  { Factory(:user) }
+    post  { Factory(:post) }
+    body  "My message is here."
+  end
 
-Factory.define :category do |f|
-  f.name        { Factory.next(:name) }
-  f.keywords    "my, new, test"
-  f.page_title  "my page title"
-  f.page_body   "short description for this category"
-end
+  factory :page do
+    name
+    body        "my page content"
+    keywords    "my, new, test"
+    page_title  { next(:name) }
+    page_body   "short description for this page"
+  end
 
-Factory.define :comment do |f|
-  f.user  { Factory(:user) }
-  f.post  { Factory(:post) }
-  f.body  "My message is here."
-end
-
-Factory.define :page do |f|
-  f.name        { Factory.next(:name) }
-  f.body        "my page content"
-  f.keywords    "my, new, test"
-  f.page_title  { Factory.next(:name) }
-  f.page_body   "short description for this page"
 end

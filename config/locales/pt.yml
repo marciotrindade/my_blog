@@ -347,18 +347,16 @@ pt:
   # inherited_resource #
   ######################
   flash:
-    create:
-      success: "Criado com sucesso!"
-      alert: "Erro ao criar, por favor verifique os dados informados!"
-    update:
-      success: "Atualizado com sucesso!"
-      alert: "Erro ao atualizar, por favor verifique os dados informados!"
-    destroy:
-      success: "Removido com sucesso!"
-      alert: "Não pode ser removido!" 
-    import:
-      ribbons: "Atualização feita com sucesso."
-      pages: "Importação do rolo %{ribbon} iniciada em breve as páginas estarão disponíveis."
+    actions:
+      create:
+        notice: "Criado com sucesso!"
+        alert: "Erro ao criar, por favor verifique os dados informados!"
+      update:
+        notice: "Atualizado com sucesso!"
+        alert: "Erro ao atualizar, por favor verifique os dados informados!"
+      destroy:
+        notice: "Removido com sucesso!"
+        alert: "Não pode ser removido!" 
   ###############
   # Mailer #
   ###############

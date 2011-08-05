@@ -4,18 +4,21 @@ describe CommentsController do
 
   render_views
 
-  before(:each) do
-    @user = Factory(:user)
-    controller.stubs(:current_user).returns(@user)
-  end
-
   describe "create new" do
-    before(:all) do
-      @post = Factory(:post)
+
+    before do
+      @user = FactoryGirl.build(:user)
+      @user.stub(:id).and_return(1)
+      controller.stub(:current_user).and_return(@user)
+      @post = FactoryGirl.build(:post)
+      @post.stub(:id).and_return(1)
+      @post.stub(:to_param).and_return("1")
+      Post.stub(:find).and_return(@post)
     end
 
     it "should respond with success" do
-      post :create, { post_id: @post.id, comment: { body: "example" }, format: "js" }
+      Comment.any_instance.stub(:save).and_return(true)
+      post :create, { post_id: @post, comment: { body: "example" }, format: "js" }
 
       assigns[:saved].should == :success
       response.should be_success
@@ -23,10 +26,8 @@ describe CommentsController do
     end
 
     it "should respond with fail" do
-      Contact.any_instance.stubs(:save).returns(false)
-      Contact.any_instance.stubs(:valid?).returns(true)
-      Contact.any_instance.stubs(:errors).returns("")
-      post :create, { post_id: @post.id, comment: { name: "" }, format: "js" }
+      Contact.any_instance.stub(:save).and_return(false)
+      post :create, { post_id: @post, comment: { name: "" }, format: "js" }
 
       assigns[:saved].should == :error
       response.should be_success

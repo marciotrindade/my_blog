@@ -19,7 +19,7 @@ describe AdminHelper do
   end
 
   it "should return a formated string when I call the admin_page_title" do
-    helper.stubs(:breadcrumbs).returns([["test", :root_path]])
+    helper.stub(:breadcrumbs).and_return([["test", :root_path]])
     helper.admin_page_title.should == "test - #{AppConfig.site.name}"
   end
 

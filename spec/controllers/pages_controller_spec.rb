@@ -5,12 +5,13 @@ describe PagesController do
   render_views
 
   before(:each) do
-    controller.stubs(:user_signed_in?).returns(true)
+    controller.stub(:user_signed_in?).and_return(true)
+    @page = FactoryGirl.build(:page, name: "my page")
+    Page.stub(:find_by_permalink).and_return(@page)
   end
 
   describe "visit a category" do
     it "should respond to html" do
-      page = Factory(:page, name: "my page")
       get :show, id: "my-page"
       response.should be_success
       response.should render_template(:show)

@@ -5,7 +5,7 @@ guard 'livereload' do
   watch(%r{config/locales/.+\.yml})
 end
 
-guard 'rspec', :cli => "--color --fail-fast --format nested --drb", :version => 2 do
+guard 'rspec', :cli => "--color --fail-fast --drb", :version => 2 do
   watch(%r{^spec/.+_spec\.rb})
   watch(%r{^lib/(.+)\.rb})     { |m| "spec/lib/#{m[1]}_spec.rb" }
 

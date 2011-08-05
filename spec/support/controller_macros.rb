@@ -8,13 +8,13 @@ module ControllerMacros
 
     def actions_filtred (options={})
       default_actions = {
-        index: [:html, :xml],
-        show:  [:html, :xml],
-        new:  [:html, :xml],
-        create:  [:success, :fail],
-        edit:  [:html, :xml],
-        update:  [:success, :fail],
-        destroy:  [:success, :fail]
+        :index => [:html, :xml],
+        :show =>  [:html, :xml],
+        :new =>  [:html, :xml],
+        :create =>  [:success, :fail],
+        :edit =>  [:html, :xml],
+        :update =>  [:success, :fail],
+        :destroy =>  [:success, :fail]
       }
 
       [options[:except]].flatten.each do |action|
@@ -43,7 +43,9 @@ module ControllerMacros
 
     def should_respond_to_index(format=nil)
       it "should respond to index with #{format} format" do
-        get :index, {format: format}.merge(parent_params)
+        mock_permission
+        model_class.stub(:all).and_return([@object])
+        get :index, {:format => format}.merge(parent_params)
 
         assigns[:collection].should_not nil
         response.should be_success
@@ -54,7 +56,9 @@ module ControllerMacros
 
     def should_respond_to_show(format=nil)
       it "should respond to show with #{format} format" do
-        get :show, {id: @object, format: format}.merge(parent_params)
+        mock_permission
+        model_class.stub(:find).and_return(@object)
+        get :show, {:id => @object, :format => format}.merge(parent_params)
 
         assigns(model.to_sym).should_not be_blank
         response.should be_success
@@ -65,86 +69,88 @@ module ControllerMacros
 
     def should_respond_to_new(format)
       it "should respond to new with #{format} format" do
-        get :new, {format: format}.merge(parent_params)
+        mock_permission
+        get :new, {:format => format}.merge(parent_params)
 
         assigns(model.to_sym).should_not be_blank
         response.should be_success
-        should render_template(:new) if format == :html
+        response.should render_template(:new) if format == :html
         mime_should_eq(format)
       end
     end
 
     def should_respond_to_create(status)
       it "should respond #{status} to create" do
+        mock_permission
         status = (status == :success)
-        model_class.any_instance.stubs(:save).returns(status)
-        model_class.any_instance.stubs(:errors).returns(status ? "" : model_errors)
+        model_class.stub(:new).and_return(@object)
+        @object.stub(:save).and_return(status)
+        @object.stub(:errors).and_return(model_errors) unless status
 
         post :create, parent_params
 
         if status
-          flash[:notice].should == I18n.t("flash.create.success")
+          flash[:notice].should == t("flash.actions.create.notice")
           response.should redirect_to(collection_path)
         else
-          should render_template(:new)
+          response.should render_template(:new)
         end
       end
     end
 
     def should_respond_to_edit(format=nil)
       it "should respond to edit with #{format} format" do
-        get :edit, {id: @object.id, format: format}.merge(parent_params)
+        mock_permission
+        model_class.stub(:find).and_return(@object)
+        get :edit, {:id => @object, :format => format}.merge(parent_params)
 
         assigns(model.to_sym).should_not be_blank
         response.should be_success
-        should render_template(:edit) if format.nil?
+        response.should render_template(:edit) if format.nil?
         mime_should_eq(format)
       end
     end
 
     def should_respond_to_update(status)
       it "should respond #{status} to update" do
+        mock_permission
         status = (status == :success)
-        model_class.any_instance.stubs(:update_attributes).returns(status)
-        model_class.any_instance.stubs(:errors).returns(status ? "" : model_errors)
+        model_class.stub(:find).and_return(@object)
+        @object.stub(:update_attributes).and_return(status)
+        @object.stub(:errors).and_return(model_errors) unless status
 
-        put :update, {id: @object.id, model.to_sym => {}}.merge(parent_params)
+        put :update, {:id => @object, model.to_sym => {}}.merge(parent_params)
 
         if status
-          flash[:notice].should == I18n.t("flash.update.success")
+          flash[:notice].should == t("flash.actions.update.notice")
           response.should redirect_to(collection_path)
         else
-          should render_template(:edit)
+          response.should render_template(:edit)
         end
       end
     end
 
     def should_respond_to_destroy(status)
       it "should respond #{status} to destroy" do
+        mock_permission
         status = (status == :success)
-        model_class.any_instance.stubs(:destroy).returns(status)
-        model_class.any_instance.stubs(:errors).returns(status ? "" : model_errors)
+        model_class.stub(:find).and_return(@object)
+        @object.stub(:destroy).and_return(status)
+        @object.stub(:errors).and_return(model_errors) unless status
 
-        delete :destroy, {id:  @object.id}.merge(parent_params)
+        delete :destroy, { :id =>  @object }.merge(parent_params)
 
-        flash[:notice].should == I18n.t("flash.destroy.success") if status
-        flash[:alert].should == I18n.t("flash.destroy.alert") unless status
+        flash[:notice].should == t("flash.actions.destroy.notice") if status
+        flash[:alert].should == t("flash.actions.destroy.alert") unless status
         response.should redirect_to(collection_path)
       end
     end
 
   end
 
-  def do_index(format)
-    get :index, {format: format}.merge(parent_params)
-  end
-
-  def do_show(format)
-    get :show, {id: @object, format: format}.merge(parent_params)
-  end
-
-  def clear(format)
-    nil if format.eql?(:html)
+  def mock_permission
+    controller.stub(:check_credentials)
+    @object.stub(:to_param).and_return("1")
   end
 
   def model_class
@@ -152,8 +158,8 @@ module ControllerMacros
   end
 
   def model_errors
-    errors = ActiveModel::Errors.new(model_class.new)
-    errors.add_on_blank(:id)
+    errors = ActiveModel::Errors.new(@object)
+    errors.add(:id, "invalid")
     errors
   end
 
@@ -167,6 +173,22 @@ module ControllerMacros
 
   def route_prefix
     @route_prefix ||= described_class.resources_configuration[:self][:route_prefix]
+  end
+
+  def string_for_route
+    if parent_name.present?
+      "/#{route_prefix}/#{parent_name.pluralize}/1/#{model.pluralize}"
+    else
+      "/#{route_prefix}/#{model.pluralize}"
+    end
+  end
+
+  def hash_for_route
+    if parent_name.present?
+      {:controller => "#{route_prefix}/#{model.pluralize}", parent_key => "1"}
+    else
+      {:controller => "#{route_prefix}/#{model.pluralize}"}
+    end
   end
 
   def parent_name
