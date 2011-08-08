@@ -6,8 +6,6 @@ class Admin::BaseController < InheritedResources::Base
 
   respond_to :html, :xml, :js
 
-  layout "admin"
-
   protected
 
   def check_credentials
