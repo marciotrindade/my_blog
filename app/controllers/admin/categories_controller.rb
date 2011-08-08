@@ -1,4 +1,4 @@
-class Admin::CategoriesController < Admin::AdminController
+class Admin::CategoriesController < Admin::BaseController
 
   add_breadcrumb :category, "collection_path"
   add_breadcrumb :create, '', only: [:new, :create]

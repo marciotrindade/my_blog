@@ -1,4 +1,4 @@
-class Admin::PagesController < Admin::AdminController
+class Admin::PagesController < Admin::BaseController
 
   add_breadcrumb :page, "collection_path", except: :home
   add_breadcrumb :create, '', only: [:new, :create]

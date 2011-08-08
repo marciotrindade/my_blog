@@ -1,4 +1,4 @@
-class Admin::UsersController < Admin::AdminController
+class Admin::UsersController < Admin::BaseController
 
   add_breadcrumb :user, "collection_path"
   add_breadcrumb :create, '', only: [:new, :create]

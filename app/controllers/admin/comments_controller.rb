@@ -1,4 +1,4 @@
-class Admin::CommentsController < Admin::AdminController
+class Admin::CommentsController < Admin::BaseController
 
   add_breadcrumb :comment, "collection_path"
   add_breadcrumb :create, '', only: [:new, :create]

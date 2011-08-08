@@ -1,4 +1,4 @@
-class Admin::PendingCommentsController < Admin::AdminController
+class Admin::PendingCommentsController < Admin::BaseController
 
   add_breadcrumb :pedding_comments, "collection_path"
   add_breadcrumb :create, '', only: [:new, :create]

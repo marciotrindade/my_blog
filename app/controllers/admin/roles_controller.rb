@@ -1,4 +1,4 @@
-class Admin::RolesController < Admin::AdminController
+class Admin::RolesController < Admin::BaseController
 
   add_breadcrumb :role, "collection_path"
   add_breadcrumb :create, '', only: [:new, :create]

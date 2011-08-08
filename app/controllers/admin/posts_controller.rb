@@ -1,4 +1,4 @@
-class Admin::PostsController < Admin::AdminController
+class Admin::PostsController < Admin::BaseController
 
   add_breadcrumb :post, "collection_path"
   add_breadcrumb :create, '', only: [:new, :create]

@@ -1,4 +1,4 @@
-class Admin::ContactsController < Admin::AdminController
+class Admin::ContactsController < Admin::BaseController
 
   add_breadcrumb :contact, "collection_path"
   add_breadcrumb :create, '', only: [:new, :create]

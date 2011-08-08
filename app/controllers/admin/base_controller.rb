@@ -1,4 +1,4 @@
-class Admin::AdminController < InheritedResources::Base
+class Admin::BaseController < InheritedResources::Base
 
   protect_from_forgery
 
