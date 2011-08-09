@@ -1,16 +1,16 @@
 - title page
 = textilize(page.body)
 
-%div.contact
+div.contact
   - flash.each do |type, message|
-    %p.message{:class => type}= message
+    p.message class=type =message
 
   = simple_form_for @contact, :validate => true, :html => { :id => "contact" } do |f|
     = f.error_messages
-    %div.left
+    div.left
       = f.input :name
       = f.input :email
   
-      %div.submit
+      div.submit
         = f.input :body
         = f.submit t("web-app-theme.save")

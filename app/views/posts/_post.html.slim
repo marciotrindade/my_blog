@@ -1,0 +1,11 @@
+.post
+	= render :partial => "posts/date", :locals => { :post => post }
+	h2= link_to post.name, post.path, :title => post.name, :rel => "bookmark"
+	= textilize(post.summary)
+	p= link_to t(:read_more), post.path
+	.cat_tags.clear
+		span.category
+			= link_categories(post.categories)
+		span.continue= link_to pluralize(post.comments.size, t(:one, :scope => :comments), t(:other, :scope => :comments)), post.path
+		.clear
+	.cat_tags_close

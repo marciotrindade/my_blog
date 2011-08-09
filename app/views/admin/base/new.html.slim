@@ -1,6 +1,6 @@
 - content_for :navigation do
-	%li.first= link_to t("web-app-theme.list"), collection_path
-	%li.active= link_to t("web-app-theme.new"), new_resource_url
+	li.first= link_to t("web-app-theme.list"), collection_path
+	li.active= link_to t("web-app-theme.new"), new_resource_url
 
 - admin_title "#{t("web-app-theme.new")} #{resource_class.model_name.human}"
 
@@ -8,6 +8,6 @@
 	= f.error_messages
 	= render "form", :f => f
 
-	%div.submit
+	div.submit
 		= f.submit t("web-app-theme.save")
 		= link_to t("web-app-theme.cancel"), collection_path

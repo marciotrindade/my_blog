@@ -1,7 +1,7 @@
-%h2= t(:forgot)
+h2= t(:forgot)
 
 - flash.each do |type, message|
-  %p.message{:class => type}= message
+  p.message class=(type) =message
 
 = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :validate => true) do |f|
   = devise_error_messages!

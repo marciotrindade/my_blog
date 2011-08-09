@@ -17,7 +17,6 @@ pt:
     confirm: 'Você tem certeza?'
     created_at: 'Criado em'
     all: 'Todos'
-    reorder: 'Reordenar'
 
   send_your_comment: "Deixe um comentário"
   subscribe: "Assine o RSS"
@@ -127,6 +126,12 @@ pt:
       comment:
         one: 'Comentário'
         other: 'Comentários'
+      post:
+        one: 'Artigo'
+        other: 'Artigos'
+      category:
+        one: 'Categoria'
+        other: 'Categorias'
 
     attributes:
       contact:

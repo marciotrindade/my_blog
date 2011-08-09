@@ -2,27 +2,26 @@
 
 .post
   = render :partial => "posts/date", :locals=> { :post => post }
-  :preserve
-    #{textilize(post.body)}
+  = textilize(post.body)
 
-  = render :partial => "defaults/social"
+  = render :partial => "social"
 
   #tabsContainer
-    %a.tabs.selected
-      %span= pluralize(post.comments.size, t(:one, :scope => :comments), t(:other, :scope => :comments))
-    %a.tabs
-      %span= t(:send_your_comment)
+    a.tabs.selected
+      span= pluralize(post.comments.size, t(:one, :scope => :comments), t(:other, :scope => :comments))
+    a.tabs
+      span= t(:send_your_comment)
     .clear_tab
 
     .tab-content.selected
-      %a{:name => "comments"}
+      a name="comments"
       - if post.comments.present?
         #comentario
-          %ol
+          ol
             = render(post.comments)
       - else
-        %p.no #{t(:empty, :scope => :comments)}
-      %br/
+        p.no= t(:empty, :scope => (:comments))
+      br
 
     .tab-content
       - if user_signed_in?

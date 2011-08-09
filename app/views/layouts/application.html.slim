@@ -1,0 +1,81 @@
+doctype
+html
+  head
+    = yield(:head)
+    meta content="chrome=1" http-equiv="X-UA-Compatible"
+    meta content="C50914221BE3C76FE4370CF3DA977E81" name="msvalidate.01"
+    meta content="text/html; charset=UTF-8" http-equiv="content-type"
+    meta content="pt-BR" http-equiv="content-language"
+    meta content="Marcio Trindade" name="author"
+    meta content="global" name="distribution"
+    meta content="5 days" name="revisit-after"
+    meta content="Marcio Trindade" name="copyright"
+    = tag(:link, :rel => "alternate", :type => "application/atom+xml", :href => feed_url)
+    link href="/favicon.ico" rel="icon" type="image/x-icon"
+    link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body
+
+    #wrapper
+      #user_status
+        -if user_signed_in?
+          = link_to t(:my_account), edit_user_registration_path
+          = link_to t(:logout), destroy_user_session_path
+        - else
+          = link_to t(:signin), new_user_session_path
+          = link_to t(:register), new_user_registration_path
+
+      #top_cufon
+        h1#logo= link_to AppConfig.site.name, root_path, :name => "top", :title => AppConfig.site.domain
+      #header
+        = link_to t(:subscribe), feed_url, :id => "rss-feed", :title => t(:subscribe)
+        #top_bar
+          ul#front_menu
+            li= link_to_menu t(:home, :scope => :menu), root_path
+            li= link_to_menu t(:about_me, :scope => :menu), page_path("sobre-o-autor")
+            li= link_to_menu t(:contact, :scope => :menu), new_contact_path
+          form#searchform action="http://www.google.com.br/search" method="get"
+            input name="as_sitesearch" type="hidden" value=AppConfig.site.domain
+            input name="hl" type="hidden" value="pt-BR"
+            input name="num" type="hidden" value="50"
+            input name="filter" type="hidden" value="0"
+            input#s name="as_q" size="20" type="text" value=" "
+            input#go alt="Buscar" title="Buscar" type="submit" value=" "
+
+      #content
+
+        #content-body
+          = yield(:title)
+          = yield
+
+        .content-sidebar
+          - cache(:categories) do
+            h3= t(:other, :scope => :categories)
+            ul
+              - categories.each do |category|
+                li
+                  = link_to(category.name, category_path(category.permalink)) + " (#{category.posts.size})"
+
+          - cache(:archives) do
+            h3= t(:arquive)
+            ul
+              - dates.each do |post|
+                li
+                  = link_to(l(post.created_at, :format => :archive), post.month_path) + " (#{post.total_in_month})"
+
+          h3 Links
+          ul
+            li= link_to "Carlos Brando", "http://www.nomedojogo.com/"
+            li= link_to "Diego Carrion", "http://www.diegocarrion.com/"
+            li= link_to "Fabio Akita", "http://www.akitaonrails.com/"
+            li= link_to "Flavio Muniz", "http://flaviomuniz.com/blog/"
+            li= link_to "Ricardo Yasuda", "http://blog.shadowmaru.org/"
+            li= link_to "Wylkon Cardoso", "http://www.wylkon.com.br/"
+
+      #footer
+        span.text
+          | Copyright © #{Date.today.year} #{link_to "Marcio Trindade", "http://marciotrindade.com/"} · Powered by #{link_to "Ruby on Rails", "http://rubyonrails.org/", :target => "_blank", :title => "Ruby on Rails"}
+          br
+          #{link_to "Lightword Theme", "http://www.lightword-theme.com/", :target => "_blank", :title => "Lightword Theme"} by #{link_to "Andrei Luca", "http://students.info.uaic.ro/~andrei.luca/", :target => "_blank"} # link_to "Go to top ↑", "#top" title="Go to top" class="top"

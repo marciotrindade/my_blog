@@ -20,3 +20,7 @@ $(document).ready ->
     $("#tabsContainer .tabs, #tabsContainer .tab-content").removeClass "selected"
     $(this).addClass "selected"
     $("#tabsContainer .tab-content").eq($(this).index()).addClass "selected"
+  
+  # fix template error whit empty attribute
+  $("#searchform #s, #searchform #go").val("")
+  

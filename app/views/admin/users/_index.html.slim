@@ -1,0 +1,25 @@
+- if collection.present?
+	table.table
+		thead
+			tr
+				th.first ID
+				th= resource_class.human_attribute_name(:name)
+				th= resource_class.human_attribute_name(:email)
+				th= resource_class.human_attribute_name(:url)
+				th.last &nbsp;
+		tbody
+			- collection.each do |user|
+				tr
+					td= user.id
+					td= user.name
+					td= user.email
+					td= user.url
+					td.last
+						= link_to t("web-app-theme.edit"), edit_resource_path(user)
+						|  | 
+						= link_to t("web-app-theme.delete"), resource_path(user), :method => :delete, :confirm => t("web-app-theme.confirm")
+
+- else
+	= render "no_results"
+
+- data_table

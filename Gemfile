@@ -5,10 +5,10 @@ gem 'mysql2'
 
 gem 'devise'
 gem 'inherited_resources'
-gem "simple_form"
+gem 'simple_form'
 gem 'dynamic_form'
-gem "settingslogic"
-gem "haml"
+gem 'settingslogic'
+gem 'slim'
 gem 'decent_exposure'
 gem 'redcarpet'
 gem 'coderay'
@@ -38,10 +38,10 @@ group :console do
 end
 
 group :test do
-  gem "rspec-rails"
+  gem 'rspec-rails'
   gem 'shoulda', '~> 3.0.0.beta2'
   gem 'database_cleaner'
-  gem "factory_girl_rails", "~> 1.1"
+  gem 'factory_girl_rails', '~> 1.1'
   gem 'simplecov', '>= 0.4.0', :require => false
   gem 'spork', '~> 0.9.0.rc9'
   gem 'capybara'
