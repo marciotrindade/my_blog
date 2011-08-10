@@ -51,7 +51,7 @@ form {
     display: table;
   }
   .submit a, .submit input {
-    background: #EEE url('/assets/web-app-theme/tick.png') no-repeat 5px center;
+    background: #EEE url('/images/web-app-theme/tick.png') no-repeat 5px center;
     line-height: 17px;
     padding: 5px 10px 5px 27px;
     margin-right: 7px;
@@ -65,11 +65,11 @@ form {
     color: #222 !important;
   }
   .submit a {
-    background-image: url('/assets/web-app-theme/cross.png');
+    background-image: url('/images/web-app-theme/cross.png');
     margin-top: 1px;
   }
   .submit a.edit {
-    background-image: url('/assets/web-app-theme/application_edit.png');
+    background-image: url('/images/web-app-theme/application_edit.png');
   }
 }
 
@@ -86,4 +86,3 @@ form {
   padding-left: 10px;
   list-style-type: disc;
 }
-
