@@ -1,11 +1,17 @@
 class PostsController < ApplicationController
 
   expose(:page)   { Page.find_by_permalink('home') }
-  expose(:recent) { Post.active.recent }
   expose(:post)   { Post.active.find_by_permalink(params[:id]) }
   expose(:posts)  { Post.active.by_date(params[:year], params[:month], params[:day]) }
   expose(:resource) { User.new }
   expose(:resource_name) { :user }
+  expose(:recent) do
+    if current_user && current_user.has_access_to?(:admin)
+      Post.recent
+    else
+      Post.active.recent
+    end
+  end
 
   def index
   end
@@ -21,7 +27,7 @@ class PostsController < ApplicationController
   end
 
   private
-  
+
   def meta_date
     dates = Post.time_interval(params[:year],params[:month], params[:day]).map(&:to_date)
     "#{l(dates.first)} - #{l(dates.last)}"
