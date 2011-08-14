@@ -5,6 +5,7 @@ form {
   .string {
     input {
       width: 90%;
+      font: $font;
     }
   }
   .text {
@@ -16,6 +17,7 @@ form {
   .numeric input, .string input, .password input, .text textarea {
     border: 1px solid #2A0000;
     padding: 3px 2px;
+    font: $font;
   }
   abbr {
     border: none;
