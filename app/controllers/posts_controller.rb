@@ -1,10 +1,16 @@
 class PostsController < ApplicationController
 
   expose(:page)   { Page.find_by_permalink('home') }
-  expose(:post)   { Post.active.find_by_permalink(params[:id]) }
   expose(:posts)  { Post.active.by_date(params[:year], params[:month], params[:day]) }
-  expose(:resource) { User.new }
+  expose(:resource)      { User.new }
   expose(:resource_name) { :user }
+  expose(:post)   do
+    if current_user && current_user.has_access_to?(:admin)
+      Post.find_by_permalink(params[:id])
+    else
+      Post.active.find_by_permalink(params[:id])
+    end
+  end
   expose(:recent) do
     if current_user && current_user.has_access_to?(:admin)
       Post.recent
