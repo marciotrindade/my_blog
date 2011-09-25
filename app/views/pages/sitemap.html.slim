@@ -1,0 +1,16 @@
+- title @page
+
+ul
+  li= link_to 'Home', root_path
+  - @pages.each do |page|
+    li= link_to page.name, page_path(page.permalink)
+
+h2= t(:categories)
+ul
+  - @categories.each do |category|
+    li= link_to category.name, category_path(category.permalink)
+
+h2= t(:posts)
+ul
+  - @posts.each do |post|
+    li= link_to post.name, post.path

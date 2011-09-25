@@ -10,11 +10,14 @@ Blog::Application.routes.draw do
     resources :users, :except => [:show]
   end
 
-  resources :pages, :only => :show
-  resources :categories, :only => :show
-  resources :contacts, :only => [:new, :create]
-  resources :posts, :only => :show do
-    resources :comments, :only => :create
+  match '/pages/contato' => redirect('/contacts/new')
+  match 'sitemap', :to => 'pages#sitemap'
+
+  resources :pages,       :only => :show
+  resources :categories,  :only => :show
+  resources :contacts,    :only => [:new, :create]
+  resources :posts,       :only => :show do
+    resources :comments,  :only => :create
   end
 
   get '/posts.atom', :controller => 'posts', :action => "index", :format => "atom", :as => "feed"

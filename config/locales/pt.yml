@@ -58,6 +58,8 @@ pt:
   logout: 'Sair'
   forgot: 'Esqueceu sua senha?'
   change_my_password: 'Alterar minha senha'
+  categories: 'Categorias'
+  posts: 'Artigos'
 
   menu:
     home: "Home"
