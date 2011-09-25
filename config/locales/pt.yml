@@ -71,6 +71,7 @@ pt:
     category: 'Categorias'
     page: 'Páginas'
     comment: 'Comentários'
+    sitemap: 'Sitemap'
 
   footer:
     about_us: 'Sobre nós'

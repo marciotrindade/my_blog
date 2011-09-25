@@ -36,6 +36,7 @@ html
             li= link_to_menu t(:home, :scope => :menu), root_path
             li= link_to_menu t(:about_me, :scope => :menu), page_path("sobre-o-autor")
             li= link_to_menu t(:contact, :scope => :menu), new_contact_path
+            li= link_to_menu t(:sitemap, :scope => :menu), sitemap_path
           form#searchform action="http://www.google.com.br/search" method="get"
             input name="as_sitesearch" type="hidden" value=AppConfig.site.domain
             input name="hl" type="hidden" value="pt-BR"

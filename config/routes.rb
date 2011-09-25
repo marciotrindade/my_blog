@@ -11,7 +11,8 @@ Blog::Application.routes.draw do
   end
 
   match '/pages/contato' => redirect('/contacts/new')
-  match 'sitemap', :to => 'pages#sitemap'
+  match '/pages/sitemap' => redirect('/sitemap')
+  match 'sitemap', :to => 'pages#sitemap', :as => 'sitemap'
 
   resources :pages,       :only => :show
   resources :categories,  :only => :show
