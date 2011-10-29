@@ -46,8 +46,6 @@ group :test do
   gem 'spork', '~> 0.9.0.rc9'
   gem 'capybara'
   gem 'launchy'
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-  gem 'growl' if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec'
   gem 'guard-livereload'
 end
