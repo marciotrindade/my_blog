@@ -104,7 +104,6 @@ GEM
     mime-types (1.17.2)
     multi_json (1.0.3)
     mysql2 (0.3.7)
-    newrelic_rpm (3.2.0)
     nokogiri (1.5.0)
     orm_adapter (0.0.5)
     polyglot (0.3.2)
@@ -224,7 +223,6 @@ DEPENDENCIES
   jquery-rails
   launchy
   mysql2
-  newrelic_rpm
   rails (= 3.1.0.rc5)
   redcarpet
   responders

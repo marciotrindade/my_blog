@@ -24,10 +24,6 @@ end
 gem 'jquery-rails'
 gem 'client_side_validations'
 
-group :production do
-  gem 'newrelic_rpm'
-end
-
 group :development do
   gem 'thin'
 end
