@@ -5,7 +5,9 @@ SimpleCov.start 'rails' if ENV["COVERAGE"]
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
-  require File.expand_path("../../config/environment", __FILE__)
+  require "rails/application"
+  Spork.trap_method(Rails::Application, :reload_routes!)
+  require File.dirname(__FILE__) + "/../config/environment.rb"
   require 'rspec/rails'
 
   require 'database_cleaner'
@@ -22,4 +24,9 @@ Spork.prefork do
       DatabaseCleaner.clean
     end
   end
+end
+
+Spork.each_run do
+  $rspec_start_time = Time.now
+  FactoryGirl.reload
 end
