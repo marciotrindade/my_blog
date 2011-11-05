@@ -35,13 +35,14 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'shoulda', '~> 3.0.0.beta2'
+  gem 'shoulda', '>= 3.0.0.beta2'
   gem 'database_cleaner'
-  gem 'factory_girl_rails', '~> 1.1'
+  gem 'factory_girl_rails'
   gem 'simplecov', '>= 0.4.0', :require => false
-  gem 'spork', '~> 0.9.0.rc9'
+  
+  gem 'spork', '>= 0.9.0.rc9'
   gem 'capybara'
   gem 'launchy'
   gem 'guard-rspec'
-  gem 'guard-livereload'
+  gem 'guard-spork'
 end

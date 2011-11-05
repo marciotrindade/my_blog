@@ -1,11 +1,13 @@
-guard 'livereload' do
-  watch(%r{app/.+\.(erb|slim)})
-  watch(%r{app/helpers/.+\.rb})
-  watch(%r{public/.+\.(css|sass|js|html)})
-  watch(%r{config/locales/.+\.yml})
+guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
+  watch('config/application.rb')
+  watch('config/environment.rb')
+  watch(%r{^config/environments/.+\.rb$})
+  watch(%r{^config/initializers/.+\.rb$})
+  watch('spec/spec_helper.rb')
+  watch(%r{^spec/support/.+\.rb$})
 end
 
-guard 'rspec', :cli => "--color --fail-fast --drb", :version => 2 do
+guard 'rspec', :version => 2, :cli => "--drb" do
   watch(%r{^spec/.+_spec\.rb})
   watch(%r{^lib/(.+)\.rb})     { |m| "spec/lib/#{m[1]}_spec.rb" }
 
