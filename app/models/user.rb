@@ -6,24 +6,21 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :registerable
 
   include Gravtastic
-  gravtastic default: "mm"
+  gravtastic :default => "mm"
 
   before_save :create_image_url
 
-  has_and_belongs_to_many :roles
+  belongs_to :role
 
   validates_presence_of :name, :email
-  validates_presence_of :password, :password_confirmation, on: :create
+  validates_presence_of :password, :password_confirmation, :on => :create
   validates :email, email_format: true
 
   default_scope order(:name)
 
-  def has_access_to?(role)
-    role_names = roles.map { |r| r.name.downcase }
-    role_names.include?(role.to_s.downcase)
+  def admin?
+    role_id == 1
   end
-
-  memoize :has_access_to?
 
   def create_image_url
     self.image_url = gravatar_url

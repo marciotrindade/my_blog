@@ -10,7 +10,7 @@ class Admin::BaseController < InheritedResources::Base
 
   def check_credentials
     authenticate_user!
-    unless current_user.has_access_to?(:admin)
+    unless current_user.admin?
       flash[:alert] = t("devise.failure.access_denied")
       redirect_to root_path
       return false
