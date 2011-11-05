@@ -27,10 +27,7 @@ html
 
     div.flash
       - flash.each do |type, message|
-        p.message class=(type) =message
-
-    div#breadcrumb
-      = breadcrumb
+        p.message class="#{type}" =message
 
     div#c
       table
