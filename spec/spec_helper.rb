@@ -1,7 +1,8 @@
 require 'rubygems'
 require 'spork'
+
 require 'simplecov'
-SimpleCov.start 'rails' if ENV["COVERAGE"]
+SimpleCov.start 'rails'
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
@@ -19,6 +20,8 @@ Spork.prefork do
     config.include I18nMacros
     config.include ControllerMacros
     config.include RoutesMacros
+    config.include Factory::Syntax::Methods
+
     config.use_transactional_fixtures = true
     config.after(:all) do
       DatabaseCleaner.clean
