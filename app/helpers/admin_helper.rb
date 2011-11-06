@@ -25,10 +25,4 @@ module AdminHelper
     title.join(" - ")
   end
 
-  def render_or_default(name)
-    render name
-  rescue ActionView::MissingTemplate
-    render partial: "admin/scaffolds/#{name}"
-  end
-
 end
