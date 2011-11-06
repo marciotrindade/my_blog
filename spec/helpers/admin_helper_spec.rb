@@ -19,8 +19,8 @@ describe AdminHelper do
   end
 
   it "should return a formated string when I call the admin_page_title" do
-    helper.stub(:breadcrumbs).and_return([["test", :root_path]])
-    helper.admin_page_title.should == "test - #{AppConfig.site.name}"
+    params = { :controller => 'admin/pages', :action => 'index' }
+    helper.admin_page_title(params).should == "Pages - Index - #{AppConfig.site.name}"
   end
 
 end

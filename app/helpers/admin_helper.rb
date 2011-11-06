@@ -17,14 +17,12 @@ module AdminHelper
     content_for(:title) { title.to_s }
   end
 
-  def admin_page_title
-    text = ""
-    breadcrumbs.each do |title, link|
-      text << t(title, scope: :breadcrumbs, default: title.to_s)
-      text << " - "
-    end
-    text << AppConfig.site.name
-    text
+  def admin_page_title(params)
+    title = []
+    title << params[:controller].gsub(/admin\//, '').titleize
+    title << params[:action].titleize
+    title << AppConfig.site.name
+    title.join(" - ")
   end
 
   def render_or_default(name)
