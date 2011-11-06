@@ -14,15 +14,15 @@ describe Comment do
   end
 
   it "default scope order by created_at" do
-    comment_one = Factory(:comment, created_at: Date.today)
-    comment_two = Factory(:comment, created_at: Date.today - 1.day)
+    comment_one = create(:comment, created_at: Date.today)
+    comment_two = create(:comment, created_at: Date.today - 1.day)
 
     Comment.first.should == comment_two
     Comment.last.should == comment_one
   end
 
   it "should has gravatar" do
-    comment = Factory(:comment)
+    comment = create(:comment)
     comment.gravatar_url.should_not be_nil
   end
 

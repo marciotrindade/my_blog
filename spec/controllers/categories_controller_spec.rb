@@ -10,8 +10,8 @@ describe CategoriesController do
 
   describe "visit a category" do
     it "should respond to html" do
-      category = Factory(:category, name: "my_category")
-      Factory(:post, categories: [category])
+      category = create(:category, name: "my_category")
+      create(:post, categories: [category])
       get :show, id: "my_category"
       response.should be_success
       response.should render_template(:show)

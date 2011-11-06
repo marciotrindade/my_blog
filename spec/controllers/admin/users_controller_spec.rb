@@ -5,7 +5,7 @@ describe Admin::UsersController do
   render_views
 
   before do
-    @object = FactoryGirl.build(:user)
+    @object = build(:user)
   end
 
   should_respond_to_resources except: [ :show ]

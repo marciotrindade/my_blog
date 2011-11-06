@@ -22,7 +22,7 @@ describe Admin::UsersController do
   end
 
   it "should not permit to access the admin when logged but don't have credentials" do
-    @user = Factory(:user)
+    @user = create(:user)
     controller.stub(:current_user).and_return(@user)
     controller.stub(:authenticate_user!).and_return(true)
 

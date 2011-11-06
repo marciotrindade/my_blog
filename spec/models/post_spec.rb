@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Post do
 
   context "validations" do
-    subject { Factory(:post, permalink: "test") }
+    subject { create(:post, permalink: "test") }
     it { should validate_uniqueness_of(:permalink) }
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:body) }
@@ -17,8 +17,8 @@ describe Post do
   end
 
   it "default scope order by name" do
-    post_one = Factory(:post, created_at: Date.today - 1.day)
-    post_two = Factory(:post, created_at: Date.today)
+    post_one = create(:post, created_at: Date.today - 1.day)
+    post_two = create(:post, created_at: Date.today)
 
     Post.first.should == post_two
     Post.last.should == post_one
@@ -69,7 +69,7 @@ describe Post do
 
   context "with a instance" do
     before(:all) do
-      @post = Factory(:post, summary: nil, active: true)
+      @post = create(:post, summary: nil, active: true)
     end
 
     it "should has year path" do
@@ -94,11 +94,11 @@ describe Post do
     
     it "should return total of posts in the same month" do
       @post.total_in_month.should == 1
-      Factory(:post, active: true)
+      create(:post, active: true)
       @post.total_in_month.should == 2
-      Factory(:post, active: false)
+      create(:post, active: false)
       @post.total_in_month.should == 2
-      Factory(:post, created_at: Date.today - 1.month, active: true)
+      create(:post, created_at: Date.today - 1.month, active: true)
       @post.total_in_month.should == 2
     end
   end

@@ -2,22 +2,16 @@ require 'spec_helper'
 
 describe Role do
 
-  context "validations" do
-    subject { Factory(:role) }
-    it { should validate_uniqueness_of(:name) }
-    it { should validate_presence_of(:name) }
-  end
+  it { should validate_presence_of(:name) }
+  it { should have_many(:users) }
 
-  context "assosiations" do
-    it { should have_and_belong_to_many(:users) }
+  context "with an instance" do
+    subject { create(:role) }
+    it { should validate_uniqueness_of(:name) }
   end
 
   it "default scope order by name" do
-    role_one = Factory(:role, name: "Zilda")
-    role_two = Factory(:role, name: "Andre")
-
-    Role.first.should == role_two
-    Role.last.should == role_one
+    Role.scoped.to_sql.should =~ /order by roles.name/i
   end
 
 end

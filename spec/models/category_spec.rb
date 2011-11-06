@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Category do
 
   context "validations" do
-    subject { Factory(:category) }
+    subject { create(:category) }
     it { should validate_uniqueness_of(:name) }
     it { should validate_presence_of(:name) }
   end
@@ -13,17 +13,17 @@ describe Category do
   end
 
   it "default scope order by name" do
-    category_one = Factory(:category, name: "Zilda")
-    category_two = Factory(:category, name: "Andre")
+    category_one = create(:category, name: "Zilda")
+    category_two = create(:category, name: "Andre")
 
     Category.first.should == category_two
     Category.last.should == category_one
   end
 
   it "default scope order by name" do
-    category = Factory(:category)
-    Factory(:post, categories: [category])
-    Factory(:post)
+    category = create(:category)
+    create(:post, categories: [category])
+    create(:post)
 
     category.posts.size == 1
   end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ContactObserver do
   it "should send email when contact is created" do
-    @contact = FactoryGirl.build(:contact)
+    @contact = build(:contact)
     @obs = ContactObserver.instance
     @mailer = Object.new
     @mailer.stub(:deliver)

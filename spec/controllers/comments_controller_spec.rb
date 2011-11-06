@@ -7,10 +7,10 @@ describe CommentsController do
   describe "create new" do
 
     before do
-      @user = FactoryGirl.build(:user)
+      @user = build(:user)
       @user.stub(:id).and_return(1)
       controller.stub(:current_user).and_return(@user)
-      @post = FactoryGirl.build(:post)
+      @post = build(:post)
       @post.stub(:id).and_return(1)
       @post.stub(:to_param).and_return("1")
       Post.stub(:find).and_return(@post)

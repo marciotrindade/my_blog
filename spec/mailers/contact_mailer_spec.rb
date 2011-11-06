@@ -3,7 +3,7 @@ require "spec_helper"
 describe ContactMailer do
   describe "send_contact" do
     before do
-      @contact = Factory(:contact)
+      @contact = create(:contact)
     end
     let(:mail) { ContactMailer.send_contact(@contact) }
 

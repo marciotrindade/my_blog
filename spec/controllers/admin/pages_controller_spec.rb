@@ -5,7 +5,7 @@ describe Admin::PagesController do
   render_views
 
   before do
-    @object = FactoryGirl.build(:page)
+    @object = build(:page)
   end
 
   should_respond_to_resources except: [ :show ]

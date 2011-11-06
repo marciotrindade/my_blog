@@ -6,7 +6,7 @@ describe ContactsController do
 
   before(:each) do
     controller.stub(:user_signed_in?).and_return(false)
-    @page = FactoryGirl.build(:page, :name=>"Contato")
+    @page = build(:page, :name=>"Contato")
     Page.stub(:find_by_permalink).and_return(@page)
   end
 

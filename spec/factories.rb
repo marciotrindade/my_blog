@@ -8,8 +8,8 @@ FactoryGirl.define do
   factory :user do
     name
     email
-    url       'http://mysite.com'
-    password  'secret'
+    url                   'http://mysite.com'
+    password              'secret'
     password_confirmation 'secret'
   end
 
@@ -39,8 +39,8 @@ FactoryGirl.define do
   end
 
   factory :comment do
-    user  { Factory(:user) }
-    post  { Factory(:post) }
+    user  { FactoryGirl.create(:user) }
+    post  { FactoryGirl.create(:post) }
     body  "My message is here."
   end
 
