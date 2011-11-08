@@ -61,22 +61,73 @@ pre code {
   padding: 0px;
 }
 
-.CodeRay .an { color:#E7BE69 }                      /* html attribute */
-.CodeRay .c  { color:#BC9358; font-style: italic; } /* comment */
-.CodeRay .ch { color:#509E4F }                      /* escaped character */
-.CodeRay .cl { color:#FFF }                         /* class */
-.CodeRay .co { color:#FFF }                         /* constant */
-.CodeRay .fl { color:#A4C260 }                      /* float */
-.CodeRay .fu { color:#FFC56D }                      /* function */
-.CodeRay .gv { color:#D0CFFE }                      /* global variable */
-.CodeRay .i  { color:#A4C260 }                      /* integer */
-.CodeRay .il { background:#151515 }                 /* inline code */
-.CodeRay .iv { color:#D0CFFE }                      /* instance variable */
-.CodeRay .pp { color:#E7BE69 }                      /* doctype */
-.CodeRay .r  { color:#CB7832 }                      /* keyword */
-.CodeRay .kw { color:#CB7832 }                      /* keyword */
-.CodeRay .rx { color:#A4C260 }                      /* regex */
-.CodeRay .s  { color:#A4C260 }                      /* string */
-.CodeRay .sy { color:#6C9CBD }                      /* symbol */
-.CodeRay .ta { color:#E7BE69 }                      /* html tag */
-.CodeRay .pc { color:#6C9CBD }                      /* boolean */
+.CodeRay .annotation {  }
+.CodeRay .attribute-name { color:#F9EE91; }
+.CodeRay .attribute-value {  }
+.CodeRay .binary {  }
+.CodeRay .char .content {  }
+.CodeRay .char .delimiter {  }
+.CodeRay .char {  }
+.CodeRay .class { color:#9B703F; }
+.CodeRay .class-variable {  }
+.CodeRay .color {  }
+.CodeRay .comment { color:#726E73; font-style:italic; }
+.CodeRay .comment .char {  }
+.CodeRay .comment .delimiter {  }
+.CodeRay .complex {  }
+.CodeRay .constant { color:#9B859D; }
+.CodeRay .decorator {  }
+.CodeRay .definition {  }
+.CodeRay .delimiter { color:#8F9D6A; }
+.CodeRay .directive { color:#9B703C; }
+.CodeRay .doc {  }
+.CodeRay .doc-string {  }
+.CodeRay .doctype { color:#494946; }
+.CodeRay .entity { color:#AB8253; }
+.CodeRay .error {  }
+.CodeRay .escape  {  }
+.CodeRay .exception {  }
+.CodeRay .float { color:#CA7840; }
+.CodeRay .function { color:#9B703F; }
+.CodeRay .global-variable { color:#889AB4; }
+.CodeRay .hex {  }
+.CodeRay .imaginary {  }
+.CodeRay .include {  }
+.CodeRay .inline { color: white; }
+.CodeRay .inline-delimiter { color:white; }
+.CodeRay .instance-variable { color:#7587A6 }
+.CodeRay .integer  { color:#A4C260 }
+.CodeRay .key .char {  }
+.CodeRay .key .delimiter {  }
+.CodeRay .key { color: #E0C589; }
+.CodeRay .keyword { color:#D6B57F; }
+.CodeRay .label {  }
+.CodeRay .local-variable {  }
+.CodeRay .namespace {  }
+.CodeRay .octal {  }
+.CodeRay .operator { }
+.CodeRay .predefined { color:#CDA869; }
+.CodeRay .predefined-constant {  }
+.CodeRay .predefined-type {  }
+.CodeRay .preprocessor {  }
+.CodeRay .pseudo-class { color:#A0AB7F; }
+.CodeRay .regexp .content {  }
+.CodeRay .regexp .delimiter {  }
+.CodeRay .regexp .modifier {  }
+.CodeRay .regexp {  }
+.CodeRay .reserved {  }
+.CodeRay .shell .content {  }
+.CodeRay .shell .delimiter {  }
+.CodeRay .shell {  }
+.CodeRay .string .char {  }
+.CodeRay .string .content {  }
+.CodeRay .string .delimiter {  }
+.CodeRay .string .modifier {  }
+.CodeRay .string { color:#A0AB7F; }
+.CodeRay .symbol .content {  }
+.CodeRay .symbol .delimiter {  }
+.CodeRay .symbol { color:#CF694A; }
+.CodeRay .tag { color:#A9885B; }
+.CodeRay .type {  }
+.CodeRay .value { color: #F9EE98; }
+.CodeRay .variable  { color:#889AB4; }
