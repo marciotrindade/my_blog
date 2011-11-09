@@ -23,6 +23,7 @@ end
 
 gem 'jquery-rails'
 gem 'client_side_validations'
+gem 'rack-pjax'
 
 group :development do
   gem 'thin'

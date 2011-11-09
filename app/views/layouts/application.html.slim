@@ -47,13 +47,13 @@ html
 
       #content
 
-        #content-body
+        #content-body data-pjax-container=""
           = yield(:title)
           = yield
 
         .content-sidebar
           - cache(:categories) do
-            h3= t(:other, :scope => :categories)
+            h3= t('categories')
             ul
               - categories.each do |category|
                 li

@@ -46,10 +46,6 @@ pt:
     success: "Seu comentário foi adicionado com sucesso."
     error: "Ocorreu um erro ao enviar seu comentário, por favor tente novamente."
 
-  categories:
-    one: "Categoria"
-    other: "Categorias"
-
   home: 'Home'
   my_account: 'Minha conta'
   signin: 'Login'

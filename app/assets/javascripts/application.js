@@ -9,3 +9,4 @@
 //= require blog
 //= require rails.validations
 //= require analytics
+//= require jquery.pjax
