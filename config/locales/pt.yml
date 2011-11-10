@@ -203,7 +203,7 @@ pt:
       time: "%H:%M h"
       archive: "%B %Y"
       short: "%b/%y"
-      long: "%A, %d de %B de %Y, %H:%M hs"
+      long: "%A, %d de %B de %Y"
       only_second: "%S"
       comment: "%d/%m/%Y %H:%M"
       w3c: "%Y-%m-%dT%H:%M:%S+00:00"

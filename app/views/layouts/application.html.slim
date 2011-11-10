@@ -1,4 +1,4 @@
-doctype
+doctype html
 html
   head
     = yield(:head)
@@ -24,11 +24,11 @@ html
           = link_to t(:my_account), edit_user_registration_path
           = link_to t(:logout), destroy_user_session_path
         - else
-          = link_to t(:signin), new_user_session_path
+          = link_to t(:signin), new_user_session_path, :class => 'pjax'
           = link_to t(:register), new_user_registration_path
 
       #top_cufon
-        h1#logo= link_to AppConfig.site.name, root_path, :name => "top", :title => AppConfig.site.domain
+        h1#logo= link_to AppConfig.site.name, root_path, :name => "top", :title => AppConfig.site.domain, :class => 'pjax'
       #header
         = link_to t(:subscribe), feed_url, :id => "rss-feed", :title => t(:subscribe)
         #top_bar
@@ -57,14 +57,14 @@ html
             ul
               - categories.each do |category|
                 li
-                  = link_to(category.name, category_path(category.permalink)) + " (#{category.posts.size})"
+                  = link_to(category.name, category_path(category.permalink), :class => 'pjax') + " (#{category.posts.size})"
 
           - cache(:archives) do
             h3= t(:arquive)
             ul
               - dates.each do |post|
                 li
-                  = link_to(l(post.created_at, :format => :archive), post.month_path) + " (#{post.total_in_month})"
+                  = link_to(l(post.created_at, :format => :archive), post.month_path, :class => 'pjax') + " (#{post.total_in_month})"
 
           h3 Links
           ul

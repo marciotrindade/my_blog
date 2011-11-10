@@ -23,11 +23,11 @@ module ApplicationHelper
   end
 
   def link_to_menu(text, link)
-    link_to content_tag("span", text), link, title: text
+    link_to content_tag("span", text), link, :title => text, :class => "pjax"
   end
 
   def link_categories(categories)
-    categories = categories.collect{ |category| link_to(category.name, category_path(category.permalink), rel: "tag") }
+    categories = categories.collect{ |category| link_to(category.name, category_path(category.permalink), :class => "pjax") }
     categories.to_sentence.html_safe
   end
 

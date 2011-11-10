@@ -3,7 +3,10 @@ jQuery.ajaxSetup(
     xhr.setRequestHeader("Accept", "text/javascript")
 )
 jQuery ->
-  $('#header a, .post h2 a, .content-sidebar a, .site_map a').pjax('[data-pjax-container]')
+  $('#header a, .pjax, .site_map a').pjax('[data-pjax-container]')
+
+  $('#wrapper').bind 'pjax:end', ->
+    window.scroll(0,0)
 
   # clippy
   $(".clippy").live 
@@ -17,7 +20,7 @@ jQuery ->
       $(this).children(".clippy_label").text "texto copiado"
 
   # posts tabs
-  $(".post .tabs").click ->
+  $(".post .tabs").live 'click', ->
     $("#tabsContainer .tabs, #tabsContainer .tab-content").removeClass "selected"
     $(this).addClass "selected"
     $("#tabsContainer .tab-content").eq($(this).index()).addClass "selected"

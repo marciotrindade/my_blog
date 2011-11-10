@@ -1,7 +1,8 @@
 - title post
 
 .post
-  = render :partial => "posts/date", :locals=> { :post => post }
+  p.date
+    date= l post.created_at, :format => :long
   = textilize(post.body)
 
   = render :partial => "social"
