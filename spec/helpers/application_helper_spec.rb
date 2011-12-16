@@ -25,12 +25,12 @@ describe ApplicationHelper do
   end
 
   it "should return a tag when I call the link_to_menu" do
-    helper.link_to_menu("test", "/test").should == '<a href="/test" title="test"><span>test</span></a>'
+    helper.link_to_menu("test", "/test").should == '<a href="/test" class="pjax" title="test"><span>test</span></a>'
   end
 
   it "should return links to categories when I call the link_categories" do
     categories = [Category.new(:name => "Test1", :permalink => "test1"), Category.new(:name => "Test2", :permalink => "test2")]
-    helper.link_categories(categories).should == '<a href="/categories/test1" rel="tag">Test1</a> e <a href="/categories/test2" rel="tag">Test2</a>'
+    helper.link_categories(categories).should == '<a href="/categories/test1" class="pjax">Test1</a> e <a href="/categories/test2" class="pjax">Test2</a>'
   end
 
   it "should return content striped I call the strip_markdown" do
