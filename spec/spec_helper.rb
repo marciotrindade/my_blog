@@ -11,8 +11,10 @@ Spork.prefork do
   require File.dirname(__FILE__) + "/../config/environment.rb"
   require 'rspec/rails'
 
-  require 'database_cleaner'
-  DatabaseCleaner.strategy = :truncation
+  Devise.stretches = 1
+  Rails.logger.level = 4
+  # require 'database_cleaner'
+  # DatabaseCleaner.strategy = :truncation
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -23,9 +25,9 @@ Spork.prefork do
     config.include Factory::Syntax::Methods
 
     config.use_transactional_fixtures = true
-    config.after(:all) do
-      DatabaseCleaner.clean
-    end
+    # config.after(:all) do
+    #   DatabaseCleaner.clean
+    # end
   end
 end
 
