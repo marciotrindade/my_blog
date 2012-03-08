@@ -42,7 +42,7 @@ class Post < ActiveRecord::Base
   def year_path
     "/#{created_at.year}"
   end
-  
+
   def month_path
     "#{year_path}/#{created_at.month}"
   end

@@ -14,6 +14,7 @@ gem 'redcarpet'
 gem 'coderay'
 gem 'gravtastic'
 gem 'responders'
+gem 'draper'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
@@ -40,7 +41,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'simplecov', '>= 0.4.0', :require => false
-  
+
   gem 'spork', '>= 0.9.0.rc9'
   gem 'capybara'
   gem 'launchy'

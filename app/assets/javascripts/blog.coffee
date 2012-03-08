@@ -3,13 +3,13 @@ jQuery.ajaxSetup(
     xhr.setRequestHeader("Accept", "text/javascript")
 )
 jQuery ->
-  $('#header a, .pjax, .site_map a').pjax('[data-pjax-container]')
+  $('header a, menu a, .pjax, .site_map a').pjax('[data-pjax-container]')
 
   $('#wrapper').bind 'pjax:end', ->
     window.scroll(0,0)
 
   # clippy
-  $(".clippy").live 
+  $(".clippy").live
     clippycopy: (e, data) ->
       data.text = $(this).children(".clippy_code").text()
     clippyover: ->
@@ -27,4 +27,4 @@ jQuery ->
 
   # fix template error whit empty attribute
   $("#searchform #s, #searchform #go").val("")
-  
+

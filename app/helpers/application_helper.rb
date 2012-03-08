@@ -5,7 +5,6 @@ module ApplicationHelper
   end
 
   def title(object, show_title=true)
-    content_for(:title) { content_tag(:h2, object.name) + "\n" } if show_title
     content_for(:head)  { content_tag(:title, page_title(object)) + "\n" }
     content_for(:head)  { tag(:meta, :name => 'keywords', :content => object.keywords) + "\n" } if object.keywords.present?
     content_for(:head)  { tag(:meta, :name => 'description', :content => object.page_body) + "\n" } if object.page_body.present?
@@ -23,12 +22,7 @@ module ApplicationHelper
   end
 
   def link_to_menu(text, link)
-    link_to content_tag("span", text), link, :title => text, :class => "pjax"
-  end
-
-  def link_categories(categories)
-    categories = categories.collect{ |category| link_to(category.name, category_path(category.permalink), :class => "pjax") }
-    categories.to_sentence.html_safe
+    link_to content_tag("span", text), link, title: text
   end
 
   def strip_markdown(text, size=400)

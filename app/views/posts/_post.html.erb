@@ -1,0 +1,12 @@
+<article>
+	<header>
+		<h2><%= post.linked_title %></h2>
+		<date><%= post.created %></date>
+	</header>
+	<%= textilize(post.summary) %>
+	<p><%= link_to(t(:read_more), post.path, :class => "pjax") %></p>
+	<aside>
+		<%= post.category_links %>
+		<strong><%= post.link_to_comments %></strong>
+	</aside>
+</article>

@@ -1,6 +1,7 @@
 pt:
   _true: 'sim'
   _false: 'não'
+  send: 'Enviar'
 
   #web-app-theme
   web-app-theme:
@@ -304,7 +305,7 @@ pt:
       not_saved: "Por favor verifique os error abaixo:"
       already_confirmed: "já esta confirmado"
       not_locked: "não está bloqueado"
-      
+
   devise:
     sessions:
       user:
@@ -339,7 +340,7 @@ pt:
         subject: 'Instruções de recuperação de senha'
       unlock_instructions:
         subject: 'Instruções de desbloqueio'
-        
+
   ############
   # show_for #
   ############
@@ -360,7 +361,7 @@ pt:
         alert: "Erro ao atualizar, por favor verifique os dados informados!"
       destroy:
         notice: "Removido com sucesso!"
-        alert: "Não pode ser removido!" 
+        alert: "Não pode ser removido!"
   ###############
   # Mailer #
   ###############

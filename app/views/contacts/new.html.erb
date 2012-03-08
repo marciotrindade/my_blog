@@ -1,0 +1,19 @@
+<% title page %>
+<header>
+	<h2><%= page.name %></h2>
+</header>
+<%= textilize(page.body) %>
+
+<fieldset class="contact">
+	<% flash.each do |type, message| %>
+		<p class="<%= type %>"><%= message %></p>
+	<% end %>
+
+	<%= simple_form_for @contact, validate: true, html: { id: "contact" } do |f| %>
+		<%= f.error_messages %>
+		<%= f.input :name %>
+		<%= f.input :email %>
+		<%= f.input :body %>
+		<%= f.submit t("send") %>
+	<% end %>
+</fieldset>
