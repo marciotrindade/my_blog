@@ -5,12 +5,14 @@
 		<h2><%= post.linked_title %></h2>
 		<date><%= post.created %></date>
 	</header>
-	<%= post.body %>
+	<%= post.body_formated %>
+
+  <%= render partial: "social" %>
+
+  <aside>
+    <%= post.category_links %>
+  </aside>
 </article>
-
-<%= render partial: "social" %>
-
-<hr>
 
 <div id="disqus_thread" name="comments"></div>
 <script type="text/javascript">

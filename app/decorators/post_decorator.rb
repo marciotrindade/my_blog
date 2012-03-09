@@ -17,8 +17,8 @@ class PostDecorator < ApplicationDecorator
     h.link_to(h.pluralize(comments.size, t(:one, :scope => :comments), t(:other, :scope => :comments)), path, :class => "pjax")
   end
 
-  def body
-    h.textilize(super)
+  def body_formated
+    h.textilize(body)
   end
 
 end
