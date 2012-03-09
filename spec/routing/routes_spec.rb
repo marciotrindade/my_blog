@@ -27,15 +27,11 @@ describe "routes" do
     it "should redirect to month" do
       {:get => '/2011/07/07'}.should_not be_routable
     end
-    describe "comments" do
-      respond_to_route({:post   => '/posts/1/comments'},                {:controller=>"comments", :action=>"create", :post_id=>"1"})
-    end
   end
 
   describe "for users" do
     respond_to_route({:get    => '/users/sign_in'},                   {:controller=>"devise/sessions", :action=>"new"})
     respond_to_route({:post   => '/users/sign_in'},                   {:controller=>"devise/sessions", :action=>"create"})
-    respond_to_route({:get    => '/users/sign_out'},                  {:controller=>"devise/sessions", :action=>"destroy"})
   end
 
   describe "for passwords" do

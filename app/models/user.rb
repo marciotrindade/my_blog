@@ -3,8 +3,6 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable, :lockable, :validatable and :timeoutable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :registerable
 
-  before_save :create_image_url
-
   belongs_to :role
 
   validates_presence_of :name, :email
