@@ -1,8 +1,5 @@
 class Comment < ActiveRecord::Base
 
-  include Gravtastic
-  gravtastic default: "mm"
-
   belongs_to :post, counter_cache: true
   belongs_to :user
 
@@ -23,10 +20,6 @@ class Comment < ActiveRecord::Base
 
   def url
     user.present? ? user.url : super
-  end
-
-  def gravatar_url
-    user.present? ? user.image_url : super
   end
 
 end

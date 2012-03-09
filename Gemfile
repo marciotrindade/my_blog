@@ -12,7 +12,6 @@ gem 'slim'
 gem 'decent_exposure'
 gem 'redcarpet', '1.17.2'
 gem 'coderay'
-gem 'gravtastic'
 gem 'responders'
 gem 'draper'
 
@@ -42,7 +41,6 @@ group :test do
   gem 'factory_girl_rails'
   gem 'simplecov', '>= 0.4.0', :require => false
 
-  gem 'spork', '>= 0.9.0.rc9'
   gem 'capybara'
   gem 'launchy'
   gem 'guard-rspec'

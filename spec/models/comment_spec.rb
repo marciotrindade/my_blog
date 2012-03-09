@@ -21,9 +21,4 @@ describe Comment do
     Comment.last.should == comment_one
   end
 
-  it "should has gravatar" do
-    comment = create(:comment)
-    comment.gravatar_url.should_not be_nil
-  end
-
 end
