@@ -15,26 +15,26 @@ gem 'coderay'
 gem 'responders'
 gem 'draper'
 
+gem 'jquery-rails'
+gem 'client_side_validations'
+gem 'rack-pjax'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'client_side_validations'
-gem 'rack-pjax'
-
 group :development do
+  gem 'pry'
+  gem 'pry-nav'
   gem 'thin'
 end
 
-group :console do
-  gem 'wirble'
-  gem 'hirb'
-end
-
 group :test do
+  gem 'pry'
+  gem 'pry-nav'
+
   gem 'rspec-rails'
   gem 'shoulda', '>= 3.0.0.beta2'
   gem 'database_cleaner'
@@ -44,5 +44,4 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'guard-rspec'
-  gem 'guard-spork'
 end
