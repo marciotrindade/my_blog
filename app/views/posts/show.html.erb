@@ -3,15 +3,15 @@
 <article>
 	<header>
 		<h2><%= post.linked_title %></h2>
-		<date><%= post.created %></date>
+		<time datetime="<%= post.created_at %>" pubdate><%= post.created %></time>
 	</header>
 	<%= post.body_formated %>
 
   <%= render partial: "social" %>
 
-  <aside>
-    <%= post.category_links %>
-  </aside>
+	<aside>
+		<%= post.category_links %>
+	</aside>
 </article>
 
 <div id="disqus_thread" name="comments"></div>
