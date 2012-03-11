@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.2'
-gem 'mysql2', '0.3.10'
+gem 'mysql2'
 
 gem 'devise'
 gem 'inherited_resources'
@@ -10,7 +10,7 @@ gem 'dynamic_form'
 gem 'settingslogic'
 gem 'slim'
 gem 'decent_exposure'
-gem 'redcarpet', '1.17.2'
+gem 'redcarpet'
 gem 'coderay'
 gem 'responders'
 gem 'draper'
