@@ -14,7 +14,7 @@ gem 'redcarpet'
 gem 'coderay'
 gem 'responders'
 gem 'draper'
-
+gem 'unicorn'
 gem 'jquery-rails'
 gem 'client_side_validations'
 gem 'rack-pjax'
