@@ -6,7 +6,7 @@ class PostDecorator < ApplicationDecorator
   end
 
   def created
-    h.l(post.created_at, :format => :long)
+    h.l(created_at, :format => :long)
   end
 
   def category_links

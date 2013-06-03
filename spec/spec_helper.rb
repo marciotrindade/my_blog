@@ -18,7 +18,8 @@ RSpec.configure do |config|
   config.include I18nMacros
   config.include ControllerMacros
   config.include RoutesMacros
-  config.include Factory::Syntax::Methods
+  config.include FactoryGirl::Syntax::Methods
+  config.include Capybara::DSL
 
   config.use_transactional_fixtures = true
 

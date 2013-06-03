@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.13'
 gem 'mysql2'
 
 gem 'devise'
@@ -16,7 +16,7 @@ gem 'responders'
 gem 'draper'
 gem 'unicorn'
 gem 'jquery-rails'
-gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 gem 'rack-pjax'
 
 group :assets do
@@ -26,6 +26,8 @@ group :assets do
 end
 
 group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'pry'
   gem 'pry-nav'
   gem 'thin'
@@ -39,7 +41,7 @@ group :test do
   gem 'shoulda', '>= 3.0.0.beta2'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'simplecov', '>= 0.4.0', :require => false
+  gem 'simplecov', '>= 0.4.0', require: false
 
   gem 'capybara'
   gem 'launchy'
