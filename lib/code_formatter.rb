@@ -36,7 +36,7 @@ class CodeFormatter
     when /\.scss$/ then "css"
     when /\.erb$/, /\.html$/ then "rhtml"
     when /\.h$/, /\.m$/ then "c"
-    when /\.rb$/, /\.rake$/, /\.gemspec/, /\.Gemfile/, /\.Guardfile/, /file$/, /console$/ then "ruby"
+    when /\.rb$/, /\.rake$/, /\.gemspec/, /\.Gemfile/, /\.Guardfile/, /\.rspec/, /file$/, /console$/ then "ruby"
     when /\.ctp$/, /\.php$/ then "php"
     when /\./ then path[/\.([^.]+?)$/, 1]
     else path
