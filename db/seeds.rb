@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 # roles
 role = Role.find_or_create_by_name("Admin")
 role.save

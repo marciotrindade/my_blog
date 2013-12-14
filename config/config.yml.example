@@ -6,14 +6,7 @@ development: &defaults
     email: "myemail@mydomain.com"
   paginate:
     per_page: 25
-  smtp_settings:
-    address: "smtp.gmail.com"
-    port: 587
-    domain: "gmail.com"
-    user_name: "my_user_of_gmail"
-    password: "my_pass_of_gmail"
-    authentication: "plain"
-    enable_starttls_auto: true
+  secret_token: f521441eb79b1ddf6203ff72e24888f270df879357ee164b1ba2a95cf6eff0aad0950ff6d80d8c4acf71fbfc3120c4852894bb420fd43d77db9e3ba30370c59e
 
 test:
   <<: *defaults
