@@ -1,6 +1,7 @@
 <% title @page %>
-<header>
-  <h2><%= @page.name %></h2>
+
+<header class="header-content">
+  <h1 class="title-1"><%= @page.name %></h1>
 </header>
 
 <ul class="sitemap">
@@ -10,14 +11,14 @@
   <% end %>
 </ul>
 
-<h2><%= t(:categories) %></h2>
+<h2><%= t('.categories') %></h2>
 <ul class="sitemap">
   <% @categories.each do |category| %>
     <li><%= link_to category.name, category_path(category.permalink) %></li>
   <% end %>
 </ul>
 
-<h2><%= t(:posts) %></h2>
+<h2><%= t('.posts') %></h2>
 <ul class="sitemap">
   <% @posts.each do |post| %>
     <li><%= link_to post.name, post.path %></li>
