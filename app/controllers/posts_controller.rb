@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @page            = home_page
     @page.page_title = t(:title,       scope: %w(posts by_date), date: date_for_meta_tag)
     @page.page_body  = t(:description, scope: %w(posts by_date), date: date_for_meta_tag)
-    @posts           = Post.by_date(params[:year],params[:month], params[:day]).page
+    @posts           = Post.by_date(params[:year],params[:month], params[:day]).page(params[:page])
   end
 
   private
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   end
 
   def load_posts
-    posts = Post.page(params[:page]).per(10)
+    posts = Post.page(params[:page])
     posts = posts.active unless admin?
     posts
   end
