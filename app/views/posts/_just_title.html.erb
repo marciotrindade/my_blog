@@ -6,6 +6,6 @@
 	<%= strip_markdown(post.summary) %>
 	<aside>
 		<%= post.category_links %>
-		<strong><%= link_to(t(:read_more), post.path, :class => "pjax") %></strong>
+		<strong><%= link_to(t(:read_more), post.path) %></strong>
 	</aside>
 </article>
