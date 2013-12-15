@@ -38,12 +38,6 @@ FactoryGirl.define do
     page_body   "short description for this category"
   end
 
-  factory :comment do
-    user  { FactoryGirl.create(:user) }
-    post  { FactoryGirl.create(:post) }
-    body  "My message is here."
-  end
-
   factory :page do
     name
     body        "my page content"
