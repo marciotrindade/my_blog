@@ -2,7 +2,7 @@
 
 <article>
 	<header>
-		<h2><%= @post.name %></h2>
+		<h1 class="title-1"><%= @post.name %></h1>
 		<time datetime="<%= @post.created_at %>" pubdate><%= @post.created %></time>
 	</header>
 	<%= @post.body_formated %>
@@ -11,7 +11,19 @@
 		<%= @post.category_links %>
 	</aside>
 
-	<%= render partial: "social" %>
+	<div class="social">
+		<%= link_to "Tweet", "http://twitter.com/share", class: 'twitter-share-button', data: { count: "horizontal", text: @post.name, url: "#{request.base_url}#{@post.path}", via: "marciotrindade" } %>
+		<%= javascript_include_tag "http://platform.twitter.com/widgets.js" %>
+		<g:plusone size="medium"></g:plusone>
+		<script type="text/javascript">
+			window.___gcfg = {lang: 'pt-BR'};
+			(function() {
+				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				po.src = 'https://apis.google.com/js/plusone.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			})();
+		</script>
+	</div>
 </article>
 
 <div id="disqus_thread" name="comments"></div>
