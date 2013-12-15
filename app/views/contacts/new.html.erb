@@ -1,18 +1,38 @@
-<% title page %>
-<header>
-	<h2><%= page.name %></h2>
+<% title @page %>
+
+<header class="header-content">
+	<h1 class="title-1"><%= @page.name %></h1>
 </header>
-<%= textilize(page.body) %>
 
-<fieldset class="contact">
-	<% flash.each do |type, message| %>
-		<p class="<%= type %>"><%= message %></p>
-	<% end %>
+<%= textilize(@page.body) %>
 
-	<%= simple_form_for @contact, validate: true, html: { id: "contact" } do |f| %>
-		<%= f.input :name %>
-		<%= f.input :email %>
-		<%= f.input :body %>
-		<%= f.submit t("send") %>
-	<% end %>
-</fieldset>
+<% flash.each do |type, message| %>
+	<p class="<%= type %>"><%= message %></p>
+<% end %>
+
+<%= form_for @contact, validate: true, html: { id: "contact",  role: "form" } do |f| %>
+
+	<fieldset>
+		<div class="form-group <%= validate_class(@contact.errors, :name) %>">
+			<%= f.label :name, class: "control-label" %>
+			<%= f.text_field :name, class: "form-control" %>
+			<%= errors_for(@contact.errors, :name) %>
+		</div>
+
+		<div class="form-group <%= validate_class(@contact.errors, :email) %>">
+			<%= f.label :email, class: "control-label" %>
+			<%= f.text_field :email, class: "form-control" %>
+			<%= errors_for(@contact.errors, :email) %>
+		</div>
+
+		<div class="form-group <%= validate_class(@contact.errors, :body) %>">
+			<%= f.label :body, class: "control-label" %>
+			<%= f.text_area :body, class: "form-control", rows: "8" %>
+			<%= errors_for(@contact.errors, :body) %>
+		</div>
+
+		<div class="box-actions">
+			<%= f.submit t('.send'), disable_with: t('.sending'), class: "btn btn-default" %>
+		</div>
+	</fieldset>
+<% end %>

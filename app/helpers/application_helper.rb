@@ -45,4 +45,16 @@ module ApplicationHelper
     content.html_safe
   end
 
+  def validate_class(object, field)
+    "has-error" if object[field].present?
+  end
+
+  def errors_for(object, field)
+    if object[field].present?
+      content_tag :p, class: "help-block" do
+        object[field].join('<br>').html_safe
+      end
+    end
+  end
+
 end

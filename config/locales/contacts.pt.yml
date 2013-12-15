@@ -1,0 +1,5 @@
+pt:
+  contacts:
+    new:
+      send: Enviar
+      sending: Enviando ...
