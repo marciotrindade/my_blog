@@ -10,3 +10,6 @@ pt:
         contact:  Contato
         home:     Home
         sitemap:  Sitemap
+    sidebar:
+      archive: Arquivo
+      categories: Categorias
