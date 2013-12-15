@@ -3,27 +3,8 @@ pt:
   _false: 'não'
   send: 'Enviar'
 
-  #web-app-theme
-  web-app-theme:
-    save: 'Salvar'
-    cancel: 'Cancelar'
-    import: 'Importar'
-    update: 'Atualizar'
-    list: 'Listar'
-    search: 'Buscar'
-    edit: 'Editar'
-    new: 'Adicionar'
-    show: 'Detalhes'
-    delete: 'Excluir'
-    confirm: 'Você tem certeza?'
-    created_at: 'Criado em'
-    all: 'Todos'
-
-  send_your_comment: "Deixe um comentário"
-  subscribe: "Assine o RSS"
-  read_more: "Ler mais..."
-  send: "Enviar"
-  arquive: "Arquivos"
+  send_your_comment: Deixe um comentário
+  send:      Enviar
 
   posts_by_date:
     page_title: 'Artigos publicados entre %{date}'
@@ -40,40 +21,17 @@ pt:
     create:
       submit: 'Enviar'
 
-  comments:
-    empty: "Nenhum comentário ainda."
-    one: "Comentário"
-    other: "Comentários"
-    success: "Seu comentário foi adicionado com sucesso."
-    error: "Ocorreu um erro ao enviar seu comentário, por favor tente novamente."
 
-  home: 'Home'
-  my_account: 'Minha conta'
-  signin: 'Login'
-  register: 'Registrar'
-  signup: 'Faça seu cadastro agora mesmo'
-  logout: 'Sair'
-  forgot: 'Esqueceu sua senha?'
-  change_my_password: 'Alterar minha senha'
-  categories: 'Categorias'
-  posts: 'Artigos'
+  # home: 'Home'
+  # my_account: 'Minha conta'
+  # signin: 'Login'
+  # register: 'Registrar'
+  # signup: 'Faça seu cadastro agora mesmo'
+  # logout: 'Sair'
+  # forgot: 'Esqueceu sua senha?'
+  # change_my_password: 'Alterar minha senha'
+  # posts: 'Artigos'
 
-  menu:
-    home: "Home"
-    about_me: "Sobre o autor"
-    contact: "Contato"
-    user: 'Usuários'
-    role: 'Grupos de acesso'
-    contact: 'Contatos'
-    category: 'Categorias'
-    page: 'Páginas'
-    comment: 'Comentários'
-    sitemap: 'Sitemap'
-
-  footer:
-    about_us: 'Sobre nós'
-    advertise: 'Anuncie conosco'
-    contact_us: 'Entre em contato'
   # admin breadcrumb
   breadcrumbs:
     create: 'Adicionar'
@@ -86,11 +44,6 @@ pt:
     category: 'Categorias'
     comment: 'Comentários'
     contact: 'Contato'
-
-  # will_paginate
-  will_paginate:
-    previous_label: '&laquo; Anterior'
-    next_label: 'Próxima &raquo;'
 
   # Active Record
   attributes:
@@ -341,13 +294,6 @@ pt:
       unlock_instructions:
         subject: 'Instruções de desbloqueio'
 
-  ############
-  # show_for #
-  ############
-  show_for:
-    blank: 'não informado'
-    yes: 'sim'
-    no: 'não'
   ######################
   # inherited_resource #
   ######################

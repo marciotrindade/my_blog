@@ -1,0 +1,8 @@
+pt:
+  posts:
+    post:
+      read_more: "Ler mais..."
+  layouts:
+    sidebar:
+      archive: Arquivo
+      categories: Categorias
