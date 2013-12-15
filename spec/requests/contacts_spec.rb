@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Contacts" do
 
   describe "POST /contact" do
-    before(:all) do
+    before do
       create(:page, :name=>"Contato")
     end
 
