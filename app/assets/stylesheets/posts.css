@@ -1,0 +1,23 @@
+article {
+  margin-bottom: 30px;
+}
+article time {
+  font-style: italic;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+article aside {
+  margin-top: 20px;
+}
+
+article .label a {
+  color: white;
+}
+
+article aside strong {
+  font-size: 13px;
+  display: block;
+  margin-top: 10px;
+}
