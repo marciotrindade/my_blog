@@ -2,27 +2,44 @@ require 'spec_helper'
 
 describe User do
 
-  it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:email) }
-  it { should belong_to(:role) }
+  describe "validations" do
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:email) }
+    it { should belong_to(:role) }
 
-  it "should has valid attributes" do
-    user = build(:user)
-    user.should be_valid
+    describe "email_format" do
+      context "when emai is valid" do
+        subject { build(:user, email: "test@test.com") }
+
+        it "returns true" do
+          expect(subject).to be_valid
+        end
+      end
+
+      context "when emai is valid" do
+        subject { build(:user, email: "test") }
+
+        it "returns false" do
+          expect(subject).to_not be_valid
+        end
+      end
+    end
   end
 
-  it "should validate email format" do
-    user = build(:user, email: "test")
-    user.should_not be_valid
-    user.email = "test@test.com"
-    user.should be_valid
-  end
+  describe "#admin?" do
+    context "when role is 1" do
+      subject { build(:user, role_id: 1) }
+      it "returns true" do
+        expect(subject).to be_admin
+      end
+    end
 
-  it "should check if is an admin" do
-    @user = build(:user, :role_id => 1)
-    @user.admin?.should be_true
-    @user.role_id = 2
-    @user.admin?.should be_false
+    context "when role is 2" do
+      subject { build(:user, role_id: 2) }
+      it "returns flase" do
+        expect(subject).to_not be_admin
+      end
+    end
   end
 
 end

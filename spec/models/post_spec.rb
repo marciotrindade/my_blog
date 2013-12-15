@@ -2,103 +2,116 @@ require 'spec_helper'
 
 describe Post do
 
-  context "validations" do
-    subject { create(:post, permalink: "test") }
-    it { should validate_uniqueness_of(:permalink) }
+  describe "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:body) }
     it { should validate_presence_of(:keywords) }
     it { should validate_presence_of(:page_body) }
+    context "uniqueness" do
+      before { create(:post, permalink: "test") }
+      it { should validate_uniqueness_of(:permalink) }
+    end
   end
 
-  context "assosiations" do
+  describe "assosiations" do
     it { should have_and_belong_to_many(:categories) }
   end
 
-  it "default scope order by name" do
-    post_one = create(:post, created_at: Date.today - 1.day)
-    post_two = create(:post, created_at: Date.today)
-
-    Post.first.should == post_two
-    Post.last.should == post_one
-  end
-
-  context "self methods" do
-    it "should respond to active" do
-      Post.active.should == Post.where(active: true)
+  describe "scopes" do
+    it "default order by created_at" do
+      expect(Post.all.to_sql).to match(/ORDER BY created_at DESC/)
     end
 
-    it "should respond to recent" do
-      Post.recent.should == Post.limit(10)
+    it ".active" do
+      expect(Post.active.where_values_hash).to eq("active" => true)
     end
 
-    it "should respond to dates" do
-      Post.dates.should == Post.select("created_at").group("YEAR(created_at), MONTH(created_at)")
-    end
-    
-    it "should respond to by_date with year" do
-      Post.by_date(Date.today.year).should == Post.where("created_at BETWEEN ? AND ?", *Post.time_interval(Date.today.year))
-    end
-
-    it "should respond to by_date with year and month" do
-      d = Date.today
-      Post.by_date(d.year, d.month).should == Post.where("created_at BETWEEN ? AND ?", *Post.time_interval(d.year, d.month))
-    end
-
-    it "should respond to by_date with year, month and day" do
-      d = Date.today
-      Post.by_date(d.year, d.month, d.day).should == Post.where("created_at BETWEEN ? AND ?", *Post.time_interval(d.year, d.month, d.day))
-    end
-    
-    it "should respond to time_interval with year" do
-      d = Date.today
-      Post.time_interval(d.year).should == [d.to_time.beginning_of_year, d.to_time.end_of_year]
-    end
-
-    it "should respond to time_interval with year and month" do
-      d = Date.today
-      Post.time_interval(d.year, d.month).should == [d.to_time.beginning_of_month, d.to_time.end_of_month]
-    end
-
-    it "should respond to time_interval with year, month and day" do
-      d = Date.today
-      Post.time_interval(d.year, d.month, d.day).should == [d.to_time.beginning_of_day, d.to_time.end_of_day]
+    it ".recent" do
+      expect(Post.recent.limit_value).to eq(10)
     end
   end
 
-  context "with a instance" do
-    before(:all) do
-      @post = create(:post, summary: nil, active: true)
+  describe "with a instance" do
+    subject { create(:post, summary: nil, active: true) }
+
+    it "#year path" do
+      expect(subject.year_path).to eq("/#{Date.today.year}")
     end
 
-    it "should has year path" do
-      @post.year_path.should == "/#{Date.today.year}"
+    it "#month path" do
+      expect(subject.month_path).to eq("/#{Date.today.year}/#{Date.today.month}")
     end
 
-    it "should has month path" do
-      @post.month_path.should == "/#{Date.today.year}/#{Date.today.month}"
+    it "#day path" do
+      expect(subject.day_path).to eq("/#{Date.today.year}/#{Date.today.month}/#{Date.today.day}")
     end
 
-    it "should has day path" do
-      @post.day_path.should == "/#{Date.today.year}/#{Date.today.month}/#{Date.today.day}"
+    it "#path" do
+      expect(subject.path).to eq("/#{Date.today.year}/#{Date.today.month}/#{Date.today.day}/#{subject.permalink}")
     end
 
-    it "should has path" do
-      @post.path.should == "/#{Date.today.year}/#{Date.today.month}/#{Date.today.day}/#{@post.permalink}"
+    it "#summary" do
+      expect(subject.summary).to eq(subject.body)
     end
 
-    it "should use body when summary is nil" do
-      @post.summary.should == @post.body
+    it "#page_title" do
+      expect(subject.page_title).to eq(subject.name)
     end
-    
-    it "should return total of posts in the same month" do
-      @post.total_in_month.should == 1
-      create(:post, active: true)
-      @post.total_in_month.should == 2
-      create(:post, active: false)
-      @post.total_in_month.should == 2
-      create(:post, created_at: Date.today - 1.month, active: true)
-      @post.total_in_month.should == 2
+  end
+
+  describe ".by_date" do
+    let(:today) { Date.today }
+
+    context "with year" do
+      let(:expected) { Post.where("created_at BETWEEN ? AND ?", *Post.time_interval(today.year)).to_sql }
+      it "returns sql" do
+        expect(Post.by_date(today.year).to_sql).to eq(expected)
+      end
+    end
+
+    context "with year and month" do
+      let(:expected) { Post.where("created_at BETWEEN ? AND ?", *Post.time_interval(today.year, today.month)).to_sql }
+      it "returns sql" do
+        expect(Post.by_date(today.year, today.month).to_sql).to eq(expected)
+      end
+    end
+
+    context "with year, month and day" do
+      let(:expected) { Post.where("created_at BETWEEN ? AND ?", *Post.time_interval(today.year, today.month, today.day)).to_sql }
+      it "returns sql" do
+        expect(Post.by_date(today.year, today.month, today.day).to_sql).to eq(expected)
+      end
+    end
+  end
+
+  describe ".time_interval" do
+    let(:d) { Date.today }
+
+    it "with year" do
+      expect(Post.time_interval(d.year)).to eq([d.to_time.beginning_of_year, d.to_time.end_of_year])
+    end
+
+    it "with year and month" do
+      expect(Post.time_interval(d.year, d.month)).to eq([d.to_time.beginning_of_month, d.to_time.end_of_month])
+    end
+
+    it "with year, month and day" do
+      expect(Post.time_interval(d.year, d.month, d.day)).to eq([d.to_time.beginning_of_day, d.to_time.end_of_day])
+    end
+  end
+
+  describe ".archive" do
+    let!(:post1) { create(:post, created_at: Date.new(2013, 12, 1)) }
+    let!(:post2) { create(:post, created_at: Date.new(2013, 12, 10)) }
+    let!(:post3) { create(:post, created_at: Date.new(2013, 11, 1)) }
+
+    it "returns 3 objects" do
+      expect(Post.archive.to_a).to have(2).items
+    end
+
+    it "returns grouped total" do
+      expect(Post.archive.first.total).to eq(2)
+      expect(Post.archive.last.total).to eq(1)
     end
   end
 

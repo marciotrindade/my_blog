@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :password_confirmation, :on => :create
   validates :email, email_format: true
 
-  default_scope order(:name)
+  default_scope -> { order(:name) }
 
   def admin?
     role_id == 1
