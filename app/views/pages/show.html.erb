@@ -1,3 +1,7 @@
-<% title page %>
-<h2><%= page.name %></h2>
-<%= textilize(page.body) %>
+<% title @page %>
+
+<header class="header-content">
+	<h1 class="title-1"><%= @page.name %></h1>
+</header>
+
+<%= textilize(@page.body) %>
