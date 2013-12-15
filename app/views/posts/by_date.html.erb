@@ -1,2 +1,3 @@
 <% title @page %>
-<%= render partial: "posts/just_title", collection: posts, as: :post %>
+<%= render @posts.decorate %>
+<%= app_pagination @posts %>

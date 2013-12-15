@@ -10,17 +10,21 @@ class PostsController < ApplicationController
   end
 
   def by_date
-    @page = home_page
-    # @page.page_title = t(:page_title, scope: [:posts_by_date], date: meta_date)
-    # @page.page_body  = t(:page_body,  scope: [:posts_by_date], date: meta_date)
+    @page            = home_page
+    @page.page_title = t(:title,       scope: %w(posts by_date), date: date_for_meta_tag)
+    @page.page_body  = t(:description, scope: %w(posts by_date), date: date_for_meta_tag)
+    @posts           = Post.by_date(params[:year],params[:month], params[:day]).page
   end
 
   private
 
-  # def meta_date
-  #   dates = Post.time_interval(params[:year],params[:month], params[:day]).map(&:to_date)
-  #   "#{l(dates.first)} - #{l(dates.last)}"
-  # end
+  def date_for_meta_tag
+    year   = params[:year].to_i
+    month  = params[:month].present? ? params[:month].to_i : 1
+    date   = Date.new(year, month)
+    format = params[:month] ? :month : :year
+    l(date, format: format)
+  end
 
   def home_page
     Page.where(permalink: 'home').first

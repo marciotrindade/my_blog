@@ -1,5 +1,5 @@
 <div class="social">
-	<%= link_to "Tweet", "http://twitter.com/share", class: 'twitter-share-button', data: { count: "horizontal", text: post.name, url: "#{request.base_url}#{post.path}", via: "marciotrindade" } %>
+	<%= link_to "Tweet", "http://twitter.com/share", class: 'twitter-share-button', data: { count: "horizontal", text: @post.name, url: "#{request.base_url}#{@post.path}", via: "marciotrindade" } %>
 	<%= javascript_include_tag "http://platform.twitter.com/widgets.js" %>
 	<g:plusone size="medium"></g:plusone>
 	<script type="text/javascript">

@@ -6,10 +6,6 @@ pt:
   send_your_comment: Deixe um comentário
   send:      Enviar
 
-  posts_by_date:
-    page_title: 'Artigos publicados entre %{date}'
-    page_body: 'Lista de todos artigos que foram publicados entre %{date}'
-
   registration:
     create:
       title: 'Criar meu usuário'
@@ -20,7 +16,6 @@ pt:
   password:
     create:
       submit: 'Enviar'
-
 
   # home: 'Home'
   # my_account: 'Minha conta'
@@ -133,14 +128,9 @@ pt:
   # formatos de data e hora
   date:
     formats:
-      index: "%a, %d.%b.%Y"
       default: "%d/%m/%Y"
-      short: "%d de %B"
-      long: "%A, %d de %B de %Y"
-      only_day: "%d"
-      month: "%B"
-      day: "Dia %d, %A"
-      title_month: "%B de %Y"
+      year: "%Y"
+      month: "%B de %Y"
 
     day_names: ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"]
     abbr_day_names: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
@@ -153,19 +143,12 @@ pt:
   time:
     formats:
       default: "%d/%m/%Y - %Hh%M"
-      date: "%d/%m/%Y"
-      time: "%H:%M h"
-      archive: "%B %Y"
-      short: "%b/%y"
-      long: "%A, %d de %B de %Y"
-      only_second: "%S"
-      comment: "%d/%m/%Y %H:%M"
-      w3c: "%Y-%m-%dT%H:%M:%S+00:00"
-      datetime:
-        formats:
-          default: "%Y-%m-%dT%H:%M:%S%Z"
-    am: ''
-    pm: ''
+      date:    "%d/%m/%Y"
+      time:    "%H:%M h"
+      archive: "%Y %B"
+      short:   "%b/%y"
+      day:     "%d de %B de %Y"
+      w3c:     "%Y-%m-%dT%H:%M:%S+00:00"
 
   # date helper distanci em palavras
   datetime:

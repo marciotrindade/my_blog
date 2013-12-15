@@ -2,7 +2,7 @@ class PostDecorator < ApplicationDecorator
   decorates :post
 
   def created
-    I18n.l(created_at, format: :long)
+    I18n.l(created_at, format: :day)
   end
 
   def category_links

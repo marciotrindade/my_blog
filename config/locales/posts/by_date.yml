@@ -1,0 +1,5 @@
+pt:
+  posts:
+    by_date:
+      title:       Artigos publicados em %{date}
+      description: Lista de todos artigos que foram publicados em %{date}
