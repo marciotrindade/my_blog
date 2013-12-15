@@ -3,30 +3,6 @@ pt:
   _false: 'não'
   send: 'Enviar'
 
-  send_your_comment: Deixe um comentário
-  send:      Enviar
-
-  registration:
-    create:
-      title: 'Criar meu usuário'
-      submit: 'Criar'
-    update:
-      title: 'Editar minha conta'
-      submit: 'Salvar'
-  password:
-    create:
-      submit: 'Enviar'
-
-  # home: 'Home'
-  # my_account: 'Minha conta'
-  # signin: 'Login'
-  # register: 'Registrar'
-  # signup: 'Faça seu cadastro agora mesmo'
-  # logout: 'Sair'
-  # forgot: 'Esqueceu sua senha?'
-  # change_my_password: 'Alterar minha senha'
-  # posts: 'Artigos'
-
   # admin breadcrumb
   breadcrumbs:
     create: 'Adicionar'
@@ -113,7 +89,7 @@ pt:
         less_than_or_equal_to: "deve ser menor ou igual a %{count}"
         odd: "deve ser ímpar"
         even: "deve ser par"
-        email_format: "use um email válido"
+        email_format: "não é um email válido"
         page_not_found: "Página não encontrada"
 
   # active suport (validações)
