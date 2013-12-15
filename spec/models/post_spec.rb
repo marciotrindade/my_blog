@@ -13,7 +13,6 @@ describe Post do
 
   context "assosiations" do
     it { should have_and_belong_to_many(:categories) }
-    it { should have_many(:comments) }
   end
 
   it "default scope order by name" do
