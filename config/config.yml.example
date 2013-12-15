@@ -7,6 +7,7 @@ development: &defaults
   paginate:
     per_page: 25
   secret_token: f521441eb79b1ddf6203ff72e24888f270df879357ee164b1ba2a95cf6eff0aad0950ff6d80d8c4acf71fbfc3120c4852894bb420fd43d77db9e3ba30370c59e
+  devise_secret_key: 067356750846431b104a6a870cf939b420be661264083424ec94c1452d55295f5bcb36060d92006e7f0d26eeb6276f6da1da750f135c76328d8232ee6bdab673
 
 test:
   <<: *defaults
