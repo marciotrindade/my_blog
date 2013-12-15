@@ -25,10 +25,6 @@ describe Post do
     it ".active" do
       expect(Post.active.where_values_hash).to eq("active" => true)
     end
-
-    it ".recent" do
-      expect(Post.recent.limit_value).to eq(10)
-    end
   end
 
   describe "with a instance" do
