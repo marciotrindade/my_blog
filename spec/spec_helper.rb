@@ -7,11 +7,7 @@ ENV["RAILS_ENV"] ||= 'test'
 
 
 require File.expand_path("../../config/environment", __FILE__)
-require 'factory_girl_rails'
-require 'pry'
-require 'rspec/autorun'
 require 'rspec/rails'
-require 'shoulda-matchers'
 
 Rails.logger.level = 4
 
