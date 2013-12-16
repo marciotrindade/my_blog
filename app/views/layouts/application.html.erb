@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 <head>
-  <%= yield(:head) %>
-  <meta charset="utf-8">
-  <meta content="chrome=1" http-equiv="X-UA-Compatible" />
-  <meta content="C50914221BE3C76FE4370CF3DA977E81" name="msvalidate.01" />
-  <meta content="Marcio Trindade" name="author" />
-  <meta content="global" name="distribution" />
-  <meta content="5 days" name="revisit-after" />
-  <meta content="Marcio Trindade" name="copyright" />
-  <link href="/favicon.ico" rel="icon" type="image/x-icon" />
-  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<%= yield(:head) %>
+	<meta charset="utf-8">
+	<meta content="chrome=1" http-equiv="X-UA-Compatible" />
+	<meta content="C50914221BE3C76FE4370CF3DA977E81" name="msvalidate.01" />
+	<meta content="Marcio Trindade" name="author" />
+	<meta content="global" name="distribution" />
+	<meta content="5 days" name="revisit-after" />
+	<meta content="Marcio Trindade" name="copyright" />
+	<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <%= csrf_meta_tags %>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<%= csrf_meta_tags %>
 
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="http://assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
-  <%= stylesheet_link_tag :application %>
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="http://assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
+	<%= stylesheet_link_tag :application %>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header" role="banner">
-    <div class="container">
-      <span class="control-menu visible-xs ico-menu-2"></span>
-      <span class="control-sidebar visible-xs ico-list"></span>
-      <h1 class="project-name"><%= link_to AppConfig.site.name, root_path, title: AppConfig.site.name %></h1>
-      <%= link_to t(".subscribe"), feed_url, class: "help-sugestions hidden-xs" %>
-    </div>
-  </header>
+	<!-- Header -->
+	<header class="header" role="banner">
+		<div class="container">
+			<span class="control-menu visible-xs ico-menu-2"></span>
+			<span class="control-sidebar visible-xs ico-list"></span>
+			<h1 class="project-name"><%= link_to AppConfig.site.name, root_path, title: AppConfig.site.name %></h1>
+			<%= link_to t(".subscribe"), feed_url, class: "help-sugestions hidden-xs" %>
+		</div>
+	</header>
 
-  <!-- Menu -->
-  <div class="nav-content">
-    <menu class="menu">
-      <ul class="container">
-        <li><%= link_to_menu 'home',     root_path,                  "posts", {class: "ico-home"} %></li>
-        <li><%= link_to_menu 'about_me', page_path("sobre-o-autor"), "pages" %></li>
-        <li><%= link_to_menu 'contact',  new_contact_path,           "contacts" %></li>
-        <li><%= link_to_menu 'sitemap',  sitemap_path,               "sitemap" %></li>
-      </ul>
-    </menu>
-  </div>
+	<!-- Menu -->
+	<div class="nav-content">
+		<menu class="menu">
+			<ul class="container">
+				<li><%= link_to_menu 'home',     root_path,                  "posts", {class: "ico-home"} %></li>
+				<li><%= link_to_menu 'about_me', page_path("sobre-o-autor"), "pages" %></li>
+				<li><%= link_to_menu 'contact',  new_contact_path,           "contacts" %></li>
+				<li><%= link_to_menu 'sitemap',  sitemap_path,               "sitemap" %></li>
+			</ul>
+		</menu>
+	</div>
 
-  <!-- Content -->
-  <main class="main">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9 content" role="main">
-          <%= yield %>
-        </div>
-        <aside class="col-md-3 sidebar" role="complementary">
-          <%= render 'layouts/sidebar' %>
-        </aside>
-      </div>
-    </div>
-  </main>
+	<!-- Content -->
+	<main class="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 content" role="main">
+					<%= yield %>
+				</div>
+				<aside class="col-md-3 sidebar" role="complementary">
+					<%= render 'layouts/sidebar' %>
+				</aside>
+			</div>
+		</div>
+	</main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-menu">
-      <nav class="container">
-        <h2 class="title-footer"><%= t('.footer.title') %></h2>
-        <ul class="no-liststyle">
-          <li><a href="<%= new_contact_path %>" class="bg-customer-support"><span class="visible-lg"><%= t('.footer.contact') %></span></a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="container footer-info">
-      <p class="copy-right">Copyright © <%= Date.today.year %> <%= AppConfig.site.name %>.</p>
-    </div>
-  </footer>
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="footer-menu">
+			<nav class="container">
+				<h2 class="title-footer"><%= t('.footer.title') %></h2>
+				<ul class="no-liststyle">
+					<li><a href="<%= new_contact_path %>" class="bg-customer-support"><span class="visible-lg"><%= t('.footer.contact') %></span></a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="container footer-info">
+			<p class="copy-right">Copyright © <%= Date.today.year %> <%= AppConfig.site.name %>.</p>
+		</div>
+	</footer>
 
-  <!-- Scripts -->
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script type="text/javascript" src="http://assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.js"></script>
-  <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-  <%= javascript_include_tag :application %>
+	<!-- Scripts -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="http://assets.locaweb.com.br/locastyle/edge/javascript/locastyle.js"></script>
+	<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+	<%= javascript_include_tag :application %>
 </body>
 </html>
