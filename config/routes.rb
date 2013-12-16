@@ -13,14 +13,12 @@ Blog::Application.routes.draw do
   resources :posts,       only: [:show]
 
   namespace :admin do
-    root to: "pages#home", via: :get
-    resources :pages,      except: [:show]
-    resources :roles,      except: [:show]
-    resources :contacts,   except: [:show]
-    resources :posts,      except: [:show]
+    root to: "posts#index", via: :get
+
     resources :categories, except: [:show]
-    resources :comments,   except: [:show]
-    resources :users,      except: [:show]
+    resources :contacts,   except: [:show]
+    resources :pages,      except: [:show]
+    resources :posts,      except: [:show]
   end
 
 end
