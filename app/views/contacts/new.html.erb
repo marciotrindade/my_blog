@@ -10,25 +10,24 @@
 	<p class="<%= type %>"><%= message %></p>
 <% end %>
 
-<%= form_for @contact, validate: true, html: { id: "contact",  role: "form" } do |f| %>
-
+<%= form_for @contact, html: { id: "contact",  role: "form" } do |f| %>
 	<fieldset>
-		<div class="form-group <%= validate_class(@contact.errors, :name) %>">
+		<div class="form-group <%= f.error_class :name %>">
 			<%= f.label :name, class: "control-label" %>
 			<%= f.text_field :name, class: "form-control" %>
-			<%= errors_for(@contact.errors, :name) %>
+			<%= f.errors_for :name %>
 		</div>
 
-		<div class="form-group <%= validate_class(@contact.errors, :email) %>">
+		<div class="form-group <%= f.error_class :email %>">
 			<%= f.label :email, class: "control-label" %>
-			<%= f.text_field :email, class: "form-control" %>
-			<%= errors_for(@contact.errors, :email) %>
+			<%= f.email_field :email, class: "form-control" %>
+			<%= f.errors_for :email %>
 		</div>
 
-		<div class="form-group <%= validate_class(@contact.errors, :body) %>">
+		<div class="form-group <%= f.error_class :body %>">
 			<%= f.label :body, class: "control-label" %>
 			<%= f.text_area :body, class: "form-control", rows: "8" %>
-			<%= errors_for(@contact.errors, :body) %>
+			<%= f.errors_for :body %>
 		</div>
 
 		<div class="box-actions">
