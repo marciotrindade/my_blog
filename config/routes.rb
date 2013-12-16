@@ -1,5 +1,5 @@
 Blog::Application.routes.draw do
-  devise_for :users
+  devise_for :users, only: :sessions, :skip_helpers => true
 
   root to: "posts#index", via: :get
   get 'sitemap', to: 'sitemap#index', as: 'sitemap'
