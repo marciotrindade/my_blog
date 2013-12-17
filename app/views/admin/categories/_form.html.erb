@@ -1,0 +1,16 @@
+<%= form_for([:admin, @category]) do |f| %>
+	<fieldset>
+		<div class="form-group <%= f.error_class :name %>">
+			<%= f.label :name,      class: "control-label" %>
+			<%= f.text_field :name, class: "form-control" %>
+			<%= f.errors_for :name %>
+		</div>
+
+		<%= render 'meta_tags', f: f %>
+
+		<div class="box-actions">
+			<%= f.submit 'Send', class: "btn btn-success", data: { disable_with: 'Sending' } %>
+			<%= link_to 'Back', admin_categories_path, class: "btn btn-default" %>
+		</div>
+	</fieldset>
+<% end %>
