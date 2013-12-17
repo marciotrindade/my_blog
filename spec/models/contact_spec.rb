@@ -20,4 +20,10 @@ describe Contact do
       end
     end
   end
+
+  describe "scopes" do
+    it "default order by name" do
+      expect(Contact.all.to_sql).to match(/ORDER BY created_at DESC/)
+    end
+  end
 end
