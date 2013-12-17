@@ -4,6 +4,10 @@ describe PostsController do
 
   render_views
 
+  before do
+    allow(controller).to receive(:admin?).and_return(false)
+  end
+
   describe "on GET :index" do
     let!(:page) { create(:page, name: "Home")}
     let!(:post) { create(:post) }
