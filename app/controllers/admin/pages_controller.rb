@@ -7,10 +7,6 @@ class Admin::PagesController < Admin::BaseController
     @pages = Page.all
   end
 
-  # GET /pages/1
-  def show
-  end
-
   # GET /pages/new
   def new
     @page = Page.new

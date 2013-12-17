@@ -7,10 +7,6 @@ class Admin::PostsController < Admin::BaseController
     @posts = Post.all
   end
 
-  # GET /posts/1
-  def show
-  end
-
   # GET /posts/new
   def new
     @post = Post.new
