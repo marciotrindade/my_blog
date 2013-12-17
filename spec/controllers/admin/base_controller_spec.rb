@@ -1,35 +1,41 @@
 require 'spec_helper'
 
-describe Admin::UsersController do
+describe Admin::PagesController do
 
   include Devise::TestHelpers
 
   render_views
 
-  it "should permit to access the admin when have credentials" do
-    controller.stub(:check_credentials).and_return(true)
-    get :index
+  describe "check_credentials" do
+    context "when has credentials" do
+      before do
+        allow(controller).to receive(:check_credentials)
+        get :index
+      end
 
-    response.should be_success
-    mime_should_eq(:html)
-  end
+      it { should respond_with(:success) }
+    end
 
-  it "should not permit to access the admin when not logged in" do
-    get :index
+    context "when is not logged in" do
+      before do
+        get :index
+      end
 
-    flash[:alert].should == I18n.t("devise.failure.unauthenticated")
-    response.should redirect_to(new_user_session_path)
-  end
+      it { should set_the_flash[:alert].to(I18n.t("devise.failure.unauthenticated")) }
+      it { should redirect_to(new_user_session_path) }
+    end
 
-  it "should not permit to access the admin when logged but don't have credentials" do
-    @user = create(:user)
-    controller.stub(:current_user).and_return(@user)
-    controller.stub(:authenticate_user!).and_return(true)
+    context "when is logged, but isn't an admin" do
+      let(:user) { create(:user) }
+      before do
+        allow(controller).to receive(:current_user).and_return(user)
+        allow(controller).to receive(:authenticate_user!)
+        get :index
+      end
 
-    get :index
-
-    flash[:alert].should == I18n.t("devise.failure.access_denied")
-    response.should redirect_to(root_path)
+      it { should set_the_flash[:alert].to(I18n.t("devise.failure.access_denied")) }
+      it { should redirect_to(root_path) }
+    end
   end
 
 end
