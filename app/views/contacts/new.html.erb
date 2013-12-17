@@ -31,7 +31,7 @@
 		</div>
 
 		<div class="box-actions">
-			<%= f.submit t('.send'), disable_with: t('.sending'), class: "btn btn-default" %>
+			<%= f.submit t('.send'), class: "btn btn-default", data: { disable_with: t('.sending') } %>
 		</div>
 	</fieldset>
 <% end %>

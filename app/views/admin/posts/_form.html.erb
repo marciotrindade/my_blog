@@ -25,8 +25,8 @@
 		<%= render 'meta_tags', f: f, hide_title: true %>
 
 		<div class="box-actions">
-			<%= f.submit 'Send', disable_with: 'Sending', class: "btn btn-success" %>
-			<%= link_to 'Back', admin_posts_path,         class: "btn btn-default" %>
+			<%= f.submit 'Send', class: "btn btn-success", data: { disable_with: 'Sending' } %>
+			<%= link_to 'Back', admin_posts_path, class: "btn btn-default" %>
 		</div>
 	</fieldset>
 <% end %>
