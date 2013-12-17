@@ -1,0 +1,7 @@
+pt:
+  flash:
+    type:
+      warning: warning
+      alert:   error
+      notice:  success
+      info:    info

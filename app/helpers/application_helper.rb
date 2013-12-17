@@ -45,4 +45,15 @@ module ApplicationHelper
     content.html_safe
   end
 
+  def flash_message
+    content = ""
+    flash.each do |type, message|
+      content = content_tag("div", class: "onFocus alert alert-#{t(type, scope: %w(flash type))}") do
+        content_tag("a", 'x', class: 'close', data: { dismiss: "alert" }, :'aria-hidden' => 'true') +
+        message.html_safe
+      end if message.present?
+    end
+    content.html_safe
+  end
+
 end
