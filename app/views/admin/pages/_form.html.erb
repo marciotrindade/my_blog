@@ -12,23 +12,7 @@
 			<%= f.errors_for :body %>
 		</div>
 
-		<div class="form-group <%= f.error_class :page_title %>">
-			<%= f.label :page_title,     class: "control-label" %>
-			<%= f.text_field :page_title, class: "form-control" %>
-			<%= f.errors_for :page_title %>
-		</div>
-
-		<div class="form-group <%= f.error_class :keywords %>">
-			<%= f.label :keywords,     class: "control-label" %>
-			<%= f.text_field :keywords, class: "form-control" %>
-			<%= f.errors_for :keywords %>
-		</div>
-
-		<div class="form-group <%= f.error_class :page_body %>">
-			<%= f.label :page_body,     class: "control-label" %>
-			<%= f.text_area :page_body, class: "form-control", rows: "4" %>
-			<%= f.errors_for :page_body %>
-		</div>
+		<%= render 'meta_tags', f: f %>
 
 		<div class="box-actions">
 			<%= f.submit 'Send', disable_with: 'Sending', class: "btn btn-success" %>
