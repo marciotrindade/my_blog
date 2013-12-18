@@ -25,7 +25,7 @@ describe Admin::ContactsController do
   describe "on PATCH :update" do
     context "with success" do
       before do
-        patch :update, id: contact.id, contact: { name: 'test', page_title: 'lala', keywords: 'lala' }
+        patch :update, id: contact.id, contact: { name: 'test' }
       end
 
       it { should set_the_flash[:notice].to('Contact was successfully updated.') }
@@ -34,7 +34,7 @@ describe Admin::ContactsController do
 
     context "with error" do
       before do
-       patch :update, id: contact.id, contact: { name: '', page_title: 'lala', keywords: 'lala' }
+       patch :update, id: contact.id, contact: { name: '' }
      end
 
       it { should render_template(:edit) }

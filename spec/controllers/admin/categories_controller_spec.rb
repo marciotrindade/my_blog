@@ -41,7 +41,7 @@ describe Admin::CategoriesController do
 
     context "with error" do
       before do
-       post :create, category: { name: '', page_title: 'lala', keywords: 'lala' }
+       post :create, category: { name: '' }
      end
 
       it { should render_template(:new) }
@@ -51,7 +51,7 @@ describe Admin::CategoriesController do
   describe "on PATCH :update" do
     context "with success" do
       before do
-        patch :update, id: category.id, category: { name: 'test', page_title: 'lala', keywords: 'lala' }
+        patch :update, id: category.id, category: { name: 'test', }
       end
 
       it { should set_the_flash[:notice].to('Category was successfully updated.') }
@@ -60,7 +60,7 @@ describe Admin::CategoriesController do
 
     context "with error" do
       before do
-       patch :update, id: category.id, category: { name: '', page_title: 'lala', keywords: 'lala' }
+       patch :update, id: category.id, category: { name: '' }
      end
 
       it { should render_template(:edit) }
