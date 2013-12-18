@@ -28,7 +28,6 @@ end
 
 group :test do
   gem 'factory_girl_rails'
-  gem 'fuubar'
   gem 'pry-meta'
   gem 'rspec-rails',        require: false
   gem 'shoulda-matchers'
