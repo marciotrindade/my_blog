@@ -1,0 +1,27 @@
+<%= form_for([:admin, @contact]) do |f| %>
+	<fieldset>
+		<div class="form-group <%= f.error_class :name %>">
+			<%= f.label :name,      class: "control-label" %>
+			<%= f.text_field :name, class: "form-control" %>
+			<%= f.errors_for :name %>
+		</div>
+
+		<div class="form-group <%= f.error_class :email %>">
+			<%= f.label :email,      class: "control-label" %>
+			<%= f.email_field :email, class: "form-control" %>
+			<%= f.errors_for :email %>
+		</div>
+
+		<div class="form-group <%= f.error_class :body %>">
+			<%= f.label :body,     class: "control-label" %>
+			<%= f.text_area :body, class: "form-control", rows: "20" %>
+			<%= f.errors_for :body %>
+		</div>
+
+		<div class="box-actions">
+			<%= f.submit 'Send', class: "btn btn-success", data: { disable_with: 'Sending' } %>
+			<%= link_to 'Back', admin_contacts_path, class: "btn btn-default" %>
+		</div>
+
+	</fieldset>
+<% end %>
