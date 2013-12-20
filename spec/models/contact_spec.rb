@@ -2,16 +2,28 @@ require 'spec_helper'
 
 describe Contact do
 
-  context "validations" do
+  describe "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:body) }
-    it "should validate email format" do
-      contact = build(:contact, email: "test")
-      contact.should_not be_valid
-      contact.email = "test@test.com"
-      contact.should be_valid
+
+    context "email format" do
+      subject { build(:contact, email: "test") }
+
+      it "should not be valid" do
+        expect(subject).to_not be_valid
+      end
+
+      it "should be valid" do
+        subject.email = "test@test.com"
+        expect(subject).to be_valid
+      end
     end
   end
 
+  describe "scopes" do
+    it "default order by name" do
+      expect(Contact.all.to_sql).to match(/ORDER BY created_at DESC/)
+    end
+  end
 end

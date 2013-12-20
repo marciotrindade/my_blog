@@ -1,44 +1,49 @@
 class PostsController < ApplicationController
 
-  expose(:page)          { Page.find_by_permalink('home') }
-  expose(:posts)         { Post.active.by_date(params[:year], params[:month], params[:day]).decorate }
-  expose(:resource)      { User.new }
-  expose(:resource_name) { :user }
-
-  expose(:post) do
-    if current_user && current_user.admin?
-      Post.find_by_permalink(params[:id]).decorate
-    else
-      Post.active.find_by_permalink(params[:id]).decorate
-    end
-  end
-
-  expose(:recent) do
-    if current_user && current_user.admin?
-      Post.recent.decorate
-    else
-      Post.active.recent.decorate
-    end
-  end
-
   def index
+    @page    = Page.home
+    @posts   = load_posts
   end
 
   def show
-    @comment = Comment.new
+    @post = load_post.decorate
   end
 
   def by_date
-    @page = page
-    @page.page_title = t(:page_title, scope: [:posts_by_date], date: meta_date)
-    @page.page_body  = t(:page_body,  scope: [:posts_by_date], date: meta_date)
+    @page            = Page.home
+    @page.page_title = t(:title,       scope: %w(posts by_date), date: date_for_meta_tag)
+    @page.page_body  = t(:description, scope: %w(posts by_date), date: date_for_meta_tag)
+    @posts           = Post.by_date(params[:year],params[:month], params[:day]).page(params[:page])
   end
 
   private
 
-  def meta_date
-    dates = Post.time_interval(params[:year],params[:month], params[:day]).map(&:to_date)
-    "#{l(dates.first)} - #{l(dates.last)}"
+  def date_for_meta_tag
+    year   = params[:year].to_i
+    month  = params[:month].present? ? params[:month].to_i : 1
+    date   = Date.new(year, month)
+    format = params[:month] ? :month : :year
+    l(date, format: format)
+  end
+
+  def load_posts
+    posts = Post.page(params[:page])
+    posts = posts.active unless admin?
+    posts
+  end
+
+  def load_post
+    post = Post.where(permalink: params[:id])
+    post = post.active unless admin?
+    post.first
+  end
+
+  def method_name
+    Post.active.by_date(params[:year], params[:month], params[:day]).decorate
+  end
+
+  def admin?
+    user_signed_in? && current_user.admin?
   end
 
 end

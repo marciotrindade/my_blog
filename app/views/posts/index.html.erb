@@ -1,2 +1,3 @@
-<% title page %>
-<%= render recent %>
+<% title @page %>
+<%= render @posts.decorate %>
+<%= app_pagination(@posts) %>

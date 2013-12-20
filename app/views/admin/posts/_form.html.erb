@@ -1,0 +1,32 @@
+<%= form_for([:admin, @post]) do |f| %>
+	<fieldset>
+		<div class="form-group <%= f.error_class :name %>">
+			<%= f.label :name,      class: "control-label" %>
+			<%= f.text_field :name, class: "form-control" %>
+			<%= f.errors_for :name %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :summary,     class: "control-label" %>
+			<%= f.text_area :summary, class: "form-control", rows: "8" %>
+		</div>
+
+		<div class="form-group <%= f.error_class :body %>">
+			<%= f.label :body,     class: "control-label" %>
+			<%= f.text_area :body, class: "form-control", rows: "20" %>
+			<%= f.errors_for :body %>
+		</div>
+
+		<div class="checkbox">
+			<%= f.check_box :active %>
+			<%= f.label :active %>
+		</div>
+
+		<%= render 'meta_tags', f: f, hide_title: true %>
+
+		<div class="box-actions">
+			<%= f.submit 'Send', class: "btn btn-success", data: { disable_with: 'Sending' } %>
+			<%= link_to 'Back', admin_posts_path, class: "btn btn-default" %>
+		</div>
+	</fieldset>
+<% end %>

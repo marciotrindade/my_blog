@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
 
-  expose(:category) { Category.find_by_permalink(params[:id]) }
-
   def show
+    @category = Category.find_by_permalink(params[:id])
+    @posts    = @category.posts.page(params[:page])
   end
 
 end

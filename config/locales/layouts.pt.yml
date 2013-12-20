@@ -1,0 +1,15 @@
+pt:
+  layouts:
+    application:
+      subscribe: Assine o RSS
+      footer:
+        contact: Contato
+        title:   suporte e ajuda
+      menu:
+        about_me: Sobre o autor
+        contact:  Contato
+        home:     Home
+        sitemap:  Sitemap
+    sidebar:
+      archive: Arquivo
+      categories: Categorias

@@ -3,11 +3,49 @@ require 'spec_helper'
 describe Admin::ContactsController do
 
   render_views
+  mock_permission
 
-  before do
-    @object = build(:contact)
+  let(:contact) { create(:contact) }
+
+  describe "on GET :index" do
+    let!(:contact) { create(:contact) }
+    before         { get :index }
+
+    it { should render_template(:index) }
+    it { should have_assigned(:contacts).with([contact]) }
   end
 
-  should_respond_to_resources except: [ :show ]
+  describe "on GET :edit" do
+    before { get :edit, id: contact.id }
+
+    it { should render_template(:edit) }
+    it { should have_assigned(:contact).with(contact) }
+  end
+
+  describe "on PATCH :update" do
+    context "with success" do
+      before do
+        patch :update, id: contact.id, contact: { name: 'test' }
+      end
+
+      it { should set_the_flash[:notice].to('Contact was successfully updated.') }
+      it { should redirect_to(admin_contacts_path) }
+    end
+
+    context "with error" do
+      before do
+       patch :update, id: contact.id, contact: { name: '' }
+     end
+
+      it { should render_template(:edit) }
+    end
+  end
+
+  describe "on DELETE :destroy" do
+    before { delete :destroy, id: contact.id }
+
+    it { expect { contact.reload }.to raise_error }
+    it { should redirect_to(admin_contacts_path) }
+  end
 
 end

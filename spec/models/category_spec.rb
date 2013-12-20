@@ -2,30 +2,24 @@ require 'spec_helper'
 
 describe Category do
 
-  context "validations" do
-    subject { create(:category) }
-    it { should validate_uniqueness_of(:name) }
+  describe "validations" do
     it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:page_title) }
+    it { should validate_presence_of(:keywords) }
+
+    context "uniqueness" do
+      before { create(:category) }
+      it { should validate_uniqueness_of(:name) }
+    end
   end
 
-  context "assosiations" do
+  describe "assosiations" do
     it { should have_and_belong_to_many(:posts) }
   end
 
-  it "default scope order by name" do
-    category_one = create(:category, name: "Zilda")
-    category_two = create(:category, name: "Andre")
-
-    Category.first.should == category_two
-    Category.last.should == category_one
+  describe "scopes" do
+    it "default order by name" do
+      expect(Category.all.to_sql).to match(/ORDER BY name ASC/)
+    end
   end
-
-  it "default scope order by name" do
-    category = create(:category)
-    create(:post, categories: [category])
-    create(:post)
-
-    category.posts.size == 1
-  end
-
 end

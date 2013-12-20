@@ -3,77 +3,6 @@ pt:
   _false: 'não'
   send: 'Enviar'
 
-  #web-app-theme
-  web-app-theme:
-    save: 'Salvar'
-    cancel: 'Cancelar'
-    import: 'Importar'
-    update: 'Atualizar'
-    list: 'Listar'
-    search: 'Buscar'
-    edit: 'Editar'
-    new: 'Adicionar'
-    show: 'Detalhes'
-    delete: 'Excluir'
-    confirm: 'Você tem certeza?'
-    created_at: 'Criado em'
-    all: 'Todos'
-
-  send_your_comment: "Deixe um comentário"
-  subscribe: "Assine o RSS"
-  read_more: "Ler mais..."
-  send: "Enviar"
-  arquive: "Arquivos"
-
-  posts_by_date:
-    page_title: 'Artigos publicados entre %{date}'
-    page_body: 'Lista de todos artigos que foram publicados entre %{date}'
-
-  registration:
-    create:
-      title: 'Criar meu usuário'
-      submit: 'Criar'
-    update:
-      title: 'Editar minha conta'
-      submit: 'Salvar'
-  password:
-    create:
-      submit: 'Enviar'
-
-  comments:
-    empty: "Nenhum comentário ainda."
-    one: "Comentário"
-    other: "Comentários"
-    success: "Seu comentário foi adicionado com sucesso."
-    error: "Ocorreu um erro ao enviar seu comentário, por favor tente novamente."
-
-  home: 'Home'
-  my_account: 'Minha conta'
-  signin: 'Login'
-  register: 'Registrar'
-  signup: 'Faça seu cadastro agora mesmo'
-  logout: 'Sair'
-  forgot: 'Esqueceu sua senha?'
-  change_my_password: 'Alterar minha senha'
-  categories: 'Categorias'
-  posts: 'Artigos'
-
-  menu:
-    home: "Home"
-    about_me: "Sobre o autor"
-    contact: "Contato"
-    user: 'Usuários'
-    role: 'Grupos de acesso'
-    contact: 'Contatos'
-    category: 'Categorias'
-    page: 'Páginas'
-    comment: 'Comentários'
-    sitemap: 'Sitemap'
-
-  footer:
-    about_us: 'Sobre nós'
-    advertise: 'Anuncie conosco'
-    contact_us: 'Entre em contato'
   # admin breadcrumb
   breadcrumbs:
     create: 'Adicionar'
@@ -86,11 +15,6 @@ pt:
     category: 'Categorias'
     comment: 'Comentários'
     contact: 'Contato'
-
-  # will_paginate
-  will_paginate:
-    previous_label: '&laquo; Anterior'
-    next_label: 'Próxima &raquo;'
 
   # Active Record
   attributes:
@@ -165,7 +89,7 @@ pt:
         less_than_or_equal_to: "deve ser menor ou igual a %{count}"
         odd: "deve ser ímpar"
         even: "deve ser par"
-        email_format: "use um email válido"
+        email_format: "não é um email válido"
         page_not_found: "Página não encontrada"
 
   # active suport (validações)
@@ -180,14 +104,9 @@ pt:
   # formatos de data e hora
   date:
     formats:
-      index: "%a, %d.%b.%Y"
       default: "%d/%m/%Y"
-      short: "%d de %B"
-      long: "%A, %d de %B de %Y"
-      only_day: "%d"
-      month: "%B"
-      day: "Dia %d, %A"
-      title_month: "%B de %Y"
+      year: "%Y"
+      month: "%B de %Y"
 
     day_names: ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"]
     abbr_day_names: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
@@ -200,19 +119,12 @@ pt:
   time:
     formats:
       default: "%d/%m/%Y - %Hh%M"
-      date: "%d/%m/%Y"
-      time: "%H:%M h"
-      archive: "%B %Y"
-      short: "%b/%y"
-      long: "%A, %d de %B de %Y"
-      only_second: "%S"
-      comment: "%d/%m/%Y %H:%M"
-      w3c: "%Y-%m-%dT%H:%M:%S+00:00"
-      datetime:
-        formats:
-          default: "%Y-%m-%dT%H:%M:%S%Z"
-    am: ''
-    pm: ''
+      date:    "%d/%m/%Y"
+      time:    "%H:%M h"
+      archive: "%Y %B"
+      short:   "%b/%y"
+      day:     "%d de %B de %Y"
+      w3c:     "%Y-%m-%dT%H:%M:%S+00:00"
 
   # date helper distanci em palavras
   datetime:
@@ -341,13 +253,6 @@ pt:
       unlock_instructions:
         subject: 'Instruções de desbloqueio'
 
-  ############
-  # show_for #
-  ############
-  show_for:
-    blank: 'não informado'
-    yes: 'sim'
-    no: 'não'
   ######################
   # inherited_resource #
   ######################

@@ -1,11 +1,11 @@
 class Category < ActiveRecord::Base
 
-  validates_presence_of :name
+  validates_presence_of   :name, :page_title, :keywords
   validates_uniqueness_of :name
 
-  has_and_belongs_to_many :posts, conditions: { active:  true }
+  has_and_belongs_to_many :posts, -> { active }
 
-  default_scope order: :name
+  default_scope -> { order('name ASC') }
 
   before_save :set_permalink
 

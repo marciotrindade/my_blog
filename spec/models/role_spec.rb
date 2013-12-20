@@ -6,12 +6,12 @@ describe Role do
   it { should have_many(:users) }
 
   context "with an instance" do
-    subject { create(:role) }
+    before { create(:role) }
     it { should validate_uniqueness_of(:name) }
   end
 
   it "default scope order by name" do
-    Role.scoped.to_sql.should =~ /order by roles.name/i
+    expect(Role.all.to_sql).to match(/ORDER BY roles.name/)
   end
 
 end

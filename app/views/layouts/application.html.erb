@@ -1,94 +1,82 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-	<head>
-		<%= yield(:head) %>
-		<meta charset="UTF-8">
-		<meta content="chrome=1" http-equiv="X-UA-Compatible" />
-		<meta content="C50914221BE3C76FE4370CF3DA977E81" name="msvalidate.01" />
-		<meta content="Marcio Trindade" name="author" />
-		<meta content="global" name="distribution" />
-		<meta content="5 days" name="revisit-after" />
-		<meta content="Marcio Trindade" name="copyright" />
-		<link href="/favicon.ico" rel="icon" type="image/x-icon" />
-		<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-		<%= tag(:link, rel: "alternate", type: "application/atom+xml", href: feed_url) %>
-		<!--[if lt IE 9]>
-			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<%= stylesheet_link_tag :application %>
-		<%= javascript_include_tag :application %>
-		<%= csrf_meta_tags %>
-	</head>
+<html lang="pt-br" class="">
+<head>
+	<%= yield(:head) %>
+	<meta charset="utf-8">
+	<meta content="chrome=1" http-equiv="X-UA-Compatible" />
+	<meta content="C50914221BE3C76FE4370CF3DA977E81" name="msvalidate.01" />
+	<meta content="Marcio Trindade" name="author" />
+	<meta content="global" name="distribution" />
+	<meta content="5 days" name="revisit-after" />
+	<meta content="Marcio Trindade" name="copyright" />
+	<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<%= csrf_meta_tags %>
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="http://assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
+	<%= stylesheet_link_tag :application %>
+</head>
 <body>
-	<div id="wrapper">
-		<!-- header -->
-		<header>
-			<h1><%= link_to AppConfig.site.name, root_path, :title => AppConfig.site.domain, :class => 'pjax' %></h1>
-		</header>
-		<!-- menu -->
-		<menu>
-			<%= link_to "<span></span>#{t(:subscribe)}".html_safe, feed_url, :id => "rss-feed", :title => t(:subscribe) %>
-			<div>
-				<ul>
-					<li><%= link_to_menu t(:home, :scope => :menu), root_path %></li>
-					<li><%= link_to_menu t(:about_me, :scope => :menu), page_path("sobre-o-autor") %></li>
-					<li><%= link_to_menu t(:contact, :scope => :menu), new_contact_path %></li>
-					<li><%= link_to_menu t(:sitemap, :scope => :menu), sitemap_path %></li>
-				</ul>
-			</div>
+
+	<!-- Header -->
+	<header class="header" role="banner">
+		<div class="container">
+			<span class="control-menu visible-xs ico-menu-2"></span>
+			<span class="control-sidebar visible-xs ico-list"></span>
+			<h1 class="project-name"><%= link_to AppConfig.site.name, root_path, title: AppConfig.site.name %></h1>
+			<%= link_to t(".subscribe"), feed_url, class: "help-suggestions hidden-xs" %>
+		</div>
+	</header>
+
+	<!-- Menu -->
+	<div class="nav-content">
+		<menu class="menu">
+			<ul class="container">
+				<li><%= link_to_menu 'home',     root_path,                  "posts", {class: "ico-home"} %></li>
+				<li><%= link_to_menu 'about_me', page_path("sobre-o-autor"), "pages" %></li>
+				<li><%= link_to_menu 'contact',  new_contact_path,           "contacts" %></li>
+				<li><%= link_to_menu 'sitemap',  sitemap_path,               "sitemap" %></li>
+			</ul>
 		</menu>
-		<!-- search -->
-		<form id="search" action="http://www.google.com.br/search" method="get">
-			<input name="as_sitesearch" type="hidden" value="<%= AppConfig.site.domain %>">
-			<input name="hl" type="hidden" value="pt-BR">
-			<input name="num" type="hidden" value="50">
-			<input name="filter" type="hidden" value="0">
-			<input name="as_q" size="20" type="search" value="">
-			<input title="Buscar" type="submit" value="search">
-		</form>
-		<!-- content -->
-		<div id="content">
-				<section data-pjax-container="">
-					<%= yield %>
-				</section>
-
-				<aside>
-					<% cache(:categories) do %>
-						<h3><%= t('categories') %></h3>
-						<ul>
-							<% categories.each do |category| %>
-								<li><%= link_to(category.name, category_path(category.permalink), :class => 'pjax') + " (#{category.posts.size})" %></li>
-							<% end %>
-						</ul>
-					<% end %>
-
-					<% cache(:archives) do %>
-						<h3><%= t('arquive') %></h3>
-						<ul>
-							<% dates.each do |post| %>
-								<li><%= link_to(l(post.created_at, :format => :archive), post.month_path, :class => 'pjax') + " (#{post.total_in_month})" %></li>
-							<% end %>
-						</ul>
-					<% end %>
-
-					<h3>Links</h3>
-					<ul>
-						<li><%= link_to "Carlos Brando", "http://www.nomedojogo.com/" %></li>
-						<li><%= link_to "Diego Carrion", "http://www.diegocarrion.com/" %></li>
-						<li><%= link_to "Fabio Akita", "http://www.akitaonrails.com/" %></li>
-						<li><%= link_to "Flavio Muniz", "http://flaviomuniz.com/blog/" %></li>
-						<li><%= link_to "Ricardo Yasuda", "http://blog.shadowmaru.org/" %></li>
-						<li><%= link_to "Wylkon Cardoso", "http://www.wylkon.com.br/" %></li>
-					</ul>
-				</aside>
-				<div class="clear"></div>
-			</div>
-		<!-- footer -->
-		<footer>
-			Copyright © <%= Date.today.year %> <%= link_to "Marcio Trindade", "http://marciotrindade.com/" %> · Powered by <%= link_to "Ruby on Rails", "http://rubyonrails.org/", :target => "_blank", :title => "Ruby on Rails" %><br>
-			<%= link_to "Lightword Theme", "http://www.lightword-theme.com/", :target => "_blank", :title => "Lightword Theme" %> by <%= link_to "Andrei Luca", "http://students.info.uaic.ro/~andrei.luca/", :target => "_blank"%>
-			<%= link_to "Go to top ↑", "#top", :title => "Go to top", :class => "top" %>
-		</footer>
 	</div>
+
+	<!-- Content -->
+	<main class="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 content" role="main">
+					<%= yield %>
+				</div>
+				<aside class="col-md-3 sidebar" role="complementary">
+					<%= render 'layouts/sidebar' %>
+				</aside>
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="footer-menu">
+			<nav class="container">
+				<h2 class="title-footer"><%= t('.footer.title') %></h2>
+				<ul class="no-liststyle">
+					<li><a href="<%= new_contact_path %>" class="bg-customer-support"><span class="visible-lg"><%= t('.footer.contact') %></span></a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="container footer-info">
+			<p class="copy-right">Copyright © <%= Date.today.year %> <%= AppConfig.site.name %>.</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="http://assets.locaweb.com.br/locastyle/edge/javascript/locastyle.js"></script>
+	<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+	<%= javascript_include_tag :application %>
 </body>
 </html>

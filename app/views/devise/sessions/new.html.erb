@@ -1,0 +1,29 @@
+<% title Page.home %>
+
+<header class="header-content">
+	<h1 class="title-1">Login</h1>
+</header>
+
+<div class="col-md-2"></div>
+
+<div class="col-md-6">
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		<fieldset>
+			<div class="form-group <%= f.error_class :email %>">
+				<%= f.label :email, class: "control-label" %>
+				<%= f.email_field :email, class: "form-control", autofocus: true %>
+				<%= f.errors_for :email %>
+			</div>
+
+			<div class="form-group <%= f.error_class :password %>">
+				<%= f.label :password, class: "control-label" %>
+				<%= f.password_field :password, class: "form-control" %>
+				<%= f.errors_for :password %>
+			</div>
+
+			<div class="box-actions">
+				<%= f.submit "Login", disable_with: "Logando", class: "btn btn-default" %>
+			</div>
+		</fieldset>
+	<% end %>
+</div>

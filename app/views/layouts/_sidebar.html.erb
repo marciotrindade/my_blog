@@ -1,0 +1,19 @@
+<section class="sidebox">
+  <h1 class="sidebox-title ico-tag"><%= t('.categories') %></h1>
+
+  <ul class="sidebox-list">
+    <% Category.all.each do |category| %>
+      <li><%= link_to("#{category.name} (#{category.posts.size})", category_path(category.permalink), :class => "") %></li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="sidebox">
+  <h1 class="sidebox-title ico-drawer-3"><%= t('.archive') %></h1>
+
+  <ul class="sidebox-list">
+    <% Post.archive.each do |post| %>
+      <li><%= link_to("#{l(post.created_at, format: :archive)} (#{post.total})", post.month_path) %></li>
+    <% end %>
+  </ul>
+</section>

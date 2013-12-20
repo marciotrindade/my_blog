@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="">
+<head>
+	<title>Admin - Marcio Trindade</title>
+	<meta charset="utf-8">
+	<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<%= csrf_meta_tags %>
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
+	<%= stylesheet_link_tag "admin/application" %>
+</head>
+<body>
+
+	<!-- Header -->
+	<header class="header" role="banner">
+		<div class="container">
+			<span class="control-menu visible-xs ico-menu-2"></span>
+			<span class="control-sidebar visible-xs ico-list"></span>
+			<h1 class="project-name"><%= link_to AppConfig.site.name, root_path, title: AppConfig.site.name %></h1>
+			<%= link_to t(:logout), destroy_user_session_path, class: "help-suggestions hidden-xs", method: :delete %>
+		</div>
+	</header>
+
+	<!-- Menu -->
+	<div class="nav-content">
+		<menu class="menu">
+			<ul class="container">
+				<li><%= link_to "Artigos", admin_posts_path %></li>
+				<li><%= link_to "Categorias", admin_categories_path %></li>
+				<li><%= link_to "Páginas", admin_pages_path %></li>
+				<li><%= link_to "Contatos", admin_contacts_path %></li>
+			</ul>
+		</menu>
+	</div>
+
+	<!-- Content -->
+	<main class="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 content" role="main">
+					<%= flash_message %>
+					<%= yield %>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="footer-menu">
+			<nav class="container">
+				<h2 class="title-footer">&nbsp;</h2>
+			</nav>
+		</div>
+		<div class="container footer-info">
+			<p class="copy-right">Copyright © <%= Date.today.year %> <%= AppConfig.site.name %>.</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="//assets.locaweb.com.br/locastyle/edge/javascript/locastyle.js"></script>
+	<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+	<%= javascript_include_tag "admin/application" %>
+</body>
+</html>
