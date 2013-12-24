@@ -1,26 +1,29 @@
 <% title @page %>
 
 <header class="header-content">
-  <h1 class="title-1"><%= @page.name %></h1>
+	<h1 class="title-1"><%= @page.name %></h1>
 </header>
 
-<ul class="sitemap">
-  <li><%= link_to 'Home', root_path %></li>
-  <% @pages.each do |page| %>
-    <li><%= link_to page.name, page_path(page.permalink)%></li>
-  <% end %>
-</ul>
+<div class="sitemap">
+	<h2><%= t('.pages') %></h2>
+	<ul>
+		<li><%= link_to 'Home', root_path %></li>
+		<% @pages.each do |page| %>
+			<li><%= link_to page.name, page_path(page.permalink)%></li>
+		<% end %>
+	</ul>
 
-<h2><%= t('.categories') %></h2>
-<ul class="sitemap">
-  <% @categories.each do |category| %>
-    <li><%= link_to category.name, category_path(category.permalink) %></li>
-  <% end %>
-</ul>
+	<h2><%= t('.categories') %></h2>
+	<ul>
+		<% @categories.each do |category| %>
+			<li><%= link_to "#{category.name} (#{category.posts.size})", category_path(category.permalink) %></li>
+		<% end %>
+	</ul>
 
-<h2><%= t('.posts') %></h2>
-<ul class="sitemap">
-  <% @posts.each do |post| %>
-    <li><%= link_to post.name, post.path %></li>
-  <% end %>
-</ul>
+	<h2><%= t('.posts') %></h2>
+	<ul>
+		<% @posts.each do |post| %>
+			<li><%= link_to post.name, post.path %></li>
+		<% end %>
+	</ul>
+</div>

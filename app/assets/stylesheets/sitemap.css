@@ -1,0 +1,8 @@
+.sitemap h2 {}
+.sitemap ul {
+  margin: 15px 30px 30px;
+  list-style: none;
+}
+.sitemap li {
+  margin: 5px;
+}
