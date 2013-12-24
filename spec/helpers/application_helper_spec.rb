@@ -89,6 +89,9 @@ describe ApplicationHelper do
       %Q(<li class="next">)+
       %Q(  <a href="/?page=2&amp;per=100" rel="next">#{t('views.pagination.next')}</a>)+
       %Q(</li>)+
+      %Q(<li class="last next">)+
+      %Q(  <a href="/?page=2&amp;per=100">#{t('views.pagination.last')}</a>)+
+      %Q(</li>)+
       %Q(</ul>)+
       %Q(</div>)
     }
