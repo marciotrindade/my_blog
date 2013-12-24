@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @page    = Page.home
-    @posts   = load_posts
+    @posts   = load_posts.includes(:categories)
   end
 
   def show
