@@ -2,14 +2,15 @@
 #
 # Table name: categories
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  permalink  :string(255)
-#  keywords   :string(255)
-#  page_title :string(255)
-#  page_body  :text
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  permalink   :string(255)
+#  keywords    :string(255)
+#  page_title  :string(255)
+#  page_body   :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  posts_count :integer          default(0)
 #
 
 class Category < ActiveRecord::Base
