@@ -6,10 +6,6 @@
 
 <%= textilize(@page.body) %>
 
-<% flash.each do |type, message| %>
-	<p class="<%= type %>"><%= message %></p>
-<% end %>
-
 <%= form_for @contact, html: { id: "contact",  role: "form" } do |f| %>
 	<fieldset>
 		<div class="form-group <%= f.error_class :name %>">

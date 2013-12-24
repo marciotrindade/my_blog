@@ -5,3 +5,15 @@ pt:
       alert:   error
       notice:  success
       info:    info
+    actions:
+      create:
+        notice: Criado com sucesso!
+        alert: Erro ao criar, por favor verifique os dados informados!
+      update:
+        notice: Atualizado com sucesso!
+        alert: Erro ao atualizar, por favor verifique os dados informados!
+      destroy:
+        notice: Removido com sucesso!
+        alert: Não pode ser removido!
+    contact:
+      success: Sua mensagem foi enviada com sucesso.

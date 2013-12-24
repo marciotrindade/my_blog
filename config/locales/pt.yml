@@ -253,20 +253,6 @@ pt:
       unlock_instructions:
         subject: 'Instruções de desbloqueio'
 
-  ######################
-  # inherited_resource #
-  ######################
-  flash:
-    actions:
-      create:
-        notice: "Criado com sucesso!"
-        alert: "Erro ao criar, por favor verifique os dados informados!"
-      update:
-        notice: "Atualizado com sucesso!"
-        alert: "Erro ao atualizar, por favor verifique os dados informados!"
-      destroy:
-        notice: "Removido com sucesso!"
-        alert: "Não pode ser removido!"
   ###############
   # Mailer #
   ###############
