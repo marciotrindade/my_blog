@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  permalink  :string(255)
+#  body       :text
+#  keywords   :string(255)
+#  page_title :string(255)
+#  page_body  :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Page < ActiveRecord::Base
 
   validates_presence_of :name, :body, :keywords, :page_title, :page_body

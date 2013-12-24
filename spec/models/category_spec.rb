@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  permalink  :string(255)
+#  keywords   :string(255)
+#  page_title :string(255)
+#  page_body  :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'spec_helper'
 
 describe Category do

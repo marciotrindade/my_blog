@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id             :integer          not null, primary key
+#  name           :string(255)
+#  permalink      :string(255)
+#  summary        :text
+#  body           :text
+#  comments_count :integer          default(0)
+#  keywords       :string(255)
+#  page_body      :text
+#  created_at     :datetime
+#  updated_at     :datetime
+#  active         :boolean          default(FALSE)
+#
+
 require 'spec_helper'
 
 describe Post do

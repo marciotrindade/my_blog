@@ -24,6 +24,7 @@ end
 group :development do
   gem 'pry-meta'
   gem 'thin'
+  gem 'annotate'
 end
 
 group :test do
