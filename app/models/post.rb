@@ -20,7 +20,8 @@ class Post < ActiveRecord::Base
   validates_presence_of :name, :body, :keywords, :page_body
   validates_uniqueness_of :permalink
 
-  has_and_belongs_to_many :categories
+  has_many :categories_posts, dependent: :destroy
+  has_many :categories, through: :categories_posts
 
   before_save :set_permalink
 

@@ -18,7 +18,8 @@ class Category < ActiveRecord::Base
   validates_presence_of   :name, :page_title, :keywords
   validates_uniqueness_of :name
 
-  has_and_belongs_to_many :posts, -> { active }
+  has_many :categories_posts, dependent: :destroy
+  has_many :posts, through: :categories_posts
 
   default_scope -> { order('name ASC') }
 

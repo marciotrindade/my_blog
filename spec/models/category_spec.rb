@@ -29,7 +29,8 @@ describe Category do
   end
 
   describe "assosiations" do
-    it { should have_and_belong_to_many(:posts) }
+    it { should have_many(:categories_posts) }
+    it { should have_many(:posts).through(:categories_posts) }
   end
 
   describe "scopes" do
