@@ -24,6 +24,7 @@ end
 group :development do
   gem 'pry-meta'
   gem 'thin'
+  gem 'rack-mini-profiler'
   gem 'annotate'
 end
 
