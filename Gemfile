@@ -22,7 +22,6 @@ group :production do
 end
 
 group :development do
-  gem 'pry-meta'
   gem 'thin'
   gem 'rack-mini-profiler'
   gem 'annotate'
@@ -30,8 +29,11 @@ end
 
 group :test do
   gem 'factory_girl_rails'
-  gem 'pry-meta'
   gem 'rspec-rails',        require: false
   gem 'shoulda-matchers'
   gem 'simplecov',          require: false
+end
+
+group :development, :test do
+  gem 'pry-meta'
 end
