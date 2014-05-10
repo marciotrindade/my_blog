@@ -12,6 +12,15 @@ Blog::Application.routes.draw do
   resources :contacts,    only: [:new, :create]
   resources :posts,       only: [:show]
 
+  namespace :api do
+    resources :pages,       only: [:show]
+    resources :categories,  only: [:index, :show]
+    resources :contacts,    only: [:create]
+    resources :posts,       only: [:index, :show] do
+      get :archive, on: :collection
+    end
+  end
+
   namespace :admin do
     root to: "posts#index", via: :get
 
