@@ -10,6 +10,7 @@ gem 'dynamic_form'
 gem 'redcarpet'
 gem 'settingslogic'
 gem 'kaminari'
+gem "jbuilder"
 
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
