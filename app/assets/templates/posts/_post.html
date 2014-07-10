@@ -1,0 +1,12 @@
+<header>
+  <h2 class="title-2">
+    <a href="{{ post.path }}">{{ post.name }}</a>
+  </h2>
+  <time datetime="{{ post.created_at }}" pubdate>{{ post.created }}</time>
+</header>
+<div ng-bind-html="post.body"></div>
+<aside>
+  <span ng-repeat="category in post.categories"><span class="label label-default"><a href="/categories/{{ category.permalink }}">{{ category.name }}</a></span> </span>
+  <strong><a href="{{ post.path }}">Ler mais...</a></strong>
+  </aside>
+<hr class="sep-dot">

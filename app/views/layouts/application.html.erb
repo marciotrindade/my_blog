@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="">
+<html lang="pt-br" class="" ng-app="Application">
 <head>
 	<%= yield(:head) %>
 	<meta charset="utf-8">
@@ -11,23 +11,21 @@
 	<meta content="Marcio Trindade" name="copyright" />
 	<link href="/favicon.ico" rel="icon" type="image/x-icon" />
 	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<%= csrf_meta_tags %>
 
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="http://assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
 	<%= stylesheet_link_tag :application %>
 </head>
-<body>
 
+<body ng-controller="ApplicationController">
 	<!-- Header -->
 	<header class="header" role="banner">
 		<div class="container">
 			<span class="control-menu visible-xs ico-menu-2"></span>
 			<span class="control-sidebar visible-xs ico-list"></span>
-			<h1 class="project-name"><%= link_to AppConfig.site.name, root_path, title: AppConfig.site.name %></h1>
+			<h1 class="project-name">{{ project.name }}</h1>
 			<%= link_to t(".subscribe"), feed_url, class: "help-suggestions hidden-xs" %>
 		</div>
 	</header>
@@ -36,24 +34,42 @@
 	<div class="nav-content">
 		<menu class="menu">
 			<ul class="container">
-				<li><%= link_to_menu 'home',     root_path,                  "posts", {class: "ico-home"} %></li>
-				<li><%= link_to_menu 'about_me', page_path("sobre-o-autor"), "pages" %></li>
-				<li><%= link_to_menu 'contact',  new_contact_path,           "contacts" %></li>
-				<li><%= link_to_menu 'sitemap',  sitemap_path,               "sitemap" %></li>
+				<li class=""><a class="ico-home" href="/"                    role="menuitem" title="{{ menu.home }}">{{ menu.home }}</a></li>
+				<li class=""><a class=""         href="/pages/sobre-o-autor" role="menuitem" title="{{ menu.about }}">{{ menu.about }}</a></li>
+				<li class=""><a class=""         href="/contacts/new"        role="menuitem" title="{{ menu.contact }}">{{ menu.contact }}</a></li>
+				<li class=""><a class=""         href="/sitemap"             role="menuitem" title="{{ menu.sitemap }}">{{ menu.sitemap }}</a></li>
 			</ul>
 		</menu>
 	</div>
 
 	<!-- Content -->
-	<main class="main">
+	<main class="main" id="main">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-9 content" role="main">
-					<%= flash_message %>
-					<%= yield %>
+					<ng-view></ng-view>
 				</div>
+
 				<aside class="col-md-3 sidebar" role="complementary">
-					<%= render 'layouts/sidebar' %>
+					<section class="sidebox" ng-controller="CategoriesController">
+						<h1 class="sidebox-title ico-tag">{{ title }}</h1>
+
+						<ul class="sidebox-list">
+							<li ng-repeat="category in categories">
+								<a href='/categories/{{category.permalink}}'>{{category.name}} ({{category.posts_count}})</a>
+							</li>
+						</ul>
+					</section>
+
+					<section class="sidebox" ng-controller="ArchiveController">
+						<h1 class="sidebox-title ico-drawer-3">{{ title }}</h1>
+
+						<ul class="sidebox-list">
+							<li ng-repeat="post in posts">
+								<a href='{{post.path}}'>{{ post.label }} ({{ post.total }})</a>
+							</li>
+						</ul>
+					</section>
 				</aside>
 			</div>
 		</div>
@@ -65,7 +81,7 @@
 			<nav class="container">
 				<h2 class="title-footer"><%= t('.footer.title') %></h2>
 				<ul class="no-liststyle">
-					<li><a href="<%= new_contact_path %>" class="bg-customer-support"><span class="visible-lg"><%= t('.footer.contact') %></span></a></li>
+					<li><a href="/contacts/new" class="bg-customer-support"><span class="visible-lg"><%= t('.footer.contact') %></span></a></li>
 				</ul>
 			</nav>
 		</div>

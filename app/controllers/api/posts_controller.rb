@@ -13,11 +13,16 @@ module Api
       @posts = Post.archive
     end
 
+    def by_date
+      @posts = load_posts.page(params[:page])
+    end
+
     private
 
     def load_posts
       posts = Post.page(params[:page])
       posts = posts.active unless admin?
+      posts = posts.by_date(params[:year],params[:month], params[:day]) if params[:year]
       posts
     end
 

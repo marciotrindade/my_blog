@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'sass-rails',   '~> 4.0.0'
 gem 'turbolinks'
 gem 'uglifier',     '>= 1.3.0'
+gem 'angularjs-rails'
 
 group :production do
   gem 'unicorn'
@@ -36,5 +37,5 @@ group :test do
 end
 
 group :development, :test do
-  gem 'pry-meta'
+  gem 'pry-meta', '0.0.5'
 end

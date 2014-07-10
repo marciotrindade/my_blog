@@ -1,3 +1,7 @@
+.clippy_code {
+  display: none;
+}
+
 .code_block {
   margin: 12px 0;
 }
