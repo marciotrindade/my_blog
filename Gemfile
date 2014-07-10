@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails',      '4.1.1'
+gem 'rails',      '4.1.4'
 gem 'mysql2'
 
 gem 'coderay'
@@ -23,7 +23,6 @@ group :production do
 end
 
 group :development do
-  gem 'thin'
   gem 'rack-mini-profiler'
   gem 'annotate'
 end

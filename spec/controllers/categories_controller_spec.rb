@@ -4,18 +4,20 @@ describe CategoriesController do
 
   render_views
 
-  before(:each) do
-    controller.stub(:user_signed_in?).and_return(false)
+  before do
+    allow(controller).to receive(:admin?).and_return(false)
   end
 
-  describe "visit a category" do
-    it "should respond to html" do
-      category = create(:category, name: "my_category")
-      create(:post, categories: [category])
-      get :show, id: "my_category"
-      response.should be_success
-      response.should render_template(:show)
+  describe "on GET :show" do
+    let!(:category) { create(:category, name: "my_category") }
+    let!(:post)     { create(:post, categories: [category]) }
+    before do
+      get :show, id: category.permalink
     end
+
+    it { should render_template(:show) }
+    it { should have_assigned(:category).with(category) }
+    it { should have_assigned(:posts).with(category.posts) }
   end
 
 end

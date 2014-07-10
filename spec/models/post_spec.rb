@@ -120,7 +120,7 @@ describe Post do
     let!(:post3) { create(:post, created_at: Date.new(2013, 11, 1)) }
 
     it "returns 3 objects" do
-      expect(Post.archive.to_a).to have(2).items
+      expect(Post.archive.to_a.size).to eql(2)
     end
 
     it "returns grouped total" do

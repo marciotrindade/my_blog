@@ -15,11 +15,11 @@ module ControllersMachers
       "responses with content #{expected}"
     end
 
-    failure_message_for_should do |_|
+    failure_message do |_|
       "expected to respond with #{expected}\nbut got #{controller.response.body}"
     end
 
-    failure_message_for_should_not do |_|
+    failure_message_when_negated do |_|
       "expected to not respond with #{expected}"
     end
   end
@@ -35,11 +35,11 @@ module ControllersMachers
       "responses with content_type #{type}"
     end
 
-    failure_message_for_should do |_|
+    failure_message do |_|
       "expected to respond with content_type :#{type}\nbut got #{controller.response.content_type}"
     end
 
-    failure_message_for_should_not do |_|
+    failure_message_when_negated do |_|
       "expected to not respond with content_type :#{type}"
     end
   end
@@ -48,7 +48,7 @@ module ControllersMachers
   # it { should have_assigned(:user).with("user") }
   # it { should_not have_assigned(:user) }
   RSpec::Matchers.define :have_assigned do |name|
-    match_for_should do |_|
+    match do |_|
       if defined?(@value)
         assigns(name) == @value
       else
@@ -56,7 +56,7 @@ module ControllersMachers
       end
     end
 
-    match_for_should_not do |_|
+    match_when_negated do |_|
       assigns(name).nil?
     end
 
@@ -72,7 +72,7 @@ module ControllersMachers
       end
     end
 
-    failure_message_for_should do |_|
+    failure_message do |_|
       received = assigns(name)
       received = received.to_a if received.is_a?(ActiveRecord::Relation)
       if @value
@@ -82,7 +82,7 @@ module ControllersMachers
       end
     end
 
-    failure_message_for_should_not do |_|
+    failure_message_when_negated do |_|
       "expected controller to not have assigned #{name}"
     end
   end
@@ -91,7 +91,7 @@ module ControllersMachers
   # it { should have_set_flash(:alert).with("hello nurse") }
   # it { should_not have_set_flash(:alert) }
   RSpec::Matchers.define :have_set_flash do |name|
-    match_for_should do |_|
+    match do |_|
       if @value
         flash[name] == @value
       else
@@ -99,7 +99,7 @@ module ControllersMachers
       end
     end
 
-    match_for_should_not do |_|
+    match_when_negated do |_|
       flash[name].nil?
     end
 
@@ -115,7 +115,7 @@ module ControllersMachers
       end
     end
 
-    failure_message_for_should do |_|
+    failure_message do |_|
       received = flash[name]
 
       if @value
@@ -125,7 +125,7 @@ module ControllersMachers
       end
     end
 
-    failure_message_for_should_not do |_|
+    failure_message_when_negated do |_|
       "expected controller to not have set flash :#{name}"
     end
   end
@@ -134,7 +134,7 @@ module ControllersMachers
   # it { should have_set_session(:account_id).with(123) }
   # it { should_not have_set_flash(:account_id) }
   RSpec::Matchers.define :have_set_session do |name|
-    match_for_should do |_|
+    match do |_|
       if @value
         session[name] == @value
       else
@@ -142,7 +142,7 @@ module ControllersMachers
       end
     end
 
-    match_for_should_not do |_|
+    match_when_negated do |_|
       session[name].nil?
     end
 
@@ -158,7 +158,7 @@ module ControllersMachers
       end
     end
 
-    failure_message_for_should do |_|
+    failure_message do |_|
       received = session[name]
 
       if @value
@@ -168,7 +168,7 @@ module ControllersMachers
       end
     end
 
-    failure_message_for_should_not do |_|
+    failure_message_when_negated do |_|
       "expected controller to not have set session :#{name}"
     end
   end
