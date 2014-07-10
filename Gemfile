@@ -11,6 +11,7 @@ gem 'redcarpet'
 gem 'settingslogic'
 gem 'kaminari'
 gem "jbuilder"
+gem "oj"
 
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
