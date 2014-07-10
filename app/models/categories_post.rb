@@ -4,6 +4,7 @@
 #
 #  category_id :integer
 #  post_id     :integer
+#  id          :integer          not null, primary key
 #
 
 class CategoriesPost < ActiveRecord::Base
