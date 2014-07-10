@@ -16,7 +16,7 @@ module Api
     private
 
     def load_posts
-      posts = Post.page(params[:page])
+      posts = Post.page(params[:page]).includes(:categories)
       posts = posts.active unless admin?
       posts
     end
