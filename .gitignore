@@ -20,6 +20,5 @@ config/deploy.rb
 config/unicorn.rb
 config/nginx.conf
 config/init.sh
-analytics.js
 config/unicorn.example.rb
 setup.txt
