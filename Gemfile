@@ -12,6 +12,7 @@ gem 'settingslogic'
 gem 'kaminari'
 gem "jbuilder"
 gem "oj"
+gem "lograge"
 
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'

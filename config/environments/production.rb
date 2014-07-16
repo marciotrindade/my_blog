@@ -42,9 +42,6 @@ Blog::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
-  # Set to :debug to see everything in the log.
-  config.log_level = :info
-
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 
@@ -75,8 +72,16 @@ Blog::Application.configure do
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
+  # Set to :debug to see everything in the log.
+  config.log_level = :info
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  config.lograge.enabled = true
+  config.lograge.custom_options = lambda do |event|
+    options = {ip: event.payload[:remote_ip]}
+    options.merge!({account_id: event.payload[:account_id]}) if event.payload[:account_id]
+    options
+  end
 
   config.action_mailer.default_url_options = { :host => 'marciotrindade.com' }
 end
