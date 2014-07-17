@@ -29,15 +29,6 @@ describe ApplicationHelper do
     end
   end
 
-  describe "#page_title" do
-    let(:page) { create(:page, page_title: 'lala') }
-    before { subject.instance_variable_set("@page_title", "Title") }
-
-    it "returns title" do
-      expect(subject.page_title(page)).to eq(%Q(lala - #{AppConfig.site.name}))
-    end
-  end
-
   describe "#textilize" do
     it "returns formated html" do
       expect(subject.textilize("**lorem**")).to eq("<p><strong>lorem</strong></p>\n")
@@ -51,24 +42,27 @@ describe ApplicationHelper do
     end
   end
 
-  describe "#link_to_menu" do
-    let(:expected)  { %Q(<a #{selected_class} href="/" role="menuitem" title="Home">Home</a>) }
+  describe "#menu_tag" do
+    let(:expected)  { %Q(<li#{selected_class}><a href="/">#{menu_name}</a></li>) }
+    let(:menu_name) { 'Home' }
 
-    context "when controller matches with matcher" do
-      let(:selected_class) { 'class=" active"' }
+    context "when controller matches" do
+      let(:selected_class) { ' class="ls-active"' }
+      let(:name)           { "Home" }
       before { subject.params[:controller] = 'posts' }
 
-      it "returns actived link_to_menu" do
-        expect(link_to_menu("home", root_path, "posts" )).to eq(expected)
+      it "returns actived menu_tag" do
+        expect(menu_tag(name, root_path, /posts/)).to eq(expected)
       end
     end
 
     context "when controller does not match" do
-      let(:selected_class) { 'class=""' }
+      let(:selected_class) { "" }
+      let(:name)           { "Home" }
       before { subject.params[:controller] = 'pages' }
 
-      it "returns not actived link_to_menu" do
-        expect(link_to_menu("home", root_path, "postrs")).to eq(expected)
+      it "returns not actived menu_tag" do
+        expect(menu_tag(name, root_path, /lorem/)).to eq(expected)
       end
     end
   end
@@ -77,24 +71,27 @@ describe ApplicationHelper do
     let!(:post1)     { create(:post) }
     let!(:post2)     { create(:post) }
     let(:collection) { Post.page(1).per(1) }
-    let(:expected)   {
-      %Q(<div class="txt-center\">)+
-      %Q(<ul class="pagination">)+
-      %Q(<li class="page active">)+
-      %Q(  <a href="/?per=100">1</a>)+
-      %Q(</li>)+
-      %Q(<li class="page">)+
-      %Q(  <a href="/?page=2&amp;per=100" rel="next">2</a>)+
-      %Q(</li>)+
-      %Q(<li class="next">)+
-      %Q(  <a href="/?page=2&amp;per=100" rel="next">#{t('views.pagination.next')}</a>)+
-      %Q(</li>)+
-      %Q(<li class="last next">)+
-      %Q(  <a href="/?page=2&amp;per=100">#{t('views.pagination.last')}</a>)+
-      %Q(</li>)+
-      %Q(</ul>)+
-      %Q(</div>)
-    }
+    let(:expected) do
+      <<-EOS
+        <div class="ls-pagination-filter">
+          <ul class="ls-pagination">
+            <li class="ls-disabled">
+              <a href="/?per=100">« Anterior</a>
+            </li>
+            <li class="ls-active">
+              <a href="/?per=100">1</a>
+            </li>
+            <li class="">
+              <a href="/?page=2&amp;per=100" rel="next">2</a>
+            </li>
+            <li class="">
+              <a href="/?page=2&amp;per=100" rel="next">Próximo »</a>
+            </li>
+          </ul>
+        </div>
+      EOS
+    end
+
     before do
       subject.params[:controller] = 'posts'
       subject.params[:action]     = 'index'
@@ -103,15 +100,16 @@ describe ApplicationHelper do
 
     it "returns pagination" do
       pagination = subject.app_pagination(collection)
-      pagination.gsub!(/(\n|\t)/, '')
-      expect(pagination).to eq(expected)
+      pagination.gsub!(/(\n|\t)/, '').gsub!(/(\s{2})/, '')
+      expect(pagination).to eq(expected.gsub!(/(\n|\t)/, '').gsub!(/(\s{2})/, ''))
     end
   end
 
   describe "#flash_message" do
     let(:expected) {
-      %Q(<div class="onFocus alert alert-#{alert_class}">)+
-      %Q(<a aria-hidden="true" class="close" data-dismiss="alert">x</a>#{alert_message})+
+      %Q(<div class="ls-alert-#{alert_class} ls-dismissable">) +
+      %Q(<span class="ls-dismiss" data-ls-module="dismiss">×</span>) +
+      alert_message +
       %Q(</div>)
     }
     before { allow(subject).to receive(:flash).and_return({kind => alert_message}) }
@@ -153,6 +151,36 @@ describe ApplicationHelper do
 
       it "returns alert tag" do
         expect(subject.flash_message).to eq(expected)
+      end
+    end
+  end
+
+  describe "#sub_menu_tag" do
+    let(:expected)  { %Q(<li#{selected_class}><a href="#{path}">#{menu_name}</a></li>) }
+    let(:menu_name) { 'Home' }
+    let(:path)      { '/pages/test' }
+
+    context "when path is the current page" do
+      let(:selected_class) { ' class="ls-active"' }
+      let(:name)           { "Home" }
+      before do
+        allow_any_instance_of(ActionView::Helpers::UrlHelper).to receive(:current_page?).and_return(true)
+      end
+
+      it "returns actived menu_tag" do
+        expect(sub_menu_tag(name, path)).to eq(expected)
+      end
+    end
+
+    context "when path is not the current page" do
+      let(:selected_class) { "" }
+      let(:name)           { "Home" }
+      before do
+        allow_any_instance_of(ActionView::Helpers::UrlHelper).to receive(:current_page?).and_return(false)
+      end
+
+      it "returns not actived menu_tag" do
+        expect(sub_menu_tag(name, path)).to eq(expected)
       end
     end
   end

@@ -4,17 +4,20 @@ module ApplicationHelper
     content_for(:js) { javascript_include_tag(*files) }
   end
 
-  def title(object, show_title=true)
+  def title(object,  ico=nil)
+    @content_title = object.page_title || object.name
+    @title_ico = ico
     content_for(:head)  { content_tag(:title, page_title(object)) + "\n" }
     content_for(:head)  { tag(:meta, :name => 'keywords',    :content => object.keywords) + "\n" } if object.keywords.present?
     content_for(:head)  { tag(:meta, :name => 'description', :content => object.page_body) + "\n" } if object.page_body.present?
   end
 
-  def page_title(object)
-    title = []
-    title << object.page_title || object.name
-    title << AppConfig.site.name
-    title.join(" - ")
+  def content_title
+    @content_title
+  end
+
+  def title_ico
+    @title_ico
   end
 
   def textilize(text)
@@ -27,18 +30,16 @@ module ApplicationHelper
     simple_format(text)
   end
 
-  def link_to_menu(name, link, matcher, opts={})
-    page_name = t(name, scope: %w(layouts application menu))
-    opts.reverse_merge!(role: "menuitem", title: page_name)
-    opts[:class] ||= ""
-    opts[:class]  += " active" if params[:controller].match(matcher)
-    link_to(page_name, link, opts)
+  def menu_tag(name, url, matcher, opts={})
+    li_opts={}
+    li_opts[:class] = 'ls-active' if params[:controller].match(matcher)
+    content_tag(:li, li_opts) { link_to name, url, opts }
   end
 
   def app_pagination(collection, pagination_opts={}, filter_opts={})
     content = ''
     if collection.num_pages > 1
-      content = content_tag(:div, class: 'txt-center') do
+      content = content_tag(:div, class: 'ls-pagination-filter') do
         paginate(collection, pagination_opts)
       end
     end
@@ -48,12 +49,27 @@ module ApplicationHelper
   def flash_message
     content = ""
     flash.each do |type, message|
-      content = content_tag("div", class: "onFocus alert alert-#{t(type, scope: %w(flash type))}") do
-        content_tag("a", 'x', class: 'close', data: { dismiss: "alert" }, :'aria-hidden' => 'true') +
+      content = content_tag("div", class: "ls-alert-#{t("flash.type.#{type}")} ls-dismissable") do
+        content_tag("span", "×", class: "ls-dismiss", data: {"ls-module" => "dismiss"})+
         message.html_safe
       end if message.present?
     end
     content.html_safe
+  end
+
+  def sub_menu_tag(name, path, opts={})
+    li_opts={}
+    li_opts[:class] = 'ls-active' if self.current_page?(path)
+    content_tag(:li, li_opts) { link_to name, path, opts }
+  end
+
+  private
+
+  def page_title(object)
+    title = []
+    title << object.page_title || object.name
+    title << AppConfig.site.name
+    title.join(" - ")
   end
 
 end
