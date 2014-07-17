@@ -21,7 +21,7 @@ class Page < ActiveRecord::Base
   before_save :set_permalink
 
   scope :sitemap, -> { where('permalink not in(?)', %W(home contato)) }
-  scope :home,    -> { where(permalink: 'home').first }
+  scope :home,    -> { where(permalink: 'artigos').first }
 
   def set_permalink
     self.permalink = name.parameterize

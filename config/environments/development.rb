@@ -31,7 +31,7 @@ Blog::Application.configure do
   config.log_level = :info
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.lograge.enabled = true
+  config.lograge.enabled = false
   config.lograge.custom_options = lambda do |event|
     options = {ip: event.payload[:remote_ip]}
     options.merge!({account_id: event.payload[:account_id]}) if event.payload[:account_id]

@@ -1,7 +1,6 @@
 pt:
   posts:
     by_date:
-      title:       Artigos publicados em %{date}
       description: Lista de todos artigos que foram publicados em %{date}
     post:
-      read_more: Ler mais...
+      read_more: Ler mais ...

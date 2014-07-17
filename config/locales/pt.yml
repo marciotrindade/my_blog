@@ -3,6 +3,10 @@ pt:
   _false: 'não'
   send: 'Enviar'
 
+  paginate:
+    show: Exibir
+    per_page: itens por página
+
   # admin breadcrumb
   breadcrumbs:
     create: 'Adicionar'

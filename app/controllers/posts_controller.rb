@@ -10,8 +10,8 @@ class PostsController < ApplicationController
   end
 
   def by_date
-    @page            = Page.home
-    @page.page_title = t(:title,       scope: %w(posts by_date), date: date_for_meta_tag)
+    @page            = Page.new
+    @page.page_title = @page.name = date_for_meta_tag
     @page.page_body  = t(:description, scope: %w(posts by_date), date: date_for_meta_tag)
     @posts           = Post.by_date(params[:year],params[:month], params[:day]).page(params[:page])
   end

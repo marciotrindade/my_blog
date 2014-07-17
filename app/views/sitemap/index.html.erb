@@ -1,29 +1,44 @@
-<% title @page %>
+<% title @page, 'ls-ico-globe' %>
 
-<header class="header-content">
-	<h1 class="title-1"><%= @page.name %></h1>
-</header>
+<div class="ls-box">
+  <h2 class="ls-title-3"><%= t('.pages') %></h2>
+  <table class="ls-table">
+    <thead>
+      <tr><th>Nome</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><%= link_to 'Artigos', root_path %></td></tr>
+      <tr><td><%= link_to 'Sobre o autor', page_path('sobre-o-autor') %></td></tr>
+      <tr><td><%= link_to 'Contato',       new_contact_path %></td></tr>
+      <tr><td><%= link_to 'Sitemap',       sitemap_path %></td></tr>
+    </tbody>
+  </table>
+</div>
 
-<div class="sitemap">
-	<h2><%= t('.pages') %></h2>
-	<ul>
-		<li><%= link_to 'Home', root_path %></li>
-		<% @pages.each do |page| %>
-			<li><%= link_to page.name, page_path(page.permalink)%></li>
-		<% end %>
-	</ul>
+<div class="ls-box">
+  <h2 class="ls-title-3"><%= t('.categories') %></h2>
+  <table class="ls-table">
+    <thead>
+      <tr><th>Nome</th></tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr><td><%= link_to category.name, category_path(category.permalink) %></td></tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-	<h2><%= t('.categories') %></h2>
-	<ul>
-		<% @categories.each do |category| %>
-			<li><%= link_to "#{category.name} (#{category.posts.size})", category_path(category.permalink) %></li>
-		<% end %>
-	</ul>
-
-	<h2><%= t('.posts') %></h2>
-	<ul>
-		<% @posts.each do |post| %>
-			<li><%= link_to post.name, post.path %></li>
-		<% end %>
-	</ul>
+<div class="ls-box">
+  <h2 class="ls-title-3"><%= t('.posts') %></h2>
+  <table class="ls-table">
+    <thead>
+      <tr><th>Nome</th></tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr><td><%= link_to post.name, post.path %></td></tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

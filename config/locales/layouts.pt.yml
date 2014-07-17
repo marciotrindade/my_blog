@@ -8,8 +8,7 @@ pt:
       menu:
         about_me: Sobre o autor
         contact:  Contato
-        home:     Home
+        posts:    Artigos
         sitemap:  Sitemap
-    sidebar:
       archive: Arquivo
       categories: Categorias

@@ -1,33 +1,27 @@
-<% title @page %>
-
-<header class="header-content">
-	<h1 class="title-1"><%= @page.name %></h1>
-</header>
+<% title @page, 'ls-ico-envelope' %>
 
 <%= textilize(@page.body) %>
 
-<%= form_for @contact, html: { id: "contact",  role: "form" } do |f| %>
-	<fieldset>
-		<div class="form-group <%= f.error_class :name %>">
-			<%= f.label :name, class: "control-label" %>
-			<%= f.text_field :name, class: "form-control" %>
-			<%= f.errors_for :name %>
-		</div>
+<%= form_for @contact, html: { id: "contact",  class: "ls-form" } do |f| %>
+  <fieldset>
+    <label class="ls-label <%= f.error_class :name %>">
+      <b class="ls-label-text">Nome</b>
+      <%= f.text_field :name %>
+      <%= f.errors_for :name %>
+    </label>
 
-		<div class="form-group <%= f.error_class :email %>">
-			<%= f.label :email, class: "control-label" %>
-			<%= f.email_field :email, class: "form-control" %>
-			<%= f.errors_for :email %>
-		</div>
+    <label class="ls-label <%= f.error_class :email %>">
+      <b class="ls-label-text">Email</b>
+      <%= f.text_field :email %>
+      <%= f.errors_for :email %>
+    </label>
 
-		<div class="form-group <%= f.error_class :body %>">
-			<%= f.label :body, class: "control-label" %>
-			<%= f.text_area :body, class: "form-control", rows: "8" %>
-			<%= f.errors_for :body %>
-		</div>
+    <label class="ls-label <%= f.error_class :body %>">
+      <b class="ls-label-text">Mensagem</b>
+      <%= f.text_area :body, rows: 8 %>
+      <%= f.errors_for :body %>
+    </label>
 
-		<div class="box-actions">
-			<%= f.submit t('.send'), class: "btn btn-default", data: { disable_with: t('.sending') } %>
-		</div>
-	</fieldset>
+    <%= f.submit t('.send'), class: "ls-btn-primary", data: { disable_with: t('.sending') } %>
+  </fieldset>
 <% end %>

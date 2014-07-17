@@ -1,42 +1,40 @@
-<% title @post %>
+<% title @post, 'ls-ico-text' %>
 
 <article>
-	<header>
-		<h1 class="title-1"><%= @post.name %></h1>
-		<time datetime="<%= @post.created_at %>" pubdate><%= @post.created %></time>
-	</header>
-	<%= @post.body_formated %>
+  <time datetime="<%= @post.created_at %>" pubdate><%= @post.created %></time>
 
-	<aside>
-		<%= @post.category_links %>
-	</aside>
+  <%= @post.body_formated %>
 
-	<div class="social">
-		<%= link_to "Tweet", "http://twitter.com/share", class: 'twitter-share-button', data: { count: "horizontal", text: @post.name, url: "#{request.base_url}#{@post.path}", via: "marciotrindade" } %>
-		<%= javascript_include_tag "http://platform.twitter.com/widgets.js" %>
-		<g:plusone size="medium"></g:plusone>
-		<script type="text/javascript">
-			window.___gcfg = {lang: 'pt-BR'};
-			(function() {
-				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-				po.src = 'https://apis.google.com/js/plusone.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-			})();
-		</script>
-	</div>
+  <aside>
+    <%= @post.category_links %>
+  </aside>
+
+  <div class="social">
+    <%= link_to "Tweet", "http://twitter.com/share", class: 'twitter-share-button', data: { count: "horizontal", text: @post.name, url: "#{request.base_url}#{@post.path}", via: "marciotrindade" } %>
+    <%= javascript_include_tag "http://platform.twitter.com/widgets.js" %>
+    <g:plusone size="medium"></g:plusone>
+    <script type="text/javascript">
+      window.___gcfg = {lang: 'pt-BR'};
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+  </div>
 </article>
 
 <div id="disqus_thread" name="comments"></div>
 <script type="text/javascript">
-	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-	<%= "var disqus_developer = 1;" if Rails.env != 'production' %>
-	var disqus_identifier = '<%= @post.id %>';
-	var disqus_shortname = 'marciotrindade';
-	/* * * DON'T EDIT BELOW THIS LINE * * */
-	(function() {
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  <%= "var disqus_developer = 1;" if Rails.env != 'production' %>
+  var disqus_identifier = '<%= @post.id %>';
+  var disqus_shortname = 'marciotrindade';
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>

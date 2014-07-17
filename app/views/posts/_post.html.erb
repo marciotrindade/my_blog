@@ -1,12 +1,10 @@
 <article>
-	<header>
-		<h2 class="title-2"><%= link_to(post.name, post.path, title: post.name) %></h2>
-		<time datetime="<%= post.created_at %>" pubdate><%= post.created %></time>
-	</header>
-	<%= textilize(post.summary) %>
-	<aside>
-		<%= post.category_links %>
-		<strong><%= link_to(t('.read_more'), post.path) %></strong>
-	</aside>
-	<hr class="sep-dot">
+  <h2 class="ls-title-2"><%= link_to(post.name, post.path, title: post.name, class: 'ls-color-theme') %></h2>
+  <time datetime="<%= post.created_at %>" pubdate><%= post.created %></time>
+  <%= textilize(post.summary) %>
+  <aside>
+    <%= post.category_links %>
+    <p><%= link_to(t('.read_more'), post.path) %></p>
+  </aside>
 </article>
+<hr class="ls-clear-both">

@@ -7,9 +7,7 @@ class PostDecorator < ApplicationDecorator
 
   def category_links
     labels = categories.collect do |category|
-      h.content_tag :span, class: "label label-default" do
-        h.link_to(category.name, h.category_path(category.permalink))
-      end
+      h.link_to(category.name, h.category_path(category.permalink), class: "ls-tag")
     end
     labels.join(' ').html_safe
   end
