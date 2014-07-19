@@ -4,12 +4,17 @@ module ApplicationHelper
     content_for(:js) { javascript_include_tag(*files) }
   end
 
-  def title(object,  ico=nil)
+  def title(object, ico=nil)
     @content_title = object.page_title || object.name
     @title_ico = ico
     content_for(:head)  { content_tag(:title, page_title(object)) + "\n" }
     content_for(:head)  { tag(:meta, :name => 'keywords',    :content => object.keywords) + "\n" } if object.keywords.present?
     content_for(:head)  { tag(:meta, :name => 'description', :content => object.page_body) + "\n" } if object.page_body.present?
+  end
+
+  def admin_title(title, ico=nil)
+    @content_title = title
+    @title_ico = ico
   end
 
   def content_title
