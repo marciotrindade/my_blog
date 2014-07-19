@@ -17,7 +17,7 @@
     <div class="ls-topbar">
       <span class="ls-show-sidebar ls-ico-menu"></span>
       <!-- Nome do produto/marca -->
-      <h1 class="ls-brand-name"><a href="/"><%= AppConfig.site.name %></a></h1>
+      <h1 class="ls-brand-name"><%= link_to AppConfig.site.name, root_path, title: AppConfig.site.name %></h1>
     </div>
 
     <main class="ls-main ">
