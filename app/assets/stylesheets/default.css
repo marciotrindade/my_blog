@@ -1,9 +1,9 @@
-p {
-  font-size: 1rem;
+html {
+  font-size: 110%;
 }
 
 .ls-tag {
-  font-size: 0.80rem;
+  font-size: 0.78rem;
 }
 
 form {
