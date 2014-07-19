@@ -1,29 +1,27 @@
-<header class="header-content">
-	<h1 class="title-1">Contacts</h1>
-</header>
+<% admin_title("Contacts", "ls-ico-envelope") %>
 
-<table class="table ls-table" id="tabela1">
-	<thead>
-		<tr>
-			<th class="txt-center">ID</th>
-			<th class="txt-center">Name</th>
-			<th class="txt-center">Email</th>
-			<th class="txt-center">Created at</th>
-			<th class="txt-center">Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @contacts.each do |contact| %>
-			<tr>
-				<td class="txt-center"><%= contact.id %></td>
-				<td><%= contact.name %></td>
-				<td><%= contact.email %></td>
-				<td class="txt-center"><%= l contact.created_at %></td>
-				<td class="txt-center">
-					<%= link_to "edit", edit_admin_contact_path(contact) %> |
-					<%= link_to "delete", admin_contact_path(contact), method: :delete, data: { confirm: "Are you sure?" } %>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
+<table class="ls-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.id %></td>
+        <td><%= contact.name %></td>
+        <td><%= contact.email %></td>
+        <td><%= l contact.created_at %></td>
+        <td>
+          <%= link_to "edit", edit_admin_contact_path(contact), class: "ls-ico-pencil" %> |
+          <%= link_to "delete", admin_contact_path(contact), method: :delete, data: { confirm: "Are you sure?" }, class: "ls-ico-remove" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

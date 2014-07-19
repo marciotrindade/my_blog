@@ -1,5 +1,3 @@
-<header class="header-content">
-  <h1 class="title-1">Criar <%= params[:controller].split("/").last.titleize %></h1>
-</header>
+<% admin_title("Create #{params[:controller].split("/").last.singularize}") %>
 
 <%= render 'form' %>

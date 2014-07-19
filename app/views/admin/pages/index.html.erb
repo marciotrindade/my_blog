@@ -1,27 +1,25 @@
-<header class="header-content">
-	<h1 class="title-1">Pages</h1>
-</header>
+<% admin_title("Pages", "ls-ico-text") %>
 
-<p><%= link_to 'New Page', new_admin_page_path, class: "btn btn-primary ico-plus" %></p>
+<%= link_to 'New Page', new_admin_page_path, class: "ls-btn-primary" %>
 
-<table class="table ls-table" id="tabela1">
-	<thead>
-		<tr>
-			<th class="txt-center">ID</th>
-			<th class="txt-center">Name</th>
-			<th class="txt-center">Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @pages.each do |page| %>
-			<tr>
-				<td class="txt-center"><%= page.id %></td>
-				<td><%= page.name %></td>
-				<td class="txt-center">
-					<%= link_to "edit", edit_admin_page_path(page) %> |
-					<%= link_to "delete", admin_page_path(page), method: :delete, data: { confirm: "Are you sure?" } %>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
+<table class="ls-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.id %></td>
+        <td><%= page.name %></td>
+        <td>
+          <%= link_to "edit", edit_admin_page_path(page), class: "ls-ico-pencil" %> |
+          <%= link_to "delete", admin_page_path(page), method: :delete, data: { confirm: "Are you sure?" }, class: "ls-ico-remove" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

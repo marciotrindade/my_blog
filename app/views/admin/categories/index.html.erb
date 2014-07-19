@@ -1,27 +1,25 @@
-<header class="header-content">
-	<h1 class="title-1">Categories</h1>
-</header>
+<% admin_title("Categories", "ls-ico-flag") %>
 
-<p><%= link_to 'New Category', new_admin_category_path, class: "btn btn-primary ico-plus" %></p>
+<%= link_to 'New Category', new_admin_category_path, class: "ls-btn-primary" %>
 
-<table class="table ls-table" id="tabela1">
-	<thead>
-		<tr>
-			<th class="txt-center">ID</th>
-			<th class="txt-center">Name</th>
-			<th class="txt-center">Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @categories.each do |category| %>
-			<tr>
-				<td class="txt-center"><%= category.id %></td>
-				<td><%= category.name %></td>
-				<td class="txt-center">
-					<%= link_to "edit", edit_admin_category_path(category) %> |
-					<%= link_to "delete", admin_category_path(category), method: :delete, data: { confirm: "Are you sure?" } %>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
+<table class="ls-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.id %></td>
+        <td><%= category.name %></td>
+        <td>
+          <%= link_to "edit", edit_admin_category_path(category), class: "ls-ico-pencil" %> |
+          <%= link_to "delete", admin_category_path(category), method: :delete, data: { confirm: "Are you sure?" }, class: "ls-ico-remove" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

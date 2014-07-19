@@ -1,22 +1,20 @@
-<%= form_for([:admin, @page]) do |f| %>
-	<fieldset>
-		<div class="form-group <%= f.error_class :name %>">
-			<%= f.label :name,      class: "control-label" %>
-			<%= f.text_field :name, class: "form-control" %>
-			<%= f.errors_for :name %>
-		</div>
+<%= form_for([:admin, @page], html: { class: "ls-form" }) do |f| %>
+  <fieldset>
+    <label class="ls-label <%= f.error_class :name %>">
+      <b class="ls-label-text">Name</b>
+      <%= f.text_field :name %>
+      <%= f.errors_for :name %>
+    </label>
 
-		<div class="form-group <%= f.error_class :body %>">
-			<%= f.label :body,     class: "control-label" %>
-			<%= f.text_area :body, class: "form-control", rows: "20" %>
-			<%= f.errors_for :body %>
-		</div>
+    <label class="ls-label <%= f.error_class :body %>">
+      <b class="ls-label-text">Body</b>
+      <%= f.text_area :body, rows: "20", class: 'ls-textarea-resize-vertical' %>
+      <%= f.errors_for :body %>
+    </label>
 
-		<%= render 'meta_tags', f: f %>
+    <%= render 'meta_tags', f: f %>
 
-		<div class="box-actions">
-			<%= f.submit 'Send', class: "btn btn-success", data: { disable_with: 'Sending' } %>
-			<%= link_to 'Back', admin_pages_path, class: "btn btn-default" %>
-		</div>
-	</fieldset>
+    <%= f.submit 'Send', class: "ls-btn-primary", data: { disable_with: 'Sending ...' } %>
+    <%= link_to 'Cancel', admin_pages_path, class: "ls-btn" %>
+  </fieldset>
 <% end %>
