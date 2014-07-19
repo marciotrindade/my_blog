@@ -19,7 +19,6 @@ class CodeFormatter
           <div class="code_block">
             <div class="code_header">
               #{CGI.escapeHTML(code[:name].to_s)}
-              #{clippy(code[:content])}
             </div>
             #{CodeRay.scan(code[:content], language(code[:name])).div(css: :class)}
           </div>
@@ -41,23 +40,5 @@ class CodeFormatter
     when /\./ then path[/\.([^.]+?)$/, 1]
     else path
     end
-  end
-
-  def clippy(text)
-    id = "clippy_#{rand(10000000)}"
-    <<-EOS
-      <div id="#{id}" class="clippy">
-        <span style="display:none" class="clippy_code">#{CGI.escapeHTML(text)}</span>
-        <span class="clippy_label"></span>
-        <object type="application/x-shockwave-flash" data="/flash/clippy.swf" width="14" height="14" id="#{id}_flash">
-        <param name="movie" value="/flash/clippy.swf" />
-        <param name="allowScriptAccess" value="always" />
-        <param name="quality" value="high" />
-        <param name="scale" value="noscale" />
-        <param name="FlashVars" value="target=#{CGI.escape('#' + id)}" />
-        <param name="bgcolor" value="#E0E0E0" />
-        </object>
-      </div>
-    EOS
   end
 end
