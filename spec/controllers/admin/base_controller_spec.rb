@@ -9,6 +9,7 @@ describe Admin::PagesController do
   describe "check_credentials" do
     context "when has credentials" do
       before do
+        allow(controller).to receive(:current_user).and_return(build(:user))
         allow(controller).to receive(:check_credentials)
         get :index
       end
