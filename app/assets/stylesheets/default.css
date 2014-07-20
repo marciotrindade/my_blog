@@ -32,3 +32,8 @@ article aside p {
 .social {
   margin-top: 20px;
 }
+
+.login {
+  margin: 0 auto;
+  max-width: 500px;
+}

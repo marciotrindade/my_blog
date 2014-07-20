@@ -1,25 +1,23 @@
 <% title Page.home %>
 
-<div class="row">
-  <div class="col-md-3 ls-margin-auto ls-float-none">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "ls-form  ls-box" }) do |f| %>
-      <fieldset>
-        <label class="ls-label <%= f.error_class :email %>">
-          <b class="ls-label-text">Email</b>
-          <%= f.email_field :email, autofocus: true %>
-          <%= f.errors_for :email %>
-        </label>
+<div class="login">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "ls-form  ls-box" }) do |f| %>
+    <fieldset>
+      <label class="ls-label <%= f.error_class :email %>">
+        <b class="ls-label-text">Email</b>
+        <%= f.email_field :email, autofocus: true %>
+        <%= f.errors_for :email %>
+      </label>
 
-        <label class="ls-label <%= f.error_class :password %>">
-          <b class="ls-label-text">Password</b>
-          <%= f.password_field :password %>
-          <%= f.errors_for :password %>
-        </label>
+      <label class="ls-label <%= f.error_class :password %>">
+        <b class="ls-label-text">Password</b>
+        <%= f.password_field :password %>
+        <%= f.errors_for :password %>
+      </label>
 
-        <div class="box-actions">
-          <%= f.submit "Login", disable_with: "Sending ...", class: "ls-btn-primary" %>
-        </div>
-      </fieldset>
-    <% end %>
-  </div>
+      <div class="box-actions">
+        <%= f.submit "Login", disable_with: "Sending ...", class: "ls-btn-primary" %>
+      </div>
+    </fieldset>
+  <% end %>
 </div>
