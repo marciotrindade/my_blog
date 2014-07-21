@@ -11,7 +11,7 @@ class CodeFormatter
       codes << code
       "\n\n#{code[:id]}\n\n"
     end
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true)
     html = markdown.render(text)
     codes.each do |code|
       html.sub!("<p>#{code[:id]}</p>") do
@@ -35,10 +35,10 @@ class CodeFormatter
     when /\.scss$/ then "css"
     when /\.erb$/, /\.html$/ then "rhtml"
     when /\.h$/, /\.m$/ then "c"
-    when /\.rb$/, /\.rake$/, /\.gemspec/, /\.Gemfile/, /\.Guardfile/, /\.rspec/, /file$/, /console$/ then "ruby"
+    when /\.rb$/, /\.rake$/, /\.gemspec/, /\.Gemfile/, /\.Guardfile/, /\.rspec/ then "ruby"
     when /\.ctp$/, /\.php$/ then "php"
     when /\./ then path[/\.([^.]+?)$/, 1]
-    else path
+    else :txt
     end
   end
 end
