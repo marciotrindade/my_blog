@@ -50,7 +50,7 @@ module Admin
     end
 
     def post_params
-      params.require(:post).permit(:name, :summary, :body, :keywords, :page_body, :active)
+      params.require(:post).permit(:name, :summary, :body, :keywords, :page_body, :active, :category_ids => [])
     end
 
   end

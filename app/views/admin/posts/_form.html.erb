@@ -21,6 +21,13 @@
       <label class="ls-label-text"><%= f.check_box :active %> Active</label>
     </div>
 
+    <div class="ls-label">
+      <label class="ls-label-text"> Categories</label>
+      <% Category.all.each do |category| %>
+        <label class="ls-no-bold"><%= check_box_tag "post[category_ids][]", category.id, @post.categories.include?(category) %> <%= category.name %></label>
+      <% end %>
+    </div>
+
     <%= render 'meta_tags', f: f, hide_title: true %>
 
     <%= f.submit 'Send', class: "ls-btn-primary", data: { disable_with: 'Sending ...' } %>
