@@ -22,6 +22,7 @@ gem 'uglifier',     '>= 1.3.0'
 
 group :production do
   gem 'unicorn'
+  gem 'newrelic_rpm'
 end
 
 group :development do
