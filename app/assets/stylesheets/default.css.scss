@@ -10,9 +10,36 @@ form {
   margin-top: 40px;
 }
 
+.container-fluid {
+  h1, h2, h3, h4, h5 {
+    margin-bottom: 5px;
+    font-weight: 400;
+    color: #323232;
+  }
+
+  h2 {
+    font-size: 1.88rem;
+  }
+
+  h3 {
+    font-size: 1.375rem;
+  }
+
+  ul {
+    margin-left: 20px;
+  }
+
+  li {
+    color: #555555;
+    font-size: 0.88rem;
+    margin:3px 0;
+  }
+}
+
 article {
   margin-bottom: 30px;
 }
+
 article time {
   font-style: italic;
   display: block;
