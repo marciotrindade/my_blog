@@ -33,6 +33,13 @@ form {
     color: #555555;
     font-size: 0.88rem;
     margin:3px 0;
+    a {
+      color: #509742;
+      text-decoration: underline;
+    }
+    a:hover {
+      text-decoration: none;
+    }
   }
 }
 
