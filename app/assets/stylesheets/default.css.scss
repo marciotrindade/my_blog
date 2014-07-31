@@ -12,9 +12,13 @@ form {
 
 .container-fluid {
   h1, h2, h3, h4, h5 {
-    margin-bottom: 5px;
+    margin: 15px 0 10px 0;
     font-weight: 400;
     color: #323232;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    font-smoothing: antialiased;
   }
 
   h2 {
@@ -26,7 +30,7 @@ form {
   }
 
   ul {
-    margin-left: 20px;
+    margin: 10px 20px;
   }
 
   li {
