@@ -2,15 +2,7 @@ html {
   font-size: 110%;
 }
 
-.ls-tag {
-  font-size: 0.78rem;
-}
-
-form {
-  margin-top: 40px;
-}
-
-.container-fluid {
+#container {
   h1, h2, h3, h4, h5 {
     margin: 15px 0 10px 0;
     font-weight: 400;
@@ -29,12 +21,15 @@ form {
     font-size: 1.375rem;
   }
 
+  form {
+    margin-top: 40px;
+  }
+
   ul {
     margin: 10px 20px;
   }
 
   li {
-    color: #555555;
     font-size: 0.88rem;
     margin:3px 0;
     a {
@@ -45,33 +40,37 @@ form {
       text-decoration: none;
     }
   }
-}
 
-article {
-  margin-bottom: 30px;
-}
+  article {
+    margin-bottom: 30px;
+  }
 
-article time {
-  font-style: italic;
-  display: block;
-  margin-bottom: 20px;
-  margin-top: 15px;
-  color: #555555;
-}
+  article time {
+    font-style: italic;
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    color: #555555;
+  }
 
-article aside {
-  margin-top: 20px;
-}
+  article aside {
+    margin-top: 20px;
+  }
 
-article aside p {
-  margin-top: 10px;
-}
+  article aside p {
+    margin-top: 10px;
+  }
 
-.social {
-  margin-top: 20px;
-}
+  .social {
+    margin-top: 20px;
+  }
 
-.login {
-  margin: 0 auto;
-  max-width: 500px;
+  .ls-tag {
+    font-size: 0.78rem;
+  }
+
+  .login {
+    margin: 0 auto;
+    max-width: 500px;
+  }
 }
