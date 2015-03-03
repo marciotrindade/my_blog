@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Admin::PagesController do
 
   include Devise::TestHelpers

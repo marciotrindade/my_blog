@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Api::CategoriesController do
 
   render_views

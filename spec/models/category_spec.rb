@@ -13,8 +13,6 @@
 #  posts_count :integer          default(0)
 #
 
-require 'spec_helper'
-
 describe Category do
 
   describe "validations" do

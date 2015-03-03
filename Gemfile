@@ -31,10 +31,9 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers', require: false
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'rspec-rails',        require: false
-  gem 'shoulda-matchers'
-  gem 'simplecov',          require: false
 end
 
 group :development, :test do

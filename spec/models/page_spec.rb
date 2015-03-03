@@ -13,8 +13,6 @@
 #  updated_at :datetime
 #
 
-require 'spec_helper'
-
 describe Page do
 
   describe "validations" do
