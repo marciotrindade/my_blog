@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'mysql2'
 gem 'rails',      '4.2.0'
+gem 'pg'
 
 gem 'coderay'
 gem 'devise'

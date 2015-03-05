@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
 
   default_scope   -> { order('created_at DESC') }
   scope :active,  -> { where(active: true) }
-  scope :archive, -> { active.select("COUNT(id) AS total, created_at").group("YEAR(created_at), MONTH(created_at)") }
+  scope :archive, -> { active.select("date_trunc('month', created_at) + interval '1 day' AS created_at, COUNT(id) AS total").group(1) }
   scope :by_date, -> (year, month=nil, day=nil) { where("created_at BETWEEN ? AND ?", *time_interval(year, month, day)) }
 
   def summary
