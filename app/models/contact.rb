@@ -19,7 +19,7 @@ class Contact < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
 
   def send_mail
-    ContactMailer.send_contact(self).deliver
+    ContactMailer.send_contact(self).deliver_later
   end
 
 end

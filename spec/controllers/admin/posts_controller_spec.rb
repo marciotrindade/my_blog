@@ -33,7 +33,7 @@ describe Admin::PostsController do
         post :create, post: { name: 'test', body: 'content', keywords: 'lala', page_body: 'page body', active: true }
       end
 
-      it { should set_the_flash[:notice].to('Post was successfully created.') }
+      it { should set_flash[:notice].to('Post was successfully created.') }
       it { should redirect_to(admin_posts_path) }
     end
 
@@ -52,7 +52,7 @@ describe Admin::PostsController do
         patch :update, id: article.id, post: { name: 'test', }
       end
 
-      it { should set_the_flash[:notice].to('Post was successfully updated.') }
+      it { should set_flash[:notice].to('Post was successfully updated.') }
       it { should redirect_to(admin_posts_path) }
     end
 

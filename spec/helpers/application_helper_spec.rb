@@ -80,10 +80,10 @@ describe ApplicationHelper do
               <a href="/?per=100">1</a>
             </li>
             <li class="">
-              <a href="/?page=2&amp;per=100" rel="next">2</a>
+              <a rel="next" href="/?page=2&amp;per=100">2</a>
             </li>
             <li class="">
-              <a href="/?page=2&amp;per=100" rel="next">Próximo »</a>
+              <a rel="next" href="/?page=2&amp;per=100">Próximo »</a>
             </li>
           </ul>
         </div>

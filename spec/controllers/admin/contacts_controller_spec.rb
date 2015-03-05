@@ -26,7 +26,7 @@ describe Admin::ContactsController do
         patch :update, id: contact.id, contact: { name: 'test' }
       end
 
-      it { should set_the_flash[:notice].to('Contact was successfully updated.') }
+      it { should set_flash[:notice].to('Contact was successfully updated.') }
       it { should redirect_to(admin_contacts_path) }
     end
 

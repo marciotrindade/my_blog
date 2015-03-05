@@ -20,7 +20,7 @@ describe Admin::PagesController do
         get :index
       end
 
-      it { should set_the_flash[:alert].to(I18n.t("devise.failure.unauthenticated")) }
+      it { should set_flash[:alert].to(I18n.t("devise.failure.unauthenticated")) }
       it { should redirect_to(new_user_session_path) }
     end
 
@@ -32,7 +32,7 @@ describe Admin::PagesController do
         get :index
       end
 
-      it { should set_the_flash[:alert].to(I18n.t("devise.failure.access_denied")) }
+      it { should set_flash[:alert].to(I18n.t("devise.failure.access_denied")) }
       it { should redirect_to(root_path) }
     end
   end

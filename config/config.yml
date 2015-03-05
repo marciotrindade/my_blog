@@ -1,0 +1,18 @@
+default: &default
+  site:
+    name: Marcio Trindade
+    domain: marciotrindade.com
+    url: http://marciotrindade.com/
+    email: marciotrindade@gmail.com
+  paginate:
+    per_page: 25
+  locastyle: //assets.locaweb.com.br/locastyle/3.7.1
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+production:
+  <<: *default

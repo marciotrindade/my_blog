@@ -1,24 +1,23 @@
 source 'http://rubygems.org'
 
-gem 'rails',      '4.1.4'
 gem 'mysql2'
+gem 'rails',      '4.2.0'
 
 gem 'coderay'
 gem 'devise'
 gem 'draper'
-gem 'dynamic_form'
 gem 'redcarpet'
 gem 'settingslogic'
 gem 'kaminari'
-gem "jbuilder"
-gem "oj"
-gem "lograge"
+gem 'jbuilder'
+gem 'oj'
+gem 'lograge'
 
-gem 'coffee-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'sass-rails',   '~> 4.0.0'
 gem 'turbolinks'
-gem 'uglifier',     '>= 1.3.0'
 
 group :production do
   gem 'unicorn'
@@ -28,6 +27,8 @@ end
 group :development do
   gem 'rack-mini-profiler'
   gem 'annotate'
+  gem 'spring', '~> 1.3.1'
+  gem 'spring-commands-rspec', '~> 1.0.4'
 end
 
 group :test do
@@ -37,5 +38,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'pry-meta'
+  gem 'pry-nav'
+  gem 'web-console', '~> 2.0'
 end

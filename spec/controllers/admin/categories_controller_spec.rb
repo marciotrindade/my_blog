@@ -33,7 +33,7 @@ describe Admin::CategoriesController do
         post :create, category: { name: 'test', page_title: 'lala', keywords: 'lala' }
       end
 
-      it { should set_the_flash[:notice].to('Category was successfully created.') }
+      it { should set_flash[:notice].to('Category was successfully created.') }
       it { should redirect_to(admin_categories_path) }
     end
 
@@ -52,7 +52,7 @@ describe Admin::CategoriesController do
         patch :update, id: category.id, category: { name: 'test', }
       end
 
-      it { should set_the_flash[:notice].to('Category was successfully updated.') }
+      it { should set_flash[:notice].to('Category was successfully updated.') }
       it { should redirect_to(admin_categories_path) }
     end
 

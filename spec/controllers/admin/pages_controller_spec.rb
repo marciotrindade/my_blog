@@ -33,7 +33,7 @@ describe Admin::PagesController do
         post :create, page: { name: 'test', body: 'lala', keywords: 'lala', page_title: 'page title', page_body: 'page body' }
       end
 
-      it { should set_the_flash[:notice].to('Page was successfully created.') }
+      it { should set_flash[:notice].to('Page was successfully created.') }
       it { should redirect_to(admin_pages_path) }
     end
 
@@ -52,7 +52,7 @@ describe Admin::PagesController do
         patch :update, id: page.id, page: { name: 'test' }
       end
 
-      it { should set_the_flash[:notice].to('Page was successfully updated.') }
+      it { should set_flash[:notice].to('Page was successfully updated.') }
       it { should redirect_to(admin_pages_path) }
     end
 
