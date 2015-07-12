@@ -31,7 +31,10 @@
 
       <footer class="ls-footer" role="contentinfo">
         <nav class="ls-footer-menu">
-          <h2 class="ls-title-footer"><%= link_to t('.footer.contact'), new_contact_path %></h2>
+          <h2 class="ls-title-footer"><%= t('.footer.title') %></h2>
+          <ul class="ls-footer-list ls-txt-left">
+            <li><%= link_to t('.footer.contact'), new_contact_path, class: 'ls-ico-envelop' %></li>
+          </ul>
         </nav>
 
         <div class="ls-footer-info">

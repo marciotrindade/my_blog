@@ -6,7 +6,7 @@ default: &default
     email: marciotrindade@gmail.com
   paginate:
     per_page: 25
-  locastyle: //assets.locaweb.com.br/locastyle/3.7.1
+  locastyle: //assets.locaweb.com.br/locastyle/3.7.4
 
 test:
   <<: *default

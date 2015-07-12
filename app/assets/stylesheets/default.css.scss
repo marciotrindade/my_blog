@@ -4,7 +4,7 @@ html {
 
 #container {
   h1, h2, h3, h4, h5 {
-    margin: 15px 0 10px 0;
+    margin: 20px 0 10px 0;
     font-weight: 400;
     color: #323232;
     -webkit-font-smoothing: antialiased;
@@ -29,16 +29,21 @@ html {
     margin: 10px 20px;
   }
 
-  li {
-    font-size: 0.88rem;
-    margin:3px 0;
-    a {
-      color: #509742;
-      text-decoration: underline;
+  ul:not([class*="ls-pagination"]) {
+    li {
+      margin:4px 0;
+      a {
+        color: #509742;
+        text-decoration: underline;
+      }
+      a:hover {
+        text-decoration: none;
+      }
     }
-    a:hover {
-      text-decoration: none;
-    }
+  }
+
+  p,li {
+    font-size: 15px;
   }
 
   article {
