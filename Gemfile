@@ -23,24 +23,23 @@ group :assets do
 end
 
 group :production do
-  gem 'unicorn'
-  gem 'newrelic_rpm'
+  gem 'unicorn', '~> 4.9.0'
+  gem 'newrelic_rpm', '~> 3.12.1.298'
 end
 
 group :development do
-  gem 'rack-mini-profiler'
-  gem 'annotate'
+  gem 'annotate', '~> 2.6.10'
   gem 'spring', '~> 1.3.1'
   gem 'spring-commands-rspec', '~> 1.0.4'
 end
 
 group :test do
-  gem 'shoulda-matchers', require: false
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', '~> 2.8.0'
+  gem 'rspec-rails', '~> 3.3.2'
+  gem 'factory_girl_rails', '~> 4.5.0'
 end
 
 group :development, :test do
-  gem 'pry-nav'
+  gem 'pry-nav', '~> 0.2.4'
   gem 'web-console', '~> 2.0'
 end
