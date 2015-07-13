@@ -2,6 +2,10 @@ describe CategoriesController do
 
   render_views
 
+  before do
+    allow(controller).to receive(:admin?).and_return(false)
+  end
+
   describe "on GET :show" do
     let!(:category) { create(:category, name: "my_category") }
     let!(:post)     { create(:post, categories: [category]) }

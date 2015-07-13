@@ -46,26 +46,30 @@
     <aside class="ls-sidebar">
       <nav class="ls-menu">
         <ul>
-          <%= menu_tag t('.menu.posts'),    root_path,                  /post/,    class: 'ls-ico-home' %>
-          <%= menu_tag t('.menu.about_me'), page_path("sobre-o-autor"), /page/,    class: 'ls-ico-user' %>
-          <%= menu_tag t('.menu.contact'),  new_contact_path,           /contact/, class: 'ls-ico-envelope' %>
+          <%= menu_tag t('.menu.posts'), root_path, /post/, class: 'ls-ico-home' %>
+          <%= menu_tag t('.menu.about_me'), page_path("sobre-o-autor"), /page/, class: 'ls-ico-user' %>
+          <%= menu_tag t('.menu.contact'), new_contact_path, /contact/, class: 'ls-ico-envelope' %>
           <li class="ls-submenu">
             <%= link_to t('.categories'), '#', class: 'ls-ico-flag' %>
-            <ul class="sidebox-list">
-              <% Category.all.each do |category| %>
-                <%= sub_menu_tag("#{category.name} (#{category.posts.size})", category_path(category.permalink)) %>
-              <% end %>
-            </ul>
+            <% cache_unless admin?, [:menu, :categories, last_update] do %>
+              <ul class="sidebox-list">
+                <% Category.all.each do |category| %>
+                  <%= sub_menu_tag("#{category.name} (#{category.posts.size})", category_path(category.permalink)) %>
+                <% end %>
+              </ul>
+            <% end %>
           </li>
           <li class="ls-submenu">
             <%= link_to t('.archive'), '#', class: 'ls-ico-calendar' %>
             <ul class="sidebox-list">
-              <% Post.archive.each do |post| %>
-                <%= sub_menu_tag("#{l(post.created_at, format: :archive)} (#{post.total})", post.month_path) %>
+              <% cache_unless admin?, [:menu, :archive, last_update] do %>
+                <% Post.archive.each do |post| %>
+                  <%= sub_menu_tag("#{l(post.created_at, format: :archive)} (#{post.total})", post.month_path) %>
+                <% end %>
               <% end %>
             </ul>
           </li>
-          <%= menu_tag t('.menu.sitemap'),  sitemap_path,               /sitemap/, class: 'ls-ico-tree' %>
+          <%= menu_tag t('.menu.sitemap'),  sitemap_path, /sitemap/, class: 'ls-ico-tree' %>
         </ul>
       </nav>
     </aside>

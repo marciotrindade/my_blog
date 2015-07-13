@@ -29,16 +29,18 @@
   </table>
 </div>
 
-<div class="ls-box">
-  <h2 class="ls-title-3"><%= t('.posts') %></h2>
-  <table class="ls-table">
-    <thead>
-      <tr><th>Nome</th></tr>
-    </thead>
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr><td><%= link_to post.name, post.path %></td></tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<% cache_unless admin?, [:sitemap, :post, last_update] do %>
+  <div class="ls-box">
+    <h2 class="ls-title-3"><%= t('.posts') %></h2>
+    <table class="ls-table">
+      <thead>
+        <tr><th>Nome</th></tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr><td><%= link_to post.name, post.path %></td></tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

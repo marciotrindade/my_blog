@@ -1,6 +1,5 @@
 module Api
   class PostsController < BaseController
-
     def index
       @posts = load_posts
     end
@@ -26,10 +25,5 @@ module Api
       post = post.active unless admin?
       post.first!
     end
-
-    def admin?
-      user_signed_in? && current_user.admin?
-    end
-
   end
 end

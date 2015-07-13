@@ -1,3 +1,5 @@
 <% title @page, 'ls-ico-user' %>
 
-<%= textilize(@page.body) %>
+<% cache @page do %>
+  <%= textilize(@page.body) %>
+<% end %>

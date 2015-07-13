@@ -1,3 +1,5 @@
 <% title @category, 'ls-ico-flag' %>
-<%= render @posts %>
-<%= app_pagination @posts %>
+<% cache_unless admin?, [:posts, @category, last_update] do %>
+  <%= render @posts %>
+  <%= app_pagination @posts %>
+<% end %>

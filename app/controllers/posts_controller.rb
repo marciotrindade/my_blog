@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def index
     @page    = Page.home
     @posts   = load_posts.includes(:categories)
@@ -41,9 +40,4 @@ class PostsController < ApplicationController
   def method_name
     Post.active.by_date(params[:year], params[:month], params[:day]).decorate
   end
-
-  def admin?
-    user_signed_in? && current_user.admin?
-  end
-
 end

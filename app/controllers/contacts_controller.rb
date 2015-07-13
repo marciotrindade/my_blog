@@ -1,5 +1,4 @@
 class ContactsController < ApplicationController
-
   def new
     @page    = load_page
     @contact = Contact.new
@@ -25,5 +24,4 @@ class ContactsController < ApplicationController
   def contact_params
     params.require(:contact).permit(:name, :email, :body)
   end
-
 end

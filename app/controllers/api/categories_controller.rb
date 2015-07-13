@@ -1,6 +1,5 @@
 module Api
   class CategoriesController < BaseController
-
     def index
       @categories = Category.all
     end
@@ -8,6 +7,5 @@ module Api
     def show
       @category = Category.find_by_permalink(params[:id])
     end
-
   end
 end
