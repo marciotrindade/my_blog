@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = load_post.decorate
+    @post = load_post
   end
 
   def by_date

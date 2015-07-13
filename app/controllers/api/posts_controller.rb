@@ -2,11 +2,11 @@ module Api
   class PostsController < BaseController
 
     def index
-      @posts = load_posts.decorate
+      @posts = load_posts
     end
 
     def show
-      @post = load_post.decorate
+      @post = load_post
     end
 
     def archive

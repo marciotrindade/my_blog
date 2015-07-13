@@ -1,9 +1,9 @@
 <article>
   <h2 class="ls-title-2"><%= link_to(post.name, post.path, title: post.name, class: 'ls-color-theme') %></h2>
-  <time datetime="<%= post.created_at %>" pubdate><%= post.created %></time>
+  <time datetime="<%= post.created_at %>" pubdate><%= I18n.l(post.created_at, format: :day) %></time>
   <%= textilize(post.summary) %>
   <aside>
-    <%= post.category_links %>
+    <%= category_links(post.categories) %>
     <p><%= link_to(t('.read_more'), post.path) %></p>
   </aside>
 </article>

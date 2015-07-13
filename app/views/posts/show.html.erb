@@ -1,12 +1,12 @@
 <% title @post, 'ls-ico-text' %>
 
 <article>
-  <time datetime="<%= @post.created_at %>" pubdate><%= @post.created %></time>
+  <time datetime="<%= @post.created_at %>" pubdate><%= I18n.l(@post.created_at, format: :day) %></time>
 
-  <%= @post.body_formated %>
+  <%= textilize(@post.body) %>
 
   <aside>
-    <%= @post.category_links %>
+    <%= category_links(@post.categories) %>
   </aside>
 
   <div class="social">
