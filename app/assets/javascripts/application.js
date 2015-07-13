@@ -1,3 +1,2 @@
 //= require jquery_ujs
-//= require blog
-//= require analytics
+//= require_tree .

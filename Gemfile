@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails',      '4.2.0'
-gem 'pg', '~> 0.18.2'
+gem 'rails', '4.2.3'
 
+gem 'pg', '~> 0.18.2'
 gem 'coderay', '~> 1.1.0'
 gem 'devise', '~> 3.5.1'
 gem 'draper', '~> 2.1.0'
@@ -14,11 +14,14 @@ gem 'oj', '~> 2.12.10'
 gem 'lograge', '~> 0.3.4'
 gem 'dalli', '~> 2.7.4'
 
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '~> 2.7.1'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails', '~> 4.0.4'
-gem 'turbolinks', '~> 2.5.3'
+group :assets do
+  gem 'jquery-rails', '~> 4.0.4'
+  gem 'sass-rails', '~> 5.0.3'
+  gem 'therubyracer', '~> 0.12.2'
+  gem 'uglifier', '~> 2.7.1'
+  gem 'turbolinks', '~> 2.5.3'
+  gem 'coffee-rails', '~> 4.1.0'
+end
 
 group :production do
   gem 'unicorn'
