@@ -66,10 +66,18 @@ describe Admin::PostsController do
   end
 
   describe "on DELETE :destroy" do
-    before { delete :destroy, id: article.id }
+    let!(:article) { create(:post) }
 
-    it { expect { article.reload }.to raise_error }
-    it { should redirect_to(admin_posts_path) }
+    it 'redirects to index page' do
+      delete :destroy, { id: article.id }
+
+      should redirect_to(admin_posts_path)
+    end
+
+    it 'removes the post' do
+      expect {
+        delete :destroy, { id: article.id }
+      }.to change(Post, :count).by(-1)
+    end
   end
-
 end

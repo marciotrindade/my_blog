@@ -66,10 +66,18 @@ describe Admin::CategoriesController do
   end
 
   describe "on DELETE :destroy" do
-    before { delete :destroy, id: category.id }
+    let!(:category) { create(:category) }
 
-    it { expect { category.reload }.to raise_error }
-    it { should redirect_to(admin_categories_path) }
+    it 'redirects to index page' do
+      delete :destroy, { id: category.id }
+
+      should redirect_to(admin_categories_path)
+    end
+
+    it 'removes a category' do
+      expect {
+        delete :destroy, { id: category.id }
+      }.to change(Category, :count).by(-1)
+    end
   end
-
 end

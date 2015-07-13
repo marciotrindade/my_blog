@@ -40,10 +40,18 @@ describe Admin::ContactsController do
   end
 
   describe "on DELETE :destroy" do
-    before { delete :destroy, id: contact.id }
+    let!(:contact) { create(:contact) }
 
-    it { expect { contact.reload }.to raise_error }
-    it { should redirect_to(admin_contacts_path) }
+    it 'redirects to index page' do
+      delete :destroy, { id: contact.id }
+
+      should redirect_to(admin_contacts_path)
+    end
+
+    it 'removes the contact' do
+      expect {
+        delete :destroy, { id: contact.id }
+      }.to change(Contact, :count).by(-1)
+    end
   end
-
 end

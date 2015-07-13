@@ -66,10 +66,18 @@ describe Admin::PagesController do
   end
 
   describe "on DELETE :destroy" do
-    before { delete :destroy, id: page.id }
+    let!(:page) { create(:page) }
 
-    it { expect { page.reload }.to raise_error }
-    it { should redirect_to(admin_pages_path) }
+    it 'redirects to index page' do
+      delete :destroy, { id: page.id }
+
+      should redirect_to(admin_pages_path)
+    end
+
+    it 'removes the page' do
+      expect {
+        delete :destroy, { id: page.id }
+      }.to change(Page, :count).by(-1)
+    end
   end
-
 end
