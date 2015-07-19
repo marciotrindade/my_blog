@@ -1,16 +1,19 @@
 class PostsController < ApplicationController
   def index
-    @page    = Page.home
-    @posts   = load_posts.includes(:categories)
+    @page = Page.home
+    @posts = load_posts.includes(:categories)
+    fresh_when(etag: @page, last_modified: last_update, public: true)
   end
 
   def show
     @post = load_post
+    fresh_when(etag: @post, last_modified: @post.updated_at, public: true)
   end
 
   def by_date
     @page = page_for_date
     @posts = Post.by_date(params[:year],params[:month], params[:day]).page(params[:page])
+    fresh_when(etag: ['archive', last_update], last_modified: last_update, public: true)
   end
 
   private
