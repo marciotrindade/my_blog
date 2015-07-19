@@ -36,8 +36,4 @@ class PostsController < ApplicationController
     post = post.active unless admin?
     post.first
   end
-
-  def method_name
-    Post.active.by_date(params[:year], params[:month], params[:day]).decorate
-  end
 end
