@@ -9,20 +9,28 @@ class PostsController < ApplicationController
   end
 
   def by_date
-    @page            = Page.new
-    @page.page_title = @page.name = date_for_meta_tag
-    @page.page_body  = t(:description, scope: %w(posts by_date), date: date_for_meta_tag)
-    @posts           = Post.by_date(params[:year],params[:month], params[:day]).page(params[:page])
+    @page = page_for_date
+    @posts = Post.by_date(params[:year],params[:month], params[:day]).page(params[:page])
   end
 
   private
 
+  def page_for_date
+    Page.new.tap do |p|
+      p.name = date_for_meta_tag
+      p.page_title = date_for_meta_tag
+      p.page_body = t(:description, scope: %w(posts by_date), date: date_for_meta_tag)
+    end
+  end
+
   def date_for_meta_tag
-    year   = params[:year].to_i
-    month  = params[:month].present? ? params[:month].to_i : 1
-    date   = Date.new(year, month)
-    format = params[:month] ? :month : :year
-    l(date, format: format)
+    @date_for_meta_tag ||= begin
+      year   = params[:year].to_i
+      month  = params[:month].present? ? params[:month].to_i : 1
+      date   = Date.new(year, month)
+      format = params[:month] ? :month : :year
+      l(date, format: format)
+    end
   end
 
   def load_posts
