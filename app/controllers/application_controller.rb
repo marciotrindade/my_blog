@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def last_update
-    @last_update ||= Post.select(:updated_at).first.try(:updated_at)
+    @last_update ||= Post.maximum(:updated_at)
   end
 
   # Internal: Add info to lograge's payload.
